@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Projets data, IA et marketing de Hanine Bendiab : Hackathon Mirakl, PayFit, audits SEO/GEO, analyses Python et plus." />
+  <meta name="author" content="Hanine Bendiab" />
+
+  <title>Projets — Hanine Bendiab</title>
+
+  <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='Arial' font-weight='bold' fill='%234285f4'>H</text></svg>" />
+
+  <!-- Polices -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=block" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/global.css" />
+  <link rel="stylesheet" href="../css/google-ui.css" />
+  <link rel="stylesheet" href="../css/serp.css" />
+  <link rel="stylesheet" href="../css/projects.css" />
+  <link rel="stylesheet" href="../css/responsive.css" />
+  <link rel="stylesheet" href="../css/customize.css" />
+
+  <!-- Anti-flash thème + accent -->
+  <script>
+    (function () {
+      try {
+        var theme  = localStorage.getItem('portfolio-theme')  || 'system';
+        var accent = localStorage.getItem('portfolio-accent') || '#1a73e8';
+        var dark = theme === 'dark' ||
+          (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+        document.documentElement.style.setProperty('--accent', accent);
+        document.documentElement.style.setProperty('--accent-strong', accent);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+
+<body>
+
+  <!-- ====================================================================
+       HEADER DE RECHERCHE
+       ==================================================================== -->
+  <header class="serp-header">
+    <a class="serp-logo" href="../index.html" aria-label="Hanine — accueil">
+      <span class="logo__letter--blue">H</span><span class="logo__letter--red">a</span><span class="logo__letter--yellow">n</span><span class="logo__letter--blue">i</span><span class="logo__letter--green">n</span><span class="logo__letter--red">e</span>
+    </a>
+
+    <form class="serp-search" id="search-form" role="search" action="profile.html" method="get">
+      <label for="search-input" class="visually-hidden">Recherchez-moi</label>
+      <div class="search-bar">
+        <svg class="search-bar__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M21 21l-4.35-4.35M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <input type="text" id="search-input" name="q" class="search-bar__input"
+               value="projets Hanine Bendiab" autocomplete="off" />
+        <svg class="search-bar__mic" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="#4285f4" d="M12 14a3 3 0 0 0 3-3V5a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3z" />
+          <path fill="#34a853" d="M11 18.92V21h2v-2.08A7 7 0 0 0 19 12h-2a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92z" />
+        </svg>
+      </div>
+    </form>
+
+    <div class="serp-header__right">
+      <div class="apps">
+        <button type="button" class="apps__toggle" id="apps-toggle"
+                aria-label="Menu Hanine" aria-haspopup="true" aria-expanded="false" aria-controls="apps-panel">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <circle cx="5"  cy="5"  r="1.6" /><circle cx="12" cy="5"  r="1.6" /><circle cx="19" cy="5"  r="1.6" />
+            <circle cx="5"  cy="12" r="1.6" /><circle cx="12" cy="12" r="1.6" /><circle cx="19" cy="12" r="1.6" />
+            <circle cx="5"  cy="19" r="1.6" /><circle cx="12" cy="19" r="1.6" /><circle cx="19" cy="19" r="1.6" />
+          </svg>
+        </button>
+
+        <div class="apps__panel" id="apps-panel" role="menu" aria-label="Vos favoris" hidden>
+          <div class="apps__card">
+            <div class="apps__header">
+              <p class="apps__title">Vos favoris</p>
+              <button type="button" class="apps__edit" aria-label="Modifier vos favoris">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+                </svg>
+              </button>
+            </div>
+            <div class="apps__grid">
+              <a class="app" href="profile.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-blue);"><span class="material-symbols-outlined">account_circle</span></span><span class="app__label">Profil</span></a>
+              <a class="app" href="projects.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-red);"><span class="material-symbols-outlined">collections</span></span><span class="app__label">Projets</span></a>
+              <a class="app" href="experiences.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-yellow);"><span class="material-symbols-outlined">work</span></span><span class="app__label">Expériences</span></a>
+              <a class="app" href="formation.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-green);"><span class="material-symbols-outlined">school</span></span><span class="app__label">Formation</span></a>
+              <a class="app" href="stack.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-blue);"><span class="material-symbols-outlined">build</span></span><span class="app__label">Stack</span></a>
+              <a class="app" href="maps.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-red);"><span class="material-symbols-outlined">location_on</span></span><span class="app__label">Maps</span></a>
+              <a class="app" href="drive.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-yellow);"><span class="material-symbols-outlined">folder</span></span><span class="app__label">Drive</span></a>
+              <a class="app" href="assistant.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-green);"><span class="material-symbols-outlined">auto_awesome</span></span><span class="app__label">Assistant</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a class="topbar__avatar" href="profile.html" aria-label="Mon profil">H</a>
+    </div>
+  </header>
+
+  <!-- ====================================================================
+       ONGLETS DE FILTRES
+       ==================================================================== -->
+  <nav class="serp-tabs" aria-label="Catégories de recherche">
+    <a class="serp-tab" href="profile.html"><span class="material-symbols-outlined">search</span> Tous</a>
+    <a class="serp-tab is-active" href="projects.html" aria-current="page"><span class="material-symbols-outlined">image</span> Images</a>
+    <a class="serp-tab" href="#" aria-disabled="true"><span class="material-symbols-outlined">videocam</span> Vidéos</a>
+    <a class="serp-tab" href="maps.html"><span class="material-symbols-outlined">place</span> Maps</a>
+    <a class="serp-tab" href="drive.html"><span class="material-symbols-outlined">folder</span> Drive</a>
+    <a class="serp-tab" href="#" aria-disabled="true"><span class="material-symbols-outlined">article</span> Actualités</a>
+    <a class="serp-tab" href="#" aria-disabled="true"><span class="material-symbols-outlined">expand_more</span> Plus</a>
+  </nav>
+
+  <!-- ====================================================================
+       CHIPS DE FILTRES RAPIDES
+       ==================================================================== -->
+  <div class="filter-chips" role="group" aria-label="Filtres par catégorie">
+    <button type="button" class="filter-chip is-active" data-filter="all">Tous</button>
+    <button type="button" class="filter-chip" data-filter="data-ia">Data &amp; IA</button>
+    <button type="button" class="filter-chip" data-filter="marketing">Marketing &amp; Com</button>
+    <button type="button" class="filter-chip" data-filter="web-seo">Web &amp; SEO</button>
+    <button type="button" class="filter-chip" data-filter="perso">Personnel</button>
+    <button type="button" class="filter-chip" data-filter="2026">2026</button>
+    <button type="button" class="filter-chip" data-filter="2025">2025</button>
+    <button type="button" class="filter-chip" data-filter="2024">2024</button>
+  </div>
+
+  <!-- ====================================================================
+       EN-TÊTE DE PAGE
+       ==================================================================== -->
+  <div class="projects-head">
+    <h1 class="projects-head__title">Mes projets</h1>
+    <p class="projects-head__subtitle">8 projets · Data, IA, Marketing &amp; automatisation</p>
+  </div>
+
+  <!-- ====================================================================
+       GRILLE DE PROJETS
+       ==================================================================== -->
+  <section class="projects-grid" aria-label="Grille des projets">
+
+    <!-- Projet 1 : Hackathon Mirakl (featured) -->
+    <button type="button" class="project-card project-card--featured" data-index="0" data-cats="data-ia" data-year="2026"
+            style="background: linear-gradient(135deg, #1a73e8, #34a853);">
+      <span class="project-card__badge">FEATURED ⭐</span>
+      <span class="project-card__date">2026</span>
+      <span class="project-card__title">Hackathon Mirakl</span>
+      <span class="project-card__subtitle">Talent Intelligence System</span>
+      <span class="project-card__tags">
+        <span class="project-tag">Python</span><span class="project-tag">OpenAI</span><span class="project-tag">n8n</span><span class="project-tag">Scraping</span><span class="project-tag">Agents IA</span>
+      </span>
+    </button>
+
+    <!-- Projet 2 : PayFit -->
+    <button type="button" class="project-card" data-index="1" data-cats="data-ia" data-year="2026"
+            style="background: linear-gradient(135deg, #1a73e8, #4285f4);">
+      <span class="project-card__date">2026</span>
+      <span class="project-card__title">Compétition PayFit</span>
+      <span class="project-card__subtitle">Cas entreprise · Lovable + Dust + n8n</span>
+      <span class="project-card__tags">
+        <span class="project-tag">No-code</span><span class="project-tag">IA</span><span class="project-tag">Automatisation</span>
+      </span>
+    </button>
+
+    <!-- Projet 3 : Audit SEO/GEO Albert School -->
+    <button type="button" class="project-card" data-index="2" data-cats="web-seo" data-year="2026"
+            style="background: linear-gradient(135deg, #ff8a50, #fbbc04);">
+      <span class="project-card__date">2026</span>
+      <span class="project-card__title">Audit SEO/GEO Albert School</span>
+      <span class="project-card__subtitle">Audit + analyse référencement IA</span>
+      <span class="project-card__tags">
+        <span class="project-tag">SEO</span><span class="project-tag">GEO</span><span class="project-tag">ChatGPT</span><span class="project-tag">Perplexity</span>
+      </span>
+    </button>
+
+    <!-- Projet 4 : Audit SEO Eugenia -->
+    <button type="button" class="project-card" data-index="3" data-cats="web-seo" data-year="2026"
+            style="background: linear-gradient(135deg, #34a853, #0a8043);">
+      <span class="project-card__date">2026</span>
+      <span class="project-card__title">Audit SEO Eugenia</span>
+      <span class="project-card__subtitle">Recommandations techniques + contenu</span>
+      <span class="project-card__tags">
+        <span class="project-tag">SEO</span><span class="project-tag">Schema markup</span><span class="project-tag">Content</span>
+      </span>
+    </button>
+
+    <!-- Projet 5 : Analyse WhatsApp Python -->
+    <button type="button" class="project-card" data-index="4" data-cats="data-ia perso" data-year="2026"
+            style="background: linear-gradient(135deg, #673ab7, #4285f4);">
+      <span class="project-card__date">2026</span>
+      <span class="project-card__title">Analyse WhatsApp</span>
+      <span class="project-card__subtitle">Stats conversation · sentiment · vibes</span>
+      <span class="project-card__tags">
+        <span class="project-tag">Python</span><span class="project-tag">Pandas</span><span class="project-tag">NLP</span><span class="project-tag">Data viz</span>
+      </span>
+    </button>
+
+    <!-- Projet 6 : Airbnb Lyon -->
+    <button type="button" class="project-card" data-index="5" data-cats="marketing perso" data-year="2024"
+            style="background: linear-gradient(135deg, #ff8a50, #ea4335);">
+      <span class="project-card__date">2024</span>
+      <span class="project-card__title">Projet Airbnb Lyon</span>
+      <span class="project-card__subtitle">Top 3 concours · business plan + branding</span>
+      <span class="project-card__tags">
+        <span class="project-tag">Business plan</span><span class="project-tag">Branding</span><span class="project-tag">Étude marché</span>
+      </span>
+    </button>
+
+    <!-- Projet 7 : Campagne JEP 2025 SNCF -->
+    <button type="button" class="project-card" data-index="6" data-cats="marketing" data-year="2025"
+            style="background: linear-gradient(135deg, #fbbc04, #f9a825);">
+      <span class="project-card__date">2025</span>
+      <span class="project-card__title">Campagne JEP 2025</span>
+      <span class="project-card__subtitle">Pilotage publicité digitale · Journées du Patrimoine</span>
+      <span class="project-card__tags">
+        <span class="project-tag">Publicité</span><span class="project-tag">Stratégie média</span><span class="project-tag">Audiences</span>
+      </span>
+    </button>
+
+    <!-- Projet 8 : Blog journalistique -->
+    <button type="button" class="project-card" data-index="7" data-cats="web-seo perso" data-year="2024"
+            style="background: linear-gradient(135deg, #5f6368, #9aa0a6);">
+      <span class="project-card__date">2024</span>
+      <span class="project-card__title">Blog journalistique</span>
+      <span class="project-card__subtitle">WordPress + SEO + rédaction</span>
+      <span class="project-card__tags">
+        <span class="project-tag">WordPress</span><span class="project-tag">SEO</span><span class="project-tag">Rédaction</span>
+      </span>
+    </button>
+  </section>
+
+  <!-- ====================================================================
+       MODALE DÉTAIL PROJET
+       ==================================================================== -->
+  <div class="pmodal" id="pmodal" role="dialog" aria-modal="true" aria-label="Détail du projet">
+    <div class="pmodal__overlay"></div>
+    <div class="pmodal__dialog">
+
+      <!-- Barre supérieure -->
+      <div class="pmodal__bar">
+        <div class="pmodal__nav">
+          <button type="button" class="pmodal__navbtn" id="pmodal-prev">
+            <span class="material-symbols-outlined">arrow_back</span> Précédent
+          </button>
+          <button type="button" class="pmodal__navbtn" id="pmodal-next">
+            Suivant <span class="material-symbols-outlined">arrow_forward</span>
+          </button>
+        </div>
+        <button type="button" class="pmodal__close" id="pmodal-close" aria-label="Fermer">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true">
+            <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Corps 60/40 -->
+      <div class="pmodal__body">
+        <!-- Gauche : visuel + miniatures + photos -->
+        <div class="pmodal__left">
+          <div class="pmodal__hero" id="pmodal-hero"></div>
+          <div class="pmodal__thumbs" id="pmodal-thumbs"></div>
+
+          <div class="pmodal__photos-wrap" id="pmodal-photos-wrap">
+            <p class="pmodal__section-title">Photos de l'événement</p>
+            <div class="pmodal__photos" id="pmodal-photos"></div>
+          </div>
+        </div>
+
+        <!-- Droite : détails -->
+        <div class="pmodal__right">
+          <p class="pmodal__meta" id="pmodal-meta"></p>
+          <h2 class="pmodal__title" id="pmodal-title"></h2>
+
+          <div class="pmodal__desc" id="pmodal-desc"></div>
+
+          <p class="pmodal__section-title">Stack technique</p>
+          <div class="pmodal__stack" id="pmodal-stack"></div>
+
+          <p class="pmodal__section-title">Mon rôle</p>
+          <p class="pmodal__role" id="pmodal-role"></p>
+
+          <p class="pmodal__section-title">Résultats</p>
+          <ul class="pmodal__results" id="pmodal-results"></ul>
+
+          <div class="pmodal__links" id="pmodal-links"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       BOUTON + MODALE DE PERSONNALISATION
+       ==================================================================== -->
+  <button type="button" class="customize-fab" id="customize-fab"
+          aria-label="Personnaliser le portfolio" aria-haspopup="dialog">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+    </svg>
+  </button>
+
+  <div class="customize" id="customize-modal">
+    <div class="customize__overlay" id="customize-overlay"></div>
+    <aside class="customize__panel" role="dialog" aria-modal="true" aria-labelledby="customize-title">
+      <header class="customize__header">
+        <h2 class="customize__title" id="customize-title">Personnaliser le portfolio</h2>
+        <button type="button" class="customize__close" id="customize-close" aria-label="Fermer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+          </svg>
+        </button>
+      </header>
+
+      <section class="customize__section">
+        <h3 class="customize__label">Mode d'affichage</h3>
+        <div class="theme-toggle" role="group" aria-label="Mode d'affichage">
+          <button type="button" class="theme-toggle__btn" data-theme-value="light">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5 2 3h-4l2-3zm0 20-2-3h4l-2 3zM2 12l3-2v4l-3-2zm20 0-3 2v-4l3 2zM5.6 5.6l3.2 1.4-1.4 1.4L5.6 5.6zm12.8 0-1.8 2.8-1.4-1.4 3.2-1.4zM5.6 18.4l1.4-3.2 1.4 1.4-2.8 1.8zm12.8 0-2.8-1.8 1.4-1.4 1.4 3.2z" /></svg>
+            Clair
+          </button>
+          <button type="button" class="theme-toggle__btn" data-theme-value="dark">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36A5.39 5.39 0 0 1 12.6 3.1c-.2-.06-.4-.1-.6-.1z" /></svg>
+            Sombre
+          </button>
+          <button type="button" class="theme-toggle__btn" data-theme-value="system">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 3H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h6v2H8v2h8v-2h-2v-2h6a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 13H4V5h16v11z" /></svg>
+            Système
+          </button>
+        </div>
+      </section>
+
+      <section class="customize__section">
+        <h3 class="customize__label">Couleur du thème</h3>
+        <div class="palette-grid" id="palette-grid"></div>
+        <input type="color" id="custom-color-input" value="#1a73e8"
+               style="position:absolute;width:0;height:0;opacity:0;pointer-events:none;" />
+      </section>
+
+      <section class="customize__section">
+        <h3 class="customize__label">Image de fond</h3>
+        <div class="bg-row">
+          <div class="bg-thumb" aria-hidden="true"></div>
+          <button type="button" class="bg-edit">Modifier</button>
+        </div>
+      </section>
+    </aside>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../js/navigation.js" defer></script>
+  <script src="../js/search.js" defer></script>
+  <script src="../js/customize.js" defer></script>
+  <script src="../js/projects.js" defer></script>
+</body>
+</html>

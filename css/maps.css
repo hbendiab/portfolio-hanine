@@ -1,0 +1,352 @@
+/* ==========================================================================
+   maps.css — Page « Mes lieux clés » (style Google Maps custom)
+   Portfolio Hanine
+   --------------------------------------------------------------------------
+   Réutilise de experiences.css : .suggest (section du bas).
+   Ajoute : en-tête, app 2 colonnes (sidebar + carte SVG), pins, contrôles.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. EN-TÊTE DE PAGE
+   -------------------------------------------------------------------------- */
+.maps-head {
+  max-width: 1100px;
+  margin-inline: auto;
+  padding: var(--space-3) var(--space-5);
+}
+.maps-head__title {
+  font-size: 24px;
+  font-weight: var(--fw-medium);
+}
+.maps-head__subtitle {
+  font-size: 14px;
+  color: var(--color-text-soft);
+  margin-top: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   2. APP 2 COLONNES (sidebar + carte)
+   -------------------------------------------------------------------------- */
+.maps-app {
+  display: flex;
+  height: calc(100vh - 210px);
+  min-height: 520px;
+  border-top: 1px solid var(--color-border);
+}
+
+/* --- Sidebar --- */
+.maps-sidebar {
+  width: 380px;
+  flex-shrink: 0;
+  overflow-y: auto;
+  background-color: var(--color-bg);
+  border-right: 1px solid var(--color-border);
+}
+
+/* Filtres (chips horizontaux) */
+.map-chips {
+  display: flex;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-bottom: 1px solid var(--color-border-soft);
+}
+.map-chips::-webkit-scrollbar { display: none; }
+.map-chip {
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-size: 13px;
+  white-space: nowrap;
+  transition: background-color var(--transition-fast);
+}
+.map-chip:hover { background-color: var(--color-bg-hover); }
+.map-chip.is-active {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* Indicateur de résultats */
+.maps-sidebar__count {
+  padding: var(--space-3) var(--space-4) var(--space-2);
+  font-size: 13px;
+  color: var(--color-text-soft);
+}
+
+/* --- Card lieu --- */
+.place-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--space-3);
+  align-items: start;
+  width: 100%;
+  text-align: left;
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--color-border-soft);
+  border-left: 3px solid var(--pc, var(--accent));
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+.place-card:hover { background-color: var(--color-bg-hover); }
+.place-card.is-active { background-color: #e8f0fe; }
+html[data-theme="dark"] .place-card.is-active { background-color: rgba(138, 180, 248, 0.16); }
+
+/* Pin numéroté dans la card */
+.place-pin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-pill);
+  background-color: var(--pc, var(--accent));
+  color: #fff;
+  font-size: 13px;
+  font-weight: var(--fw-bold);
+  flex-shrink: 0;
+}
+
+.place-card__body { min-width: 0; grid-column: 2; }
+.place-card__title {
+  font-size: 15px;
+  font-weight: var(--fw-medium);
+  color: var(--color-text);
+}
+.place-card__subtitle {
+  font-size: 13px;
+  color: var(--color-text-soft);
+  margin-top: 1px;
+}
+.place-card__address {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--color-text-soft);
+  margin-top: var(--space-2);
+}
+.place-card__address .material-symbols-outlined { font-size: 14px; }
+.place-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-top: var(--space-2);
+}
+.place-tag {
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  font-size: 11px;
+  color: var(--color-text-soft);
+}
+.place-photo {
+  height: 70px;
+  border-radius: var(--radius-sm);
+  margin-top: var(--space-3);
+}
+.place-card__go {
+  grid-column: 3;
+  font-size: 13px;
+  font-weight: var(--fw-medium);
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   3. CARTE
+   -------------------------------------------------------------------------- */
+.maps-canvas {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  background-color: #e6efe2;
+}
+.map-inner {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.3s ease;
+  transform-origin: center;
+}
+.map-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+/* Mode satellite (visuel) */
+.maps-canvas.is-satellite { background-color: #2b3a2b; }
+.maps-canvas.is-satellite .map-svg { filter: brightness(0.45) saturate(0.7); }
+
+/* Pins sur la carte (position en % via inline style) */
+.map-pin {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius-pill);
+  background-color: var(--pc, var(--accent));
+  color: #fff;
+  font-size: 12px;
+  font-weight: var(--fw-bold);
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  transition: transform 0.2s ease;
+}
+.map-pin.is-hover { transform: translate(-50%, -50%) scale(1.3); z-index: 5; }
+/* Anneau de pulsation */
+.map-pin::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--pc, var(--accent));
+  opacity: 0;
+}
+.map-pin.is-pulsing::after { animation: pin-ring 1.2s ease-out infinite; }
+@keyframes pin-ring {
+  0%   { transform: scale(1);   opacity: 0.7; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+/* Contrôles (style Google Maps) */
+.map-controls {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  z-index: 6;
+}
+.map-ctrl {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background-color: #fff;
+  color: #5f6368;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  transition: background-color var(--transition-fast);
+}
+.map-ctrl:hover { background-color: #f1f3f4; }
+
+/* Label et légende */
+.map-label,
+.map-legend {
+  position: absolute;
+  bottom: 16px;
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  background-color: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  font-size: 12px;
+  color: #202124;
+  z-index: 6;
+}
+.map-label  { left: 16px; display: inline-flex; align-items: center; gap: 4px; }
+.map-legend { right: 16px; color: #5f6368; }
+
+/* --------------------------------------------------------------------------
+   4. STATS GÉOGRAPHIQUES
+   -------------------------------------------------------------------------- */
+.geo-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  max-width: 1100px;
+  margin-inline: auto;
+  padding: var(--space-5);
+}
+.geo-stat {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 14px;
+  color: var(--color-text);
+}
+.geo-stat .material-symbols-outlined { color: var(--accent); }
+
+/* --------------------------------------------------------------------------
+   4bis. VRAIE CARTE LEAFLET (OpenStreetMap)
+   -------------------------------------------------------------------------- */
+/* Le conteneur Leaflet remplit toute la zone carte */
+#map {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-color: #e6efe2;
+}
+
+/* Marqueur personnalisé (pastille colorée + lettre) injecté via divIcon */
+.place-marker {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius-pill);
+  background-color: var(--pc, var(--accent));
+  color: #fff;
+  font-size: 12px;
+  font-weight: var(--fw-bold);
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease;
+}
+.place-marker-wrap.is-hover .place-marker { transform: scale(1.3); }
+/* Anneau de pulsation */
+.place-marker::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--pc, var(--accent));
+  opacity: 0;
+}
+.place-marker-wrap.is-pulsing .place-marker::after {
+  animation: pin-ring 1.2s ease-out infinite;
+}
+
+/* Les contrôles / label / légende doivent passer AU-DESSUS des tuiles Leaflet */
+.map-controls { z-index: 1000; }
+.map-label  { z-index: 1000; }
+/* La légende passe en bas À GAUCHE (sous le label) pour ne pas gêner
+   l'attribution Leaflet en bas à droite */
+.map-legend {
+  z-index: 1000;
+  right: auto;
+  left: 16px;
+  bottom: 54px;
+}
+
+/* --------------------------------------------------------------------------
+   5. RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .maps-sidebar { width: 300px; }
+}
+
+@media (max-width: 768px) {
+  .maps-app {
+    flex-direction: column;
+    height: auto;
+  }
+  .maps-sidebar {
+    width: 100%;
+    max-height: 260px;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .maps-canvas { height: 360px; }
+  .map-ctrl { width: 34px; height: 34px; }
+}

@@ -1,0 +1,246 @@
+/* ==========================================================================
+   stack.css — Page « Compétences techniques »
+   Portfolio Hanine
+   --------------------------------------------------------------------------
+   Réutilise de experiences.css : .filter-chips · .exp-toolbar · .exp-btn ·
+   .suggest · .kp-eyebrow.
+   Ajoute : grandes cartes thématiques, chips de skills, soft skills,
+   langues avec barres, outils de collaboration.
+   ========================================================================== */
+
+/* Conteneur principal des sections */
+.stack-wrap {
+  max-width: 1100px;
+  margin-inline: auto;
+  padding: 0 var(--space-5) var(--space-6);
+}
+
+/* --------------------------------------------------------------------------
+   1. GRANDES CARTES THÉMATIQUES
+   Chaque carte porte ses couleurs via --c (accent), --c-dark (texte).
+   Fonds pastel FIXES (texte sombre fixe) pour rester lisibles en mode sombre.
+   -------------------------------------------------------------------------- */
+.skill-card {
+  padding: var(--space-5);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-5);
+  color: #202124;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+.skill-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Variantes de couleur */
+.skill-card--data   { --c: #1a73e8; --c-dark: #1967d2; background-color: #e8f0fe; }
+.skill-card--ia     { --c: #137333; --c-dark: #137333; background-color: #e6f4ea; }
+.skill-card--auto   { --c: #b06000; --c-dark: #b06000; background-color: #fef7e0; }
+.skill-card--mkt    { --c: #ea4335; --c-dark: #c5221f; background-color: #fce8e6; }
+.skill-card--design { --c: #6a1b9a; --c-dark: #6a1b9a; background-color: #f3e8fd; }
+
+/* En-tête de carte */
+.skill-card__head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.skill-card__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background-color: var(--c);
+  color: #fff;
+}
+.skill-card__icon .material-symbols-outlined { font-size: 24px; color: #fff; }
+.skill-card__heading { flex: 1; min-width: 0; }
+.skill-card__title {
+  font-size: 18px;
+  font-weight: var(--fw-medium);
+  color: #202124;
+}
+.skill-card__subtitle {
+  font-size: 13px;
+  color: var(--c-dark);
+  margin-top: 1px;
+}
+.skill-card__stars {
+  flex-shrink: 0;
+  color: var(--c);
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+.skill-card__desc {
+  font-size: 13px;
+  line-height: 1.55;
+  color: #3c4043;
+  margin-top: var(--space-3);
+}
+
+/* Chips de skills */
+.skill-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+.skill-chip {
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  background-color: #fff;
+  color: var(--c-dark);
+  font-size: 13px;
+  transition: background-color var(--transition-fast);
+}
+/* Hover : le blanc passe au pastel de la carte */
+.skill-chip:hover {
+  background-color: color-mix(in srgb, var(--c) 16%, #fff);
+}
+
+/* Footer de carte (mini-lien) */
+.skill-card__footer { margin-top: var(--space-4); }
+.skill-card__footer a {
+  font-size: 13px;
+  font-weight: var(--fw-medium);
+  color: var(--c-dark);
+}
+
+/* Carte « Design » plus compacte */
+.skill-card--design .skill-card__icon { width: 36px; height: 36px; }
+.skill-card--design .skill-card__icon .material-symbols-outlined { font-size: 20px; }
+.skill-card--design .skill-card__title { font-size: 16px; }
+
+/* --------------------------------------------------------------------------
+   2. SOFT SKILLS
+   -------------------------------------------------------------------------- */
+.soft {
+  padding: var(--space-5);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-soft);
+  margin-bottom: var(--space-5);
+}
+.soft__title {
+  font-size: 18px;
+  font-weight: var(--fw-medium);
+  margin-bottom: var(--space-4);
+}
+.soft__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+.soft-card {
+  padding: var(--space-4);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+.soft-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  color: #fff;
+  margin-bottom: var(--space-2);
+}
+.soft-card__icon .material-symbols-outlined { font-size: 20px; color: #fff; }
+.soft-card__title { font-size: 14px; font-weight: var(--fw-medium); }
+.soft-card__text { font-size: 13px; color: var(--color-text-soft); margin-top: var(--space-1); }
+
+/* --------------------------------------------------------------------------
+   3. LANGUES (avec barres de progression)
+   -------------------------------------------------------------------------- */
+.langs-card {
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg);
+  margin-bottom: var(--space-5);
+}
+.langs-card__title {
+  font-size: 16px;
+  font-weight: var(--fw-medium);
+  margin-bottom: var(--space-4);
+}
+.langs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+.lang-item__name {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 14px;
+  color: var(--color-text);
+}
+.lang-item__level {
+  font-size: 12px;
+  color: var(--color-text-soft);
+  margin: 2px 0 var(--space-2);
+}
+.lang-bar {
+  display: flex;
+  gap: 4px;
+}
+.lang-bar span {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background-color: var(--color-border);
+}
+.lang-bar span.on { background-color: var(--accent); }
+
+/* --------------------------------------------------------------------------
+   4. OUTILS DE COLLABORATION (ligne discrète, niveaux de gris)
+   -------------------------------------------------------------------------- */
+.collab {
+  max-width: 1100px;
+  margin-inline: auto;
+  padding: 0 var(--space-5) var(--space-6);
+}
+.collab__title {
+  font-size: 12px;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+  margin-bottom: var(--space-3);
+}
+.collab__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+.collab__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 13px;
+  color: var(--color-text-soft);
+  filter: grayscale(1);
+  opacity: 0.85;
+}
+.collab__item .material-symbols-outlined { font-size: 18px; }
+
+/* --------------------------------------------------------------------------
+   5. RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .soft__grid  { grid-template-columns: 1fr; }
+  .langs-grid  { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  /* Skills en 2 colonnes plutôt qu'en wrap libre */
+  .skill-chips {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .skill-chip { text-align: center; }
+}

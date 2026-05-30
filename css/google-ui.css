@@ -1,0 +1,460 @@
+/* ==========================================================================
+   google-ui.css — Composants UI inspirés de Google
+   Portfolio Hanine
+   --------------------------------------------------------------------------
+   Composants réutilisables sur tout le site :
+   - Top bar (Gmail | Images | avatar)
+   - Logo « Hanine » multicolore
+   - Barre de recherche
+   - Boutons Google
+   - Chips de suggestions
+   - (à venir) onglets SERP, knowledge panel...
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   0. MISE EN PAGE DE L'ACCUEIL (page d'accueil type Google Search)
+   Le body devient une colonne flex : top bar en haut, contenu centré,
+   footer collé en bas (sticky footer).
+   -------------------------------------------------------------------------- */
+body.home {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Bloc central centré verticalement et horizontalement */
+.home__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: var(--space-6) var(--space-4);
+}
+
+/* La barre de recherche + boutons forment un bloc centré sous le logo */
+.home__main .search {
+  width: 100%;
+  margin-top: var(--space-7);
+}
+
+/* --------------------------------------------------------------------------
+   1. TOP BAR — barre supérieure (liens + avatar)
+   -------------------------------------------------------------------------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-5);
+  width: 100%;
+  padding: var(--space-4) var(--space-5);
+  font-size: var(--fs-sm);
+}
+
+/* Liens texte de la top bar (Gmail, Images) */
+.topbar__link {
+  color: var(--color-text);
+  font-weight: var(--fw-regular);
+}
+.topbar__link:hover {
+  text-decoration: underline;
+}
+
+/* Avatar rond « H » de l'utilisateur (en haut à droite) */
+.topbar__avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-pill);
+  background-color: var(--google-blue);
+  color: #fff;
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-base);
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+.topbar__avatar:hover {
+  box-shadow: var(--shadow-sm);
+  transform: scale(1.05);
+  text-decoration: none;
+}
+
+/* --------------------------------------------------------------------------
+   1bis. MENU APPLICATIONS (grille 9 points + panneau « Vos favoris »)
+   Panneau sombre façon Google Apps.
+   -------------------------------------------------------------------------- */
+.apps {
+  position: relative;       /* repère pour positionner le panneau */
+  display: inline-flex;
+}
+
+/* Bouton grille 9 points */
+.apps__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-pill);
+  color: var(--color-text-soft);
+  transition: background-color var(--transition-fast);
+}
+.apps__toggle:hover {
+  background-color: var(--color-bg-hover);
+}
+.apps__toggle svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* RECTANGLE EXTÉRIEUR — gris clair, effet de carte façon Google */
+.apps__panel {
+  position: absolute;
+  top: calc(100% + 12px);   /* juste sous le bouton */
+  right: 0;
+  width: 360px;
+  max-width: calc(100vw - 24px); /* ne déborde jamais sur mobile */
+  padding: 12px;            /* marge claire autour de la carte intérieure */
+  background-color: #f1f3f4;       /* gris très pâle Google */
+  border-radius: 28px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* ombre douce */
+  z-index: 100;
+  animation: apps-fade-in var(--transition-fast) ease;
+}
+/* L'attribut [hidden] masque complètement le panneau */
+.apps__panel[hidden] {
+  display: none;
+}
+
+/* Petite animation d'apparition */
+@keyframes apps-fade-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* RECTANGLE INTÉRIEUR — gris foncé, contient le contenu du menu */
+.apps__card {
+  background-color: #303134;
+  border-radius: 24px;     /* légèrement moins arrondi que l'extérieur */
+  padding: 20px;           /* espace intérieur (titre + grille) */
+}
+
+/* En-tête de la carte : titre à gauche, crayon à droite */
+.apps__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-5);
+}
+
+/* Titre « Vos favoris » */
+.apps__title {
+  color: #e3e3e3;
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-regular);
+}
+
+/* Bouton crayon (modifier) — pastille grise arrondie */
+.apps__edit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 36px;
+  border-radius: var(--radius-pill);
+  background-color: #404043;
+  color: #c4c7c5;
+  transition: background-color var(--transition-fast);
+}
+.apps__edit:hover {
+  background-color: #4a4a4d;
+}
+.apps__edit svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Grille de 3 colonnes */
+.apps__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3) var(--space-2);
+  max-height: 60vh;
+  overflow-y: auto; /* scroll si beaucoup d'apps */
+}
+
+/* Une « application » (icône + libellé) */
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-1);
+  border-radius: var(--radius-md);
+  text-align: center;
+  transition: background-color var(--transition-fast);
+}
+.app:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  text-decoration: none;
+}
+
+/* Pastille colorée (carré arrondi, style tuile d'app Google) */
+.app__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;          /* carré arrondi facon app */
+  line-height: 1;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  transition: transform var(--transition-fast);
+}
+/* Léger zoom de l'icône au survol de la tuile */
+.app:hover .app__icon {
+  transform: scale(1.05);
+}
+
+/* Réglage de l'icône Material à l'intérieur de la pastille */
+.app__icon .material-symbols-outlined {
+  font-size: 28px;              /* taille de l'icône */
+  color: #ffffff;              /* icône blanche */
+}
+
+/* Libellé sous l'icône */
+.app__label {
+  color: #e8eaed;
+  font-size: 13px;
+}
+
+/* --------------------------------------------------------------------------
+   Classe de base des icônes Material Symbols Outlined
+   (réutilisable partout dans le site)
+   -------------------------------------------------------------------------- */
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  /* Axes variables : FILL 0 = contour (outlined), wght 400 = trait fin */
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+/* --------------------------------------------------------------------------
+   2. LOGO « Hanine » multicolore
+   Chaque lettre porte une couleur Google via une classe utilitaire.
+   -------------------------------------------------------------------------- */
+.logo {
+  font-family: var(--font-google);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-medium);
+  letter-spacing: -2px;
+  line-height: 1;
+  text-align: center;
+  user-select: none;
+}
+
+/* Couleurs des lettres : H bleu · a rouge · n jaune · i bleu · n vert · e rouge */
+.logo__letter--blue   { color: var(--google-blue);   }
+.logo__letter--red    { color: var(--google-red);    }
+.logo__letter--yellow { color: var(--google-yellow); }
+.logo__letter--green  { color: var(--google-green);  }
+
+/* Sous-titre sous le logo : DATA × IA × MARKETING */
+.logo-subtitle {
+  margin-top: var(--space-3);
+  text-align: center;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  letter-spacing: 3px;
+  color: var(--color-text-soft);
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------------------
+   3. BARRE DE RECHERCHE
+   -------------------------------------------------------------------------- */
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  max-width: var(--search-max-width);
+  margin-inline: auto;
+  padding: var(--space-3) var(--space-5);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  transition: box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+/* Au survol ou au focus : ombre prononcée + bordure qui disparaît (effet Google) */
+.search-bar:hover,
+.search-bar:focus-within {
+  box-shadow: var(--shadow-md);
+  border-color: transparent;
+}
+
+/* Icône loupe à gauche */
+.search-bar__icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--color-text-soft);
+}
+
+/* Champ de saisie */
+.search-bar__input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: var(--fs-base);
+  color: var(--color-text);
+}
+.search-bar__input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* Icône micro (décorative) à droite */
+.search-bar__mic {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   4. BOUTONS « Google »
+   -------------------------------------------------------------------------- */
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-top: var(--space-6);
+}
+
+/* Bouton gris clair façon « Recherche Google » */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2) var(--space-4);
+  min-height: 36px;
+  background-color: var(--color-bg-soft);
+  color: var(--color-text);
+  border: 1px solid var(--color-bg-soft);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-regular);
+  transition: border-color var(--transition-fast),
+              box-shadow var(--transition-fast),
+              background-color var(--transition-fast);
+}
+.btn:hover {
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+}
+
+/* Variante bleue pleine (action principale) */
+.btn--primary {
+  background-color: var(--google-blue-dark);
+  color: #fff;
+  border-color: var(--google-blue-dark);
+}
+.btn--primary:hover {
+  background-color: var(--google-blue-hover);
+  border-color: var(--google-blue-hover);
+}
+
+/* --------------------------------------------------------------------------
+   5. CHIPS DE SUGGESTIONS (recherches populaires)
+   -------------------------------------------------------------------------- */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+/* Libellé « Recherches populaires : » au-dessus des chips */
+.chips__label {
+  width: 100%;
+  text-align: center;
+  font-size: var(--fs-sm);
+  color: var(--color-text-soft);
+  margin-bottom: var(--space-2);
+}
+
+/* Un chip cliquable arrondi */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background-color: var(--color-bg-soft);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-sm);
+  color: var(--color-text);
+  transition: background-color var(--transition-fast),
+              box-shadow var(--transition-fast);
+}
+.chip:hover {
+  background-color: var(--color-bg-hover);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+}
+
+/* Petit point coloré optionnel devant un chip (rappel des 4 couleurs) */
+.chip__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.chip__dot--blue   { background-color: var(--google-blue);   }
+.chip__dot--red    { background-color: var(--google-red);    }
+.chip__dot--yellow { background-color: var(--google-yellow); }
+.chip__dot--green  { background-color: var(--google-green);  }
+
+/* --------------------------------------------------------------------------
+   6. PIED DE PAGE (façon Google)
+   -------------------------------------------------------------------------- */
+.footer {
+  width: 100%;
+  margin-top: auto;
+  background-color: var(--color-bg-soft);
+  border-top: 1px solid var(--color-border-soft);
+  color: var(--color-text-soft);
+  font-size: var(--fs-sm);
+}
+.footer__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+}
+.footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+}
+.footer__links a {
+  color: var(--color-text-soft);
+}

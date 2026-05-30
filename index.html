@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Responsive : indispensable pour le mobile-first -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO / description de la page -->
+  <meta name="description" content="Portfolio de Hanine — Data × IA × Marketing. Master Data Marketing & IA à Eugenia School. Recherchez mes projets, expériences et compétences." />
+  <meta name="author" content="Hanine" />
+
+  <title>Hanine — Portfolio Data × IA × Marketing</title>
+
+  <!-- Favicon (à remplacer plus tard par le vrai dans assets/icons/) -->
+  <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='Arial' font-weight='bold' fill='%234285f4'>H</text></svg>" />
+
+  <!-- Polices Google : Inter + Roboto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Icônes Material Symbols Outlined (style ligne, façon Google Workspace) -->
+  <!-- display=block : évite d'afficher le nom de l'icône le temps du chargement -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=block" />
+
+  <!-- Feuilles de style du projet (ordre important) -->
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/google-ui.css" />
+  <!-- responsive.css sera ajouté à l'étape suivante -->
+  <link rel="stylesheet" href="css/responsive.css" />
+  <!-- Styles de la modale de personnalisation -->
+  <link rel="stylesheet" href="css/customize.css" />
+
+  <!-- Anti-flash : applique le thème et l'accent AVANT le rendu de la page,
+       pour éviter un clignotement clair -> sombre au chargement. -->
+  <script>
+    (function () {
+      try {
+        var theme  = localStorage.getItem('portfolio-theme')  || 'system';
+        var accent = localStorage.getItem('portfolio-accent') || '#1a73e8';
+        var dark = theme === 'dark' ||
+          (theme === 'system' &&
+           window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+        document.documentElement.style.setProperty('--accent', accent);
+        document.documentElement.style.setProperty('--accent-strong', accent);
+      } catch (e) { /* localStorage indisponible : on ignore */ }
+    })();
+  </script>
+</head>
+
+<body class="home">
+
+  <!-- ====================================================================
+       TOP BAR — liens rapides + avatar (en haut à droite)
+       ==================================================================== -->
+  <header class="topbar">
+    <a class="topbar__link" href="pages/profile.html">Profil</a>
+    <a class="topbar__link" href="pages/projects.html">Images</a>
+
+    <!-- ================================================================
+         MENU APPLICATIONS (grille 9 points, façon Google Apps)
+         Ouvre un panneau « Vos favoris » avec toutes les sections.
+         ================================================================ -->
+    <div class="apps">
+      <!-- Bouton grille 9 points -->
+      <button
+        type="button"
+        class="apps__toggle"
+        id="apps-toggle"
+        aria-label="Menu Hanine"
+        aria-haspopup="true"
+        aria-expanded="false"
+        aria-controls="apps-panel"
+      >
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <circle cx="5"  cy="5"  r="1.6" /><circle cx="12" cy="5"  r="1.6" /><circle cx="19" cy="5"  r="1.6" />
+          <circle cx="5"  cy="12" r="1.6" /><circle cx="12" cy="12" r="1.6" /><circle cx="19" cy="12" r="1.6" />
+          <circle cx="5"  cy="19" r="1.6" /><circle cx="12" cy="19" r="1.6" /><circle cx="19" cy="19" r="1.6" />
+        </svg>
+      </button>
+
+      <!-- Panneau déroulant des favoris -->
+      <div class="apps__panel" id="apps-panel" role="menu" aria-label="Vos favoris" hidden>
+
+        <!-- Carte intérieure « Vos favoris » (façon Google) -->
+        <div class="apps__card">
+
+          <!-- En-tête : titre + bouton crayon (modifier) -->
+          <div class="apps__header">
+            <p class="apps__title">Vos favoris</p>
+            <button type="button" class="apps__edit" aria-label="Modifier vos favoris">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="apps__grid">
+          <!-- Chaque favori : pastille colorée + icône Material blanche + libellé -->
+          <a class="app" href="pages/profile.html" role="menuitem">
+            <span class="app__icon" style="background-color: var(--google-blue);">
+              <span class="material-symbols-outlined">account_circle</span>
+            </span>
+            <span class="app__label">Profil</span>
+          </a>
+
+          <a class="app" href="pages/projects.html" role="menuitem">
+            <span class="app__icon" style="background-color: var(--google-red);">
+              <span class="material-symbols-outlined">collections</span>
+            </span>
+            <span class="app__label">Projets</span>
+          </a>
+
+          <a class="app" href="pages/experiences.html" role="menuitem">
+            <span class="app__icon" style="background-color: var(--google-yellow);">
+              <span class="material-symbols-outlined">work</span>
+            </span>
+            <span class="app__label">Expériences</span>
+          </a>
+
+          <a class="app" href="pages/formation.html" role="menuitem">
+            <span class="app__icon" style="background-color: var(--google-green);">
+              <span class="material-symbols-outlined">school</span>
+            </span>
+            <span class="app__label">Formation</span>
+          </a>
+
+          <a class="app" href="pages/stack.html" role="menuitem">
+            <span class="app__icon" style="background-color: var(--google-blue);">
+              <span class="material-symbols-outlined">build</span>
+            </span>
+            <span class="app__label">Stack</span>
+          </a>
+
+          <a class="app" href="pages/maps.html" role="menuitem">
+            <span class="app__icon" style="background-color: var(--google-red);">
+              <span class="material-symbols-outlined">location_on</span>
+            </span>
+            <span class="app__label">Maps</span>
+          </a>
+
+          <a class="app" href="pages/drive.html" role="menuitem">
+            <span class="app__icon" style="background-color: var(--google-yellow);">
+              <span class="material-symbols-outlined">folder</span>
+            </span>
+            <span class="app__label">Drive</span>
+          </a>
+
+          <a class="app" href="pages/assistant.html" role="menuitem">
+            <span class="app__icon" style="background-color: var(--google-green);">
+              <span class="material-symbols-outlined">auto_awesome</span>
+            </span>
+            <span class="app__label">Assistant</span>
+          </a>
+          </div><!-- /.apps__grid -->
+        </div><!-- /.apps__card -->
+      </div><!-- /.apps__panel -->
+    </div>
+
+    <!-- Avatar « H » de l'utilisateur, mène au profil -->
+    <a class="topbar__avatar" href="pages/profile.html" aria-label="Mon profil">H</a>
+  </header>
+
+  <!-- ====================================================================
+       CONTENU CENTRAL — logo + barre de recherche + boutons + chips
+       ==================================================================== -->
+  <main class="home__main">
+
+    <!-- Logo « Hanine » en 6 couleurs Google -->
+    <!-- H bleu · a rouge · n jaune · i bleu · n vert · e rouge -->
+    <h1 class="logo" aria-label="Hanine">
+      <span class="logo__letter--blue">H</span><span class="logo__letter--red">a</span><span class="logo__letter--yellow">n</span><span class="logo__letter--blue">i</span><span class="logo__letter--green">n</span><span class="logo__letter--red">e</span>
+    </h1>
+
+    <!-- Sous-titre -->
+    <p class="logo-subtitle">Data &times; IA &times; Marketing</p>
+
+    <!-- Formulaire de recherche -->
+    <form class="search" id="search-form" role="search" action="pages/profile.html" method="get">
+      <label for="search-input" class="visually-hidden">Recherchez-moi</label>
+
+      <div class="search-bar">
+        <!-- Icône loupe -->
+        <svg class="search-bar__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M21 21l-4.35-4.35M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+
+        <input
+          type="text"
+          id="search-input"
+          name="q"
+          class="search-bar__input"
+          placeholder="Recherchez-moi : projets, expériences, compétences..."
+          autocomplete="off"
+          autofocus
+        />
+
+        <!-- Icône micro multicolore (décorative, façon Google) -->
+        <svg class="search-bar__mic" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="#4285f4" d="M12 14a3 3 0 0 0 3-3V5a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3z" />
+          <path fill="#34a853" d="M11 18.92V21h2v-2.08A7 7 0 0 0 19 12h-2a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92z" />
+        </svg>
+      </div>
+
+      <!-- Boutons d'action -->
+      <div class="btn-group">
+        <button type="submit" class="btn">Recherche Hanine</button>
+        <button type="button" class="btn" id="lucky-btn">J'ai de la chance</button>
+      </div>
+    </form>
+
+    <!-- Suggestions populaires sous forme de chips cliquables -->
+    <section class="chips" aria-label="Recherches populaires">
+      <p class="chips__label">Recherches populaires :</p>
+
+      <a class="chip" href="pages/projects.html">
+        <span class="chip__dot chip__dot--blue"></span> Mes projets
+      </a>
+      <a class="chip" href="pages/experiences.html">
+        <span class="chip__dot chip__dot--red"></span> Expériences
+      </a>
+      <a class="chip" href="pages/stack.html">
+        <span class="chip__dot chip__dot--yellow"></span> Stack technique
+      </a>
+      <a class="chip" href="pages/formation.html">
+        <span class="chip__dot chip__dot--green"></span> Formation
+      </a>
+      <a class="chip" href="pages/assistant.html">
+        <span class="chip__dot chip__dot--blue"></span> Assistant IA
+      </a>
+    </section>
+  </main>
+
+  <!-- ====================================================================
+       PIED DE PAGE
+       ==================================================================== -->
+  <footer class="footer">
+    <div class="footer__row">
+      <span>Master Data Marketing &amp; IA — Eugenia School</span>
+      <nav class="footer__links" aria-label="Liens du pied de page">
+        <a href="pages/profile.html">Profil</a>
+        <a href="pages/maps.html">Maps</a>
+        <a href="pages/drive.html">Drive</a>
+        <a href="pages/assistant.html">Assistant</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- ====================================================================
+       BOUTON FLOTTANT « Personnaliser » (bas-droite, façon Chrome)
+       ==================================================================== -->
+  <button type="button" class="customize-fab" id="customize-fab"
+          aria-label="Personnaliser le portfolio" aria-haspopup="dialog">
+    <!-- Icône crayon -->
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+    </svg>
+  </button>
+
+  <!-- ====================================================================
+       MODALE DE PERSONNALISATION
+       ==================================================================== -->
+  <div class="customize" id="customize-modal">
+    <!-- Voile cliquable pour fermer -->
+    <div class="customize__overlay" id="customize-overlay"></div>
+
+    <!-- Panneau latéral -->
+    <aside class="customize__panel" role="dialog" aria-modal="true"
+           aria-labelledby="customize-title">
+
+      <!-- Header -->
+      <header class="customize__header">
+        <h2 class="customize__title" id="customize-title">Personnaliser le portfolio</h2>
+        <button type="button" class="customize__close" id="customize-close" aria-label="Fermer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+          </svg>
+        </button>
+      </header>
+
+      <!-- Section 1 : Mode d'affichage -->
+      <section class="customize__section">
+        <h3 class="customize__label">Mode d'affichage</h3>
+        <div class="theme-toggle" role="group" aria-label="Mode d'affichage">
+          <!-- Clair (soleil) -->
+          <button type="button" class="theme-toggle__btn" data-theme-value="light">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5 2 3h-4l2-3zm0 20-2-3h4l-2 3zM2 12l3-2v4l-3-2zm20 0-3 2v-4l3 2zM5.6 5.6l3.2 1.4-1.4 1.4L5.6 5.6zm12.8 0-1.8 2.8-1.4-1.4 3.2-1.4zM5.6 18.4l1.4-3.2 1.4 1.4-2.8 1.8zm12.8 0-2.8-1.8 1.4-1.4 1.4 3.2z" />
+            </svg>
+            Clair
+          </button>
+          <!-- Sombre (lune) -->
+          <button type="button" class="theme-toggle__btn" data-theme-value="dark">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36A5.39 5.39 0 0 1 12.6 3.1c-.2-.06-.4-.1-.6-.1z" />
+            </svg>
+            Sombre
+          </button>
+          <!-- Système (moniteur) -->
+          <button type="button" class="theme-toggle__btn" data-theme-value="system">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20 3H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h6v2H8v2h8v-2h-2v-2h6a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 13H4V5h16v11z" />
+            </svg>
+            Système
+          </button>
+        </div>
+      </section>
+
+      <!-- Section 2 : Couleur du thème (palettes générées par JS) -->
+      <section class="customize__section">
+        <h3 class="customize__label">Couleur du thème</h3>
+        <div class="palette-grid" id="palette-grid"></div>
+        <!-- Sélecteur de couleur natif (déclenché par la palette « Custom ») -->
+        <input type="color" id="custom-color-input" value="#1a73e8"
+               style="position:absolute;width:0;height:0;opacity:0;pointer-events:none;" />
+      </section>
+
+      <!-- Section 3 : Image de fond (placeholder pour plus tard) -->
+      <section class="customize__section">
+        <h3 class="customize__label">Image de fond</h3>
+        <div class="bg-row">
+          <div class="bg-thumb" aria-hidden="true"></div>
+          <button type="button" class="bg-edit">Modifier</button>
+        </div>
+      </section>
+    </aside>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/navigation.js" defer></script>
+  <script src="js/search.js" defer></script>
+  <script src="js/customize.js" defer></script>
+</body>
+</html>

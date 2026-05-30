@@ -1,0 +1,336 @@
+/* ==========================================================================
+   customize.css — Bouton « Personnaliser » + modale de personnalisation
+   Portfolio Hanine
+   --------------------------------------------------------------------------
+   - Bouton crayon flottant (bas-droite), façon « Personnaliser Chrome »
+   - Modale latérale qui glisse depuis la droite
+   - Sélecteur de thème (clair / sombre / système)
+   - Palettes de couleurs d'accent
+   - Application de la couleur d'accent aux composants existants
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   0. APPLICATION DE LA COULEUR D'ACCENT
+   Ces règles arrivent APRÈS google-ui.css : elles l'emportent (même
+   spécificité, déclarées plus tard) et branchent --accent sur les composants.
+   -------------------------------------------------------------------------- */
+.topbar__avatar {
+  background-color: var(--accent);
+}
+.btn--primary {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-contrast);
+}
+.btn--primary:hover {
+  background-color: var(--accent-strong);
+  border-color: var(--accent-strong);
+}
+:focus-visible {
+  outline-color: var(--accent);
+}
+
+/* --- Accent TOUJOURS visible sur la page d'accueil --- */
+
+/* Bouton « Recherche Hanine » en version colorée (accent) */
+#search-form button[type="submit"] {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-contrast);
+}
+#search-form button[type="submit"]:hover {
+  background-color: var(--accent-strong);
+  border-color: var(--accent-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Anneau d'accent quand la barre de recherche est active */
+.search-bar:focus-within {
+  border-color: transparent;
+  box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28),
+              0 0 0 1px var(--accent);
+}
+
+/* Chips : survol teinté à la couleur d'accent */
+.chip:hover {
+  border-color: var(--accent);
+  color: var(--accent-strong);
+  /* fond légèrement teinté à l'accent (repli sur gris si non supporté) */
+  background-color: var(--color-bg-hover);
+  background-color: color-mix(in srgb, var(--accent) 12%, var(--color-bg-soft));
+}
+
+/* Sous-titre du logo « DATA × IA × MARKETING » en couleur d'accent */
+.logo-subtitle {
+  color: var(--accent);
+}
+
+/* En mode sombre, la barre de recherche a un fond gris foncé dédié */
+html[data-theme="dark"] .search-bar {
+  background-color: #303134;
+  border-color: #5f6368;
+}
+
+/* --------------------------------------------------------------------------
+   1. BOUTON FLOTTANT « Personnaliser »
+   -------------------------------------------------------------------------- */
+.customize-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 900;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-pill);
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.2s ease,
+              background-color 0.2s ease,
+              transform 0.2s ease;
+}
+.customize-fab:hover {
+  background-color: #f8f9fa;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transform: translateY(-1px);
+}
+.customize-fab svg {
+  width: 20px;
+  height: 20px;
+  color: #5f6368;
+}
+/* En mode sombre, le bouton s'adapte */
+html[data-theme="dark"] .customize-fab {
+  background-color: #303134;
+}
+html[data-theme="dark"] .customize-fab:hover {
+  background-color: #3c4043;
+}
+html[data-theme="dark"] .customize-fab svg {
+  color: #e8eaed;
+}
+
+/* --------------------------------------------------------------------------
+   2. MODALE — overlay + panneau latéral
+   -------------------------------------------------------------------------- */
+.customize {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  visibility: hidden;                       /* fermée par défaut */
+  transition: visibility 0s linear 0.25s;   /* attend la fin du slide pour disparaître */
+}
+.customize.is-open {
+  visibility: visible;
+  transition: visibility 0s;
+}
+
+/* Voile semi-transparent */
+.customize__overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.customize.is-open .customize__overlay {
+  opacity: 1;
+}
+
+/* Panneau blanc latéral (glisse depuis la droite) */
+.customize__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 450px;
+  max-width: 100%;                /* plein écran sur mobile */
+  padding: 24px;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border-radius: 16px 0 0 16px;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  transform: translateX(100%);    /* hors écran quand fermé */
+  transition: transform 0.25s ease;
+}
+.customize.is-open .customize__panel {
+  transform: translateX(0);
+}
+
+/* --------------------------------------------------------------------------
+   3. HEADER DE LA MODALE
+   -------------------------------------------------------------------------- */
+.customize__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-6);
+}
+.customize__title {
+  font-size: 18px;
+  font-weight: 500;
+}
+.customize__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-pill);
+  color: var(--color-text-soft);
+  transition: background-color var(--transition-fast);
+}
+.customize__close:hover {
+  background-color: var(--color-bg-hover);
+}
+.customize__close svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* --------------------------------------------------------------------------
+   4. SECTIONS
+   -------------------------------------------------------------------------- */
+.customize__section {
+  margin-bottom: var(--space-7);
+}
+.customize__label {
+  font-size: 14px;
+  font-weight: var(--fw-regular);
+  color: var(--color-text-soft);
+  margin-bottom: var(--space-4);
+}
+
+/* --------------------------------------------------------------------------
+   5. SÉLECTEUR DE MODE (clair / sombre / système)
+   -------------------------------------------------------------------------- */
+.theme-toggle {
+  display: flex;
+  gap: var(--space-2);
+  padding: var(--space-1);
+  background-color: var(--color-bg-soft);
+  border-radius: var(--radius-pill);
+}
+.theme-toggle__btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  color: var(--color-text);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+.theme-toggle__btn svg {
+  width: 18px;
+  height: 18px;
+}
+/* Bouton sélectionné : fond accent + texte blanc */
+.theme-toggle__btn.is-active {
+  background-color: var(--accent);
+  color: var(--accent-contrast);
+}
+
+/* --------------------------------------------------------------------------
+   6. PALETTES DE COULEURS
+   -------------------------------------------------------------------------- */
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+  justify-items: center;
+}
+
+/* Un cercle de palette (4 quadrants via conic-gradient, défini en inline) */
+.palette {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  padding: 0;
+  border: 2px solid transparent;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+.palette:hover {
+  transform: scale(1.06);
+  box-shadow: var(--shadow-sm);
+}
+/* Coche de la palette sélectionnée */
+.palette.is-selected {
+  border-color: var(--accent);
+}
+.palette.is-selected::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 22px;
+  height: 22px;
+  transform: translate(-50%, -50%);
+  border-radius: var(--radius-pill);
+  background-color: #ffffff
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231a73e8'%3E%3Cpath d='M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E")
+    no-repeat center / 16px;
+}
+
+/* Palette « Custom » (pipette) */
+.palette--custom {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: conic-gradient(#ea4335, #fbbc04, #34a853, #4285f4, #ea4335);
+}
+.palette--custom svg {
+  width: 24px;
+  height: 24px;
+  color: #fff;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+}
+
+/* --------------------------------------------------------------------------
+   7. SECTION IMAGE DE FOND
+   -------------------------------------------------------------------------- */
+.bg-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+.bg-thumb {
+  width: 96px;
+  height: 64px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  /* aperçu dégradé léger aux couleurs Google */
+  background: linear-gradient(135deg, #4285f4, #34a853, #fbbc04, #ea4335);
+}
+.bg-edit {
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  color: var(--accent);
+  background-color: transparent;
+  transition: background-color var(--transition-fast);
+}
+.bg-edit:hover {
+  background-color: var(--color-bg-hover);
+}
+
+/* --------------------------------------------------------------------------
+   8. RESPONSIVE — modale plein écran sur mobile
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .customize__panel {
+    border-radius: 0;
+    padding: var(--space-5);
+  }
+  .palette-grid {
+    gap: var(--space-4);
+  }
+}

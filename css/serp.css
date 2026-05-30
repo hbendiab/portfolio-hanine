@@ -1,0 +1,767 @@
+/* ==========================================================================
+   serp.css — Page de résultats (SERP) façon Google
+   Portfolio Hanine
+   --------------------------------------------------------------------------
+   - Header de recherche compact (réutilisable)
+   - Onglets (Tous / Images / Maps...)
+   - Layout 2 colonnes : résultats + knowledge panel
+   - Section « Autres questions posées »
+   - Carte « Recrutez-moi ! »
+   ========================================================================== */
+
+/* Variable de couleur des liens de résultats (clair / sombre) */
+:root {
+  --serp-link: #1a0dab;  /* bleu lien Google (clair) */
+}
+html[data-theme="dark"] {
+  --serp-link: #8ab4f8;  /* bleu lien lisible sur fond sombre */
+}
+
+/* --------------------------------------------------------------------------
+   1. HEADER DE RECHERCHE (compact, réutilisable sur toutes les pages)
+   -------------------------------------------------------------------------- */
+.serp-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--color-border-soft);
+}
+
+/* Logo « Hanine » version compacte */
+.serp-logo {
+  font-family: var(--font-google);
+  font-size: 28px;
+  font-weight: var(--fw-medium);
+  letter-spacing: -1px;
+  line-height: 1;
+  flex-shrink: 0;
+  display: inline-flex;
+}
+.serp-logo:hover {
+  text-decoration: none;
+}
+
+/* Zone barre de recherche du header */
+.serp-search {
+  flex: 1;
+  max-width: 600px;
+}
+/* On réutilise le composant .search-bar, mais sans marge auto ni max-width */
+.serp-search .search-bar {
+  margin: 0;
+  max-width: none;
+  padding: var(--space-2) var(--space-4);
+}
+
+/* Bloc de droite : menu apps + avatar */
+.serp-header__right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-left: auto;
+}
+
+/* --------------------------------------------------------------------------
+   2. ONGLETS DE RECHERCHE
+   -------------------------------------------------------------------------- */
+.serp-tabs {
+  display: flex;
+  gap: var(--space-1);
+  padding: 0 var(--space-5);
+  border-bottom: 1px solid var(--color-border-soft);
+  overflow-x: auto;            /* scroll horizontal sur mobile */
+  scrollbar-width: none;       /* masque la scrollbar (Firefox) */
+}
+.serp-tabs::-webkit-scrollbar {
+  display: none;               /* masque la scrollbar (Chrome/Safari) */
+}
+
+.serp-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-3);
+  font-size: 14px;
+  color: var(--color-text-soft);
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -1px;         /* recouvre la bordure du conteneur */
+  transition: color var(--transition-fast);
+}
+.serp-tab:hover {
+  color: var(--color-text);
+  text-decoration: none;
+}
+.serp-tab .material-symbols-outlined {
+  font-size: 18px;
+}
+/* Onglet actif : texte + soulignement en couleur d'accent */
+.serp-tab.is-active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* --------------------------------------------------------------------------
+   3. LAYOUT 2 COLONNES
+   -------------------------------------------------------------------------- */
+.serp-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 652px) 372px;
+  gap: var(--space-5);
+  padding: var(--space-5);
+  max-width: 1100px;
+  margin-inline: auto;
+}
+
+/* --------------------------------------------------------------------------
+   4. COLONNE GAUCHE : RÉSULTATS
+   -------------------------------------------------------------------------- */
+.serp-stats {
+  font-size: var(--fs-sm);
+  color: var(--color-text-soft);
+  margin-bottom: var(--space-5);
+}
+
+/* Un résultat de recherche */
+.serp-result {
+  margin-bottom: var(--space-6);
+}
+.serp-result__url {
+  font-size: var(--fs-sm);
+  color: var(--color-text-soft);
+  margin-bottom: 2px;
+}
+.serp-result__title {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: var(--fw-regular);
+  line-height: 1.3;
+  color: var(--serp-link);
+  margin-bottom: var(--space-1);
+}
+.serp-result__title:hover {
+  text-decoration: underline;
+}
+.serp-result__desc {
+  font-size: 14px;
+  line-height: 1.58;
+  color: var(--color-text);
+}
+
+/* --------------------------------------------------------------------------
+   5. SECTION « Autres questions posées » (People also ask)
+   -------------------------------------------------------------------------- */
+.paa {
+  margin-top: var(--space-5);
+  padding: var(--space-4);
+  background-color: var(--color-bg-soft);
+  border-radius: var(--radius-md);
+}
+.paa__title {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+  margin-bottom: var(--space-2);
+}
+
+/* Chaque question = un <details> natif (accordéon sans JS) */
+.paa__item {
+  border-top: 1px solid var(--color-border);
+}
+.paa__item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: 10px 0;
+  font-size: 14px;
+  color: var(--color-text);
+  cursor: pointer;
+  list-style: none;            /* enlève le triangle natif */
+}
+.paa__item summary::-webkit-details-marker {
+  display: none;               /* enlève le triangle natif (Safari) */
+}
+/* Flèche déroulante à droite */
+.paa__item summary .material-symbols-outlined {
+  color: var(--color-text-soft);
+  transition: transform var(--transition-fast);
+}
+.paa__item[open] summary .material-symbols-outlined {
+  transform: rotate(180deg);
+}
+/* Réponse */
+.paa__answer {
+  padding: 0 0 12px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-soft);
+}
+
+/* --------------------------------------------------------------------------
+   6. COLONNE DROITE : KNOWLEDGE PANEL
+   -------------------------------------------------------------------------- */
+.kp {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  background-color: var(--color-bg);
+}
+
+/* Photo / visuel (gradient 4 couleurs Google + grosse lettre H) */
+.kp__photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 250px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg,
+    var(--google-blue) 0%,
+    var(--google-green) 40%,
+    var(--google-yellow) 70%,
+    var(--google-red) 100%);
+  margin-bottom: var(--space-4);
+}
+.kp__photo span {
+  font-family: var(--font-google);
+  font-size: 64px;
+  font-weight: var(--fw-medium);
+  color: #fff;
+}
+
+/* Identité */
+.kp__name {
+  font-size: 22px;
+  font-weight: var(--fw-regular);
+  line-height: 1.2;
+}
+.kp__subtitle {
+  font-size: 14px;
+  color: var(--color-text-soft);
+  margin-bottom: var(--space-4);
+}
+
+/* Liste d'infos clés (Label : Valeur) */
+.kp__facts {
+  margin-bottom: var(--space-4);
+}
+.kp__fact {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  font-size: 14px;
+  border-top: 1px solid var(--color-border-soft);
+}
+.kp__fact dt {
+  flex-shrink: 0;
+  min-width: 96px;
+  color: var(--color-text-soft);
+  font-weight: var(--fw-medium);
+}
+.kp__fact dd {
+  color: var(--color-text);
+}
+
+/* Boutons sociaux */
+.kp__social {
+  display: flex;
+  gap: var(--space-3);
+}
+.kp__social-btn {
+  flex: 1;
+  text-align: center;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  font-weight: var(--fw-medium);
+  transition: filter var(--transition-fast);
+}
+.kp__social-btn:hover {
+  text-decoration: none;
+  filter: brightness(0.96);
+}
+.kp__social-btn--linkedin {
+  background-color: #e8f0fe;
+  color: #1967d2;
+}
+.kp__social-btn--github {
+  background-color: #fce8e6;
+  color: #c5221f;
+}
+
+/* --------------------------------------------------------------------------
+   7. CARTE « Recrutez-moi ! »
+   -------------------------------------------------------------------------- */
+.kp-contact {
+  margin-top: var(--space-4);
+  padding: var(--space-5);
+  border-radius: var(--radius-md);
+  text-align: center;
+  background: linear-gradient(135deg, var(--google-blue), var(--google-green));
+  color: #fff;
+}
+.kp-contact__title {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-medium);
+  color: #fff;
+}
+.kp-contact__subtitle {
+  font-size: 14px;
+  opacity: 0.95;
+  margin-bottom: var(--space-4);
+}
+.kp-contact__btn {
+  display: inline-block;
+  padding: var(--space-2) var(--space-5);
+  border-radius: var(--radius-pill);
+  background-color: #fff;
+  color: var(--google-blue-dark);
+  font-size: 14px;
+  font-weight: var(--fw-medium);
+  transition: box-shadow var(--transition-fast);
+}
+.kp-contact__btn:hover {
+  text-decoration: none;
+  box-shadow: var(--shadow-md);
+}
+
+/* --------------------------------------------------------------------------
+   8. RESPONSIVE — knowledge panel sous les résultats
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .serp-layout {
+    grid-template-columns: 1fr; /* une seule colonne */
+  }
+  .serp-search {
+    max-width: none;
+  }
+}
+
+/* ==========================================================================
+   FICHE ENTITÉ (style « célébrité » Google)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   E1. Indicateur de redirection « Afficher les résultats pour »
+   -------------------------------------------------------------------------- */
+.serp-redirect {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-5) 0;
+  font-size: 14px;
+  color: var(--color-text-soft);
+}
+.redirect-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 3px 12px 3px 3px;
+  background-color: var(--color-bg-soft);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-pill);
+  color: var(--color-text);
+}
+.redirect-pill__photo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, var(--google-blue), var(--google-red));
+  color: #fff;
+  font-size: 12px;
+  font-weight: var(--fw-medium);
+}
+
+/* --------------------------------------------------------------------------
+   E2. Layout principal : contenu + knowledge panel sticky
+   -------------------------------------------------------------------------- */
+.entity {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: var(--space-6);
+  max-width: 1100px;
+  margin-inline: auto;
+  padding: var(--space-5);
+}
+.entity__main { min-width: 0; }              /* évite le débordement de la grille */
+.entity-kp {
+  position: sticky;
+  top: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  align-self: start;
+}
+
+/* --------------------------------------------------------------------------
+   E3. Grand titre personnage + filtres thématiques
+   -------------------------------------------------------------------------- */
+.entity-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+.entity-title__name {
+  font-size: 38px;
+  font-weight: var(--fw-regular);
+  line-height: 1.1;
+}
+.entity-title__sub {
+  margin-top: var(--space-1);
+  font-size: 14px;
+  color: var(--color-text-soft);
+}
+
+/* Pills thématiques (bleu pâle, l'active en accent) */
+.theme-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.theme-pill {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  background-color: #e8f0fe;
+  color: #1967d2;
+  font-size: 13px;
+  font-weight: var(--fw-medium);
+  transition: filter var(--transition-fast);
+}
+.theme-pill:hover { text-decoration: none; filter: brightness(0.96); }
+.theme-pill.is-active {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+/* --------------------------------------------------------------------------
+   E4. Carrousel principal (4 visuels)
+   -------------------------------------------------------------------------- */
+.carousel-main {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  grid-template-rows: repeat(2, 150px);
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+.tile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+.tile--portrait { grid-row: 1 / span 2; }      /* grande vignette de gauche */
+.tile--video    { grid-column: 2 / span 2; }   /* vidéo paysage en bas */
+
+.tile__big {
+  font-family: var(--font-google);
+  font-size: 56px;
+  font-weight: var(--fw-medium);
+  color: #fff;
+}
+.tile__label {
+  padding: var(--space-3);
+  color: #fff;
+  font-weight: var(--fw-medium);
+  font-size: 14px;
+}
+/* Légende en bas de vignette */
+.tile__caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 6px 8px;
+  font-size: 11px;
+  color: #fff;
+  text-align: left;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.65));
+}
+/* Vidéo : icône play + durée */
+.tile--video { background-color: #202124; }
+.tile__play {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-pill);
+  background-color: rgba(255, 255, 255, 0.92);
+  color: #202124;
+}
+.tile__duration {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  font-size: 12px;
+}
+
+/* --------------------------------------------------------------------------
+   E5. Knowledge panel : cartes
+   -------------------------------------------------------------------------- */
+.kp-card {
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg);
+}
+.kp-card__title {
+  font-size: 20px;
+  font-weight: var(--fw-medium);
+  margin-bottom: var(--space-3);
+}
+.kp-bio {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+.kp-more {
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: var(--fw-medium);
+}
+
+/* Carte « Informations clés » (fond bleu pâle, texte sombre fixe) */
+.kp-info {
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background-color: #e8f0fe;
+  color: #202124;               /* lisible même en mode sombre */
+}
+.kp-info__row {
+  padding: var(--space-1) 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.kp-info__row strong { font-weight: var(--fw-medium); }
+
+/* Carte « Profils » (logos sociaux ronds) */
+.kp-profiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+.kp-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 12px;
+  color: var(--color-text-soft);
+}
+.kp-profile:hover { text-decoration: none; }
+.kp-profile__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-bg-soft);
+  color: var(--color-text);
+  transition: background-color var(--transition-fast);
+}
+.kp-profile:hover .kp-profile__icon { background-color: var(--color-bg-hover); }
+.kp-profile__icon svg { width: 22px; height: 22px; }
+
+/* Carte « Documents » */
+.kp-docs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.kp-doc {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  color: var(--color-text);
+  transition: background-color var(--transition-fast);
+}
+.kp-doc:hover { background-color: var(--color-bg-hover); text-decoration: none; }
+.kp-doc .material-symbols-outlined { color: var(--google-red); }
+
+/* --------------------------------------------------------------------------
+   E6. En-têtes de section avec flèche ronde
+   -------------------------------------------------------------------------- */
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: var(--space-6) 0 var(--space-4);
+}
+.section-head__title {
+  font-size: 20px;
+  font-weight: var(--fw-medium);
+}
+.section-head__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-soft);
+}
+.section-head__arrow:hover { background-color: var(--color-bg-hover); }
+
+/* --------------------------------------------------------------------------
+   E7. Projets phares (grille de cards)
+   -------------------------------------------------------------------------- */
+.proj-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--space-4);
+}
+.proj-card__thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  color: #fff;
+  font-weight: var(--fw-medium);
+  font-size: 14px;
+  text-align: center;
+}
+.proj-card--featured { grid-column: span 2; }
+.proj-card--featured .proj-card__thumb { aspect-ratio: 16 / 10; font-size: 18px; }
+.proj-card__title {
+  margin-top: var(--space-2);
+  font-size: 14px;
+  font-weight: var(--fw-medium);
+  color: var(--color-text);
+}
+.proj-card:hover .proj-card__title { text-decoration: underline; }
+.proj-card__date {
+  font-size: 12px;
+  color: var(--color-text-soft);
+}
+
+/* --------------------------------------------------------------------------
+   E8. Carrousels horizontaux (Expériences)
+   -------------------------------------------------------------------------- */
+.cards-scroll {
+  display: flex;
+  gap: var(--space-4);
+  overflow-x: auto;
+  padding-bottom: var(--space-2);
+  scrollbar-width: thin;
+}
+.exp-card {
+  flex: 0 0 220px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: var(--color-bg);
+}
+.exp-card:hover { box-shadow: var(--shadow-sm); text-decoration: none; }
+.exp-card__banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90px;
+  padding: var(--space-3);
+  color: #fff;
+  font-weight: var(--fw-medium);
+  text-align: center;
+}
+.exp-card__body { padding: var(--space-3); }
+.exp-card__title { font-size: 14px; font-weight: var(--fw-medium); color: var(--color-text); }
+.exp-card__meta { font-size: 12px; color: var(--color-text-soft); margin-top: 2px; }
+
+/* --------------------------------------------------------------------------
+   E9. Sites de référence (résultats classiques avec favicon)
+   -------------------------------------------------------------------------- */
+.ref-result {
+  display: flex;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+.ref-favicon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-pill);
+  color: #fff;
+  font-size: 13px;
+  font-weight: var(--fw-medium);
+}
+
+/* --------------------------------------------------------------------------
+   E10. Boutons d'action flottants (X / cœur / partage)
+   Empilés au-dessus du bouton « Personnaliser ».
+   -------------------------------------------------------------------------- */
+.entity-actions {
+  position: fixed;
+  right: 24px;
+  bottom: 84px;             /* juste au-dessus du crayon (48px + marge) */
+  z-index: 890;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.entity-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-bg);
+  color: var(--color-text-soft);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+.entity-action:hover { background-color: var(--color-bg-soft); }
+.entity-action .material-symbols-outlined { font-size: 22px; }
+/* Cœur actif */
+.entity-action.is-active {
+  color: var(--google-red);
+}
+.entity-action.is-active .material-symbols-outlined {
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+/* --------------------------------------------------------------------------
+   E11. RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .entity {
+    grid-template-columns: 1fr;          /* knowledge panel sous le contenu */
+  }
+  .entity-kp {
+    position: static;                    /* plus de sticky sur mobile */
+  }
+  .entity-title__name { font-size: 30px; }
+
+  /* Carrousel principal : 2 colonnes, hauteur réduite */
+  .carousel-main {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 120px);
+  }
+  .tile--portrait { grid-row: 1 / span 2; }
+  .tile--video    { grid-column: 1 / span 2; grid-row: 3; }
+}

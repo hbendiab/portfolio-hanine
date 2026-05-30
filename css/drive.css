@@ -1,0 +1,400 @@
+/* ==========================================================================
+   drive.css — Page « Mes documents » (style Google Drive)
+   Portfolio Hanine
+   --------------------------------------------------------------------------
+   Réutilise de experiences.css : .exp-btn · .suggest · .kp-eyebrow.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. APP DRIVE (sidebar + contenu)
+   -------------------------------------------------------------------------- */
+.drive-app {
+  display: flex;
+  border-top: 1px solid var(--color-border);
+}
+
+/* --- Sidebar gauche --- */
+.drive-nav {
+  width: 220px;
+  flex-shrink: 0;
+  padding: var(--space-4);
+  border-right: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+}
+.drive-new {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+  color: var(--color-text-soft);
+  font-size: 14px;
+  font-weight: var(--fw-medium);
+  box-shadow: var(--shadow-sm);
+  cursor: not-allowed;            /* désactivé (démo) */
+  margin-bottom: var(--space-4);
+  align-self: flex-start;
+}
+.drive-nav__list { display: flex; flex-direction: column; gap: 2px; }
+.drive-nav__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  color: var(--color-text);
+  transition: background-color var(--transition-fast);
+}
+.drive-nav__item:hover { background-color: var(--color-bg-hover); text-decoration: none; }
+.drive-nav__item.is-active {
+  background-color: #e8f0fe;
+  color: #1967d2;
+  font-weight: var(--fw-medium);
+}
+html[data-theme="dark"] .drive-nav__item.is-active {
+  background-color: rgba(138, 180, 248, 0.16);
+  color: #8ab4f8;
+}
+.drive-nav__item .material-symbols-outlined { font-size: 20px; }
+
+/* Stockage */
+.drive-storage {
+  margin-top: auto;
+  padding-top: var(--space-5);
+}
+.drive-storage__bar {
+  height: 6px;
+  border-radius: 3px;
+  background-color: var(--color-border);
+  overflow: hidden;
+}
+.drive-storage__fill {
+  height: 100%;
+  width: 12%;
+  background-color: var(--accent);
+}
+.drive-storage__text {
+  font-size: 12px;
+  color: var(--color-text-soft);
+  margin: var(--space-2) 0;
+}
+.drive-storage__link { font-size: 13px; color: var(--accent); }
+
+/* --- Contenu principal --- */
+.drive-main {
+  flex: 1;
+  min-width: 0;
+  padding: var(--space-5);
+}
+
+/* --------------------------------------------------------------------------
+   2. TOOLBAR (titre + actions)
+   -------------------------------------------------------------------------- */
+.drive-toolbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-6);
+}
+.drive-toolbar__title { font-size: 24px; font-weight: var(--fw-medium); }
+.drive-toolbar__subtitle { font-size: 14px; color: var(--color-text-soft); margin-top: 2px; }
+.drive-toolbar__actions { display: flex; align-items: center; gap: var(--space-3); }
+
+/* Bascule grille / liste */
+.view-toggle {
+  display: inline-flex;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+.view-toggle__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 34px;
+  color: var(--color-text-soft);
+  transition: background-color var(--transition-fast);
+}
+.view-toggle__btn:hover { background-color: var(--color-bg-hover); }
+.view-toggle__btn.is-active { background-color: var(--accent); color: #fff; }
+
+/* Eyebrow de section */
+.drive-section-title {
+  font-size: 13px;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+  margin: var(--space-5) 0 var(--space-3);
+}
+
+/* --------------------------------------------------------------------------
+   3. ACCÈS RAPIDE (cards)
+   -------------------------------------------------------------------------- */
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+.quick-card {
+  display: block;
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg);
+  transition: background-color var(--transition-fast);
+}
+.quick-card:hover { background-color: var(--color-bg-soft); text-decoration: none; }
+.quick-card__icon {
+  font-size: 36px;
+  line-height: 1;
+  margin-bottom: var(--space-3);
+  display: block;
+}
+.quick-card__title {
+  font-size: 13px;
+  font-weight: var(--fw-medium);
+  color: var(--color-text);
+}
+.quick-card__sub { font-size: 11px; color: var(--color-text-soft); margin-top: 2px; }
+
+/* --------------------------------------------------------------------------
+   4. DOSSIERS
+   -------------------------------------------------------------------------- */
+.folder-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-3);
+}
+.folder-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  text-align: left;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-soft);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+.folder-card:hover { background-color: var(--color-bg-hover); }
+.folder-card__icon { font-size: 28px; line-height: 1; flex-shrink: 0; }
+.folder-card__body { min-width: 0; }
+.folder-card__title { font-size: 14px; font-weight: var(--fw-medium); color: var(--color-text); }
+.folder-card__meta { font-size: 12px; color: var(--color-text-soft); margin-top: 1px; }
+
+/* --------------------------------------------------------------------------
+   5. DOCUMENTS RÉCENTS (liste / grille)
+   -------------------------------------------------------------------------- */
+.recent__head,
+.doc-row {
+  display: grid;
+  grid-template-columns: 2.4fr 1fr 1fr 0.7fr 40px;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+}
+.recent__head {
+  font-size: 12px;
+  color: var(--color-text-soft);
+  border-bottom: 1px solid var(--color-border);
+  font-weight: var(--fw-medium);
+}
+.doc-row {
+  position: relative;
+  border-bottom: 1px solid var(--color-border-soft);
+  transition: background-color var(--transition-fast);
+}
+.doc-row:hover { background-color: var(--color-bg-soft); }
+.doc-name {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+  font-size: 14px;
+  color: var(--color-text);
+}
+.doc-name:hover { text-decoration: none; }
+.doc-name__text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.doc-ico { font-size: 22px; flex-shrink: 0; }
+.doc-ico--pdf  { color: var(--google-red); }
+.doc-ico--ppt  { color: #ff8a50; }
+.doc-meta { font-size: 13px; color: var(--color-text-soft); }
+
+/* Bouton 3 points + menu */
+.doc-actions { position: relative; justify-self: end; }
+.doc-actions__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-pill);
+  color: var(--color-text-soft);
+}
+.doc-actions__btn:hover { background-color: var(--color-bg-hover); }
+.doc-menu {
+  position: absolute;
+  top: 36px;
+  right: 0;
+  min-width: 180px;
+  padding: var(--space-1);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: 50;
+}
+.doc-menu[hidden] { display: none; }
+.doc-menu button {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  color: var(--color-text);
+  text-align: left;
+}
+.doc-menu button:hover { background-color: var(--color-bg-hover); }
+.doc-menu .material-symbols-outlined { font-size: 18px; color: var(--color-text-soft); }
+
+/* --- Vue GRILLE des documents récents --- */
+.recent.is-grid .recent__head { display: none; }
+.recent.is-grid .doc-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--space-4);
+}
+.recent.is-grid .doc-row {
+  grid-template-columns: 1fr;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  gap: var(--space-2);
+}
+.recent.is-grid .doc-name { flex-direction: column; align-items: flex-start; gap: var(--space-2); }
+.recent.is-grid .doc-ico { font-size: 40px; }
+.recent.is-grid .doc-meta--owner,
+.recent.is-grid .doc-meta--date { display: none; }   /* on allège en mode grille */
+.recent.is-grid .doc-actions { position: absolute; top: 8px; right: 8px; }
+
+/* --------------------------------------------------------------------------
+   6. MODALE DOSSIER
+   -------------------------------------------------------------------------- */
+.drive-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  visibility: hidden;
+  transition: visibility 0s linear 0.25s;
+}
+.drive-modal.is-open { visibility: visible; transition: visibility 0s; }
+.drive-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.drive-modal.is-open .drive-modal__overlay { opacity: 1; }
+.drive-modal__dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(560px, calc(100vw - 32px));
+  max-height: calc(100vh - 64px);
+  transform: translate(-50%, -48%) scale(0.98);
+  opacity: 0;
+  background-color: var(--color-bg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.drive-modal.is-open .drive-modal__dialog {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+.drive-modal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--color-border-soft);
+}
+.drive-modal__title { font-size: 18px; font-weight: var(--fw-medium); }
+.drive-modal__close {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; border-radius: var(--radius-pill);
+  color: var(--color-text-soft);
+}
+.drive-modal__close:hover { background-color: var(--color-bg-hover); }
+.drive-modal__list { padding: var(--space-3); overflow-y: auto; }
+.drive-modal__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  color: var(--color-text);
+}
+.drive-modal__item:hover { background-color: var(--color-bg-hover); text-decoration: none; }
+.drive-modal__item .material-symbols-outlined { color: var(--google-red); }
+.drive-modal__item span.size { margin-left: auto; font-size: 12px; color: var(--color-text-soft); }
+
+/* --------------------------------------------------------------------------
+   7. RESPONSIVE
+   -------------------------------------------------------------------------- */
+.drive-hamburger { display: none; }
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .quick-grid  { grid-template-columns: repeat(2, 1fr); }
+  .folder-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .drive-nav {
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    z-index: 1050;
+    width: 240px;
+    background-color: var(--color-bg);
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+  }
+  .drive-nav.is-open { transform: translateX(0); box-shadow: var(--shadow-lg); }
+
+  .drive-hamburger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; height: 40px;
+    border-radius: var(--radius-pill);
+    color: var(--color-text-soft);
+  }
+  .drive-hamburger:hover { background-color: var(--color-bg-hover); }
+
+  .quick-grid  { grid-template-columns: repeat(2, 1fr); }
+  .folder-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Tableau scrollable horizontalement */
+  .recent:not(.is-grid) .doc-list,
+  .recent:not(.is-grid) .recent__head {
+    min-width: 560px;
+  }
+  .recent { overflow-x: auto; }
+}

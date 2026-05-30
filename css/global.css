@@ -1,0 +1,248 @@
+/* ==========================================================================
+   global.css — Variables, reset et typographie
+   Portfolio Hanine — style écosystème Google
+   --------------------------------------------------------------------------
+   Ce fichier centralise :
+   - les variables CSS (couleurs Google, polices, espacements, rayons)
+   - un reset minimal pour repartir sur une base saine
+   - la typographie de base appliquée à tout le site
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. VARIABLES GLOBALES (Custom Properties)
+   On définit tout sur :root pour pouvoir réutiliser partout dans le site.
+   -------------------------------------------------------------------------- */
+:root {
+  /* --- Couleurs officielles Google --- */
+  --google-blue:   #4285f4; /* bleu  */
+  --google-red:    #ea4335; /* rouge */
+  --google-yellow: #fbbc04; /* jaune */
+  --google-green:  #34a853; /* vert  */
+
+  /* --- Variantes de bleu (boutons, liens, focus) --- */
+  --google-blue-dark:  #1a73e8; /* bleu d'action (liens, boutons) */
+  --google-blue-hover: #174ea6; /* survol des liens */
+
+  /* --- Neutres / niveaux de gris --- */
+  --color-text:        #202124; /* texte principal (presque noir) */
+  --color-text-soft:   #5f6368; /* texte secondaire (gris Google) */
+  --color-text-muted:  #70757a; /* texte discret (méta, légendes) */
+  --color-border:      #dfe1e5; /* bordures (barre de recherche, etc.) */
+  --color-border-soft: #ecedef; /* séparateurs légers */
+  --color-bg:          #ffffff; /* fond principal */
+  --color-bg-soft:     #f8f9fa; /* fond secondaire (top bar, chips) */
+  --color-bg-hover:    #f1f3f4; /* survol des éléments cliquables */
+
+  /* --- Couleurs sémantiques (réutilisent les neutres ci-dessus) --- */
+  --color-link:        var(--google-blue-dark);
+  --color-link-visited:#681da8; /* violet « lien visité » Google */
+
+  /* --- Typographie --- */
+  --font-sans:   "Inter", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  --font-google: "Roboto", "Inter", Arial, sans-serif; /* pour les éléments très « Google » */
+
+  /* Tailles de police (échelle modulaire simple) */
+  --fs-xs:   0.75rem;  /* 12px */
+  --fs-sm:   0.875rem; /* 14px */
+  --fs-base: 1rem;     /* 16px */
+  --fs-md:   1.125rem; /* 18px */
+  --fs-lg:   1.375rem; /* 22px */
+  --fs-xl:   2rem;     /* 32px */
+  --fs-2xl:  3.5rem;   /* 56px — logo « Hanine » desktop */
+
+  /* Graisses */
+  --fw-light:   300;
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-bold:    700;
+
+  /* --- Espacements (multiples de 4px pour rester cohérent) --- */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+
+  /* --- Rayons de bordure --- */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   24px;  /* boutons Google */
+  --radius-pill: 999px; /* barre de recherche, chips arrondis */
+
+  /* --- Ombres (style Material / Google) --- */
+  --shadow-sm: 0 1px 2px rgba(60, 64, 67, 0.15);
+  --shadow-md: 0 1px 6px rgba(32, 33, 36, 0.28); /* barre de recherche focus */
+  --shadow-lg: 0 2px 10px rgba(60, 64, 67, 0.2);
+
+  /* --- Transitions --- */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.25s ease;
+
+  /* --- Largeurs utiles --- */
+  --search-max-width:  584px; /* largeur max de la barre de recherche Google */
+  --content-max-width: 1100px;
+}
+
+/* --------------------------------------------------------------------------
+   2. RESET MINIMAL
+   On neutralise les marges/paddings par défaut et on passe en box-sizing
+   border-box pour un calcul de tailles prévisible.
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Pour que 1rem = 16px et faciliter le scroll fluide entre ancres */
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%; /* évite le zoom auto du texte sur iOS */
+}
+
+/* Listes sans puces par défaut (on remettra si besoin) */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Liens : on hérite de la couleur, on enlève le soulignement par défaut */
+a {
+  color: var(--color-link);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Images responsives par défaut */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Les éléments de formulaire héritent de la police */
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* Boutons : on enlève le style natif, le curseur devient une main */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   3. TYPOGRAPHIE DE BASE
+   -------------------------------------------------------------------------- */
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-regular);
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  /* Lissage des polices pour un rendu net (façon Google) */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* Titres */
+h1, h2, h3, h4 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-medium);
+  line-height: 1.25;
+  color: var(--color-text);
+}
+
+h1 { font-size: var(--fs-xl); }
+h2 { font-size: var(--fs-lg); }
+h3 { font-size: var(--fs-md); }
+
+p {
+  color: var(--color-text);
+}
+
+/* Texte secondaire réutilisable */
+.text-soft  { color: var(--color-text-soft); }
+.text-muted { color: var(--color-text-muted); }
+
+/* --------------------------------------------------------------------------
+   4. UTILITAIRES D'ACCESSIBILITÉ
+   -------------------------------------------------------------------------- */
+
+/* Masque visuellement un élément tout en le gardant lisible par les
+   lecteurs d'écran (utile pour les labels de la barre de recherche). */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Anneau de focus clair et accessible (clavier) */
+:focus-visible {
+  outline: 2px solid var(--google-blue);
+  outline-offset: 2px;
+}
+
+/* Conteneur centré générique */
+.container {
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+/* ==========================================================================
+   5. THEMING (mode clair / sombre + couleur d'accent)
+   --------------------------------------------------------------------------
+   --accent          : couleur d'accent personnalisable (boutons, focus...)
+   Le logo « Hanine » garde toujours ses 6 couleurs Google (non concerné).
+   ========================================================================== */
+:root {
+  /* Couleur d'accent par défaut = bleu Google. Modifiable via la modale. */
+  --accent:          var(--google-blue);
+  --accent-strong:   var(--google-blue-dark);
+  --accent-contrast: #ffffff;
+}
+
+/* --- MODE SOMBRE ---
+   Appliqué quand <html data-theme="dark">. On ne fait que redéfinir les
+   variables sémantiques : tout le site s'adapte automatiquement. */
+html[data-theme="dark"] {
+  --color-text:        #e8eaed; /* texte principal clair */
+  --color-text-soft:   #9aa0a6; /* texte secondaire */
+  --color-text-muted:  #9aa0a6; /* texte discret */
+  --color-border:      #5f6368; /* bordures (barre de recherche) */
+  --color-border-soft: #3c4043; /* séparateurs */
+  --color-bg:          #202124; /* fond principal sombre */
+  --color-bg-soft:     #303134; /* fond secondaire */
+  --color-bg-hover:    #3c4043; /* survol */
+}
+
+/* Transition douce lors du changement de thème */
+body {
+  transition: background-color var(--transition-base),
+              color var(--transition-base);
+}

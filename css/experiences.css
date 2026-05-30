@@ -1,0 +1,349 @@
+/* ==========================================================================
+   experiences.css — Page « Expériences » (timeline + knowledge panel)
+   Portfolio Hanine
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CHIPS DE FILTRES (mêmes styles que la page projets)
+   -------------------------------------------------------------------------- */
+.filter-chips {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  padding: var(--space-4) var(--space-5);
+  max-width: 1100px;
+  margin-inline: auto;
+}
+.filter-chip {
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-size: 14px;
+  white-space: nowrap;
+  transition: background-color var(--transition-fast);
+}
+.filter-chip:hover { background-color: var(--color-bg-hover); }
+.filter-chip.is-active {
+  background-color: #202124;
+  border-color: #202124;
+  color: #fff;
+}
+html[data-theme="dark"] .filter-chip.is-active {
+  background-color: #e8eaed;
+  border-color: #e8eaed;
+  color: #202124;
+}
+
+/* --------------------------------------------------------------------------
+   2. BARRE D'EN-TÊTE DE PAGE (titre + actions)
+   -------------------------------------------------------------------------- */
+.exp-toolbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin-inline: auto;
+  padding: var(--space-2) var(--space-5) var(--space-4);
+}
+.exp-toolbar__title {
+  font-size: 28px;
+  font-weight: var(--fw-medium);
+}
+.exp-toolbar__subtitle {
+  font-size: 14px;
+  color: var(--color-text-soft);
+  margin-top: 2px;
+  max-width: 560px;
+}
+.exp-actions {
+  display: flex;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+.exp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  font-size: 14px;
+  font-weight: var(--fw-medium);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  transition: background-color var(--transition-fast);
+}
+.exp-btn:hover { background-color: var(--color-bg-hover); text-decoration: none; }
+.exp-btn .material-symbols-outlined { font-size: 18px; }
+.exp-btn--primary {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.exp-btn--primary:hover { background-color: var(--accent-strong); }
+.exp-btn--icon { padding: var(--space-2); width: 40px; justify-content: center; }
+
+/* --------------------------------------------------------------------------
+   3. LAYOUT 60 / 40
+   -------------------------------------------------------------------------- */
+.exp-layout {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;     /* ~60 / 40 */
+  gap: var(--space-5);
+  max-width: 1100px;
+  margin-inline: auto;
+  padding: 0 var(--space-5) var(--space-7);
+}
+.exp-main { min-width: 0; }
+.exp-kp {
+  position: sticky;
+  top: var(--space-4);
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* --------------------------------------------------------------------------
+   4. CARDS EXPÉRIENCE (timeline)
+   -------------------------------------------------------------------------- */
+.xp-card {
+  margin-bottom: var(--space-5);
+  padding: var(--space-5);
+  background-color: var(--color-bg-soft);
+  border-radius: var(--radius-md);
+  /* barre colorée à gauche, pilotée par --xp-color en inline */
+  border-left: 4px solid var(--xp-color, var(--accent));
+}
+
+/* En-tête : logo + titres + badge */
+.xp-card__head {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+.xp-logo {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  color: #fff;
+  font-weight: var(--fw-medium);
+  font-size: 14px;
+  text-align: center;
+}
+.xp-card__heading { flex: 1; min-width: 0; }
+.xp-card__title {
+  font-size: 16px;
+  font-weight: var(--fw-medium);
+  color: var(--color-text);
+}
+.xp-card__subtitle {
+  font-size: 14px;
+  color: var(--color-text-soft);
+  margin-top: 1px;
+}
+
+/* Badge statut */
+.xp-badge {
+  flex-shrink: 0;
+  padding: 3px 10px;
+  border-radius: var(--radius-lg);
+  font-size: 12px;
+  font-weight: var(--fw-medium);
+  background-color: var(--color-bg-hover);
+  color: var(--color-text-soft);
+  white-space: nowrap;
+}
+.xp-badge--current {
+  background-color: #e6f4ea;
+  color: #137333;
+}
+
+/* Ligne d'infos (dates, lieu, type) */
+.xp-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  margin-top: var(--space-3);
+  font-size: 13px;
+  color: var(--color-text-soft);
+}
+.xp-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.xp-meta .material-symbols-outlined { font-size: 16px; }
+
+/* Missions (liste avec flèches) */
+.xp-missions {
+  margin-top: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.xp-missions li {
+  position: relative;
+  padding-left: var(--space-5);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+.xp-missions li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: var(--fw-bold);
+}
+
+/* Tags compétences */
+.xp-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+.xp-tag {
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+  color: var(--color-text-soft);
+  font-size: 12px;
+}
+
+/* Footer de card (liens) */
+.xp-card__footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+.xp-card__footer a {
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: var(--fw-medium);
+}
+
+/* --------------------------------------------------------------------------
+   5. KNOWLEDGE PANEL — Stats / Skills / Reco
+   (réutilise .kp-card, .kp-info, .kp-contact de serp.css)
+   -------------------------------------------------------------------------- */
+
+/* Stats clés (grille 2x2) */
+.xp-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+.xp-stat__num {
+  font-size: 28px;
+  font-weight: var(--fw-medium);
+  line-height: 1;
+}
+.xp-stat__label {
+  font-size: 12px;
+  color: var(--color-text-soft);
+  margin-top: var(--space-1);
+}
+.num--blue   { color: var(--google-blue); }
+.num--red    { color: var(--google-red); }
+.num--green  { color: var(--google-green); }
+.num--yellow { color: #f9a825; }   /* jaune un peu plus foncé pour la lisibilité */
+
+/* Titre de section discret (uppercase) */
+.kp-eyebrow {
+  font-size: 12px;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+  margin-bottom: var(--space-3);
+}
+
+/* Liste de compétences */
+.xp-skills {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.xp-skill {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+/* Recommandations (mini-cards sur fond bleu pâle) */
+.xp-reco {
+  background-color: #fff;
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  margin-top: var(--space-2);
+}
+.xp-reco__name { font-size: 14px; font-weight: var(--fw-medium); color: #202124; }
+.xp-reco__role { font-size: 12px; color: #5f6368; margin: 1px 0 4px; }
+.xp-reco__link { font-size: 13px; color: var(--google-blue-dark); font-weight: var(--fw-medium); }
+
+/* --------------------------------------------------------------------------
+   6. SECTION « Vous pourriez aussi consulter »
+   -------------------------------------------------------------------------- */
+.suggest {
+  max-width: 1100px;
+  margin-inline: auto;
+  padding: var(--space-2) var(--space-5) var(--space-8);
+}
+.suggest__title {
+  font-size: 20px;
+  font-weight: var(--fw-medium);
+  margin-bottom: var(--space-4);
+}
+.suggest-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+.suggest-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg);
+  transition: box-shadow var(--transition-fast);
+}
+.suggest-card:hover { box-shadow: var(--shadow-sm); text-decoration: none; }
+.suggest-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-pill);
+  color: #fff;
+  flex-shrink: 0;
+}
+.suggest-card__title { font-size: 14px; font-weight: var(--fw-medium); color: var(--color-text); }
+.suggest-card__arrow { margin-left: auto; color: var(--color-text-soft); }
+
+/* --------------------------------------------------------------------------
+   7. RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .exp-layout { grid-template-columns: 1fr; }
+  .exp-kp { position: static; }
+  .suggest-grid { grid-template-columns: 1fr; }
+}

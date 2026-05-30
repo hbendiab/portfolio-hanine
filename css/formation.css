@@ -1,0 +1,197 @@
+/* ==========================================================================
+   formation.css — Page « Formation » (timeline académique verticale)
+   Portfolio Hanine
+   --------------------------------------------------------------------------
+   Réutilise de experiences.css / serp.css :
+   .filter-chips · .exp-toolbar · .exp-btn · .exp-layout · .exp-main ·
+   .exp-kp · .xp-stats · .num--* · .kp-eyebrow · .xp-tags · .xp-tag ·
+   .xp-card__footer · .xp-badge · .kp-card · .kp-contact · .suggest
+   Ce fichier ajoute : la timeline, les cards diplôme, l'encart, les notes
+   et les langues.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. TIMELINE VERTICALE
+   -------------------------------------------------------------------------- */
+.timeline {
+  position: relative;
+  padding-left: 40px;
+}
+/* Ligne verticale en dégradé (bleu -> rouge -> jaune -> vert -> gris) */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    var(--google-blue) 0%,
+    var(--google-red) 30%,
+    var(--google-yellow) 55%,
+    var(--google-green) 80%,
+    #9aa0a6 100%
+  );
+}
+
+/* Un bloc diplôme */
+.edu {
+  position: relative;
+  margin-bottom: var(--space-5);
+}
+
+/* Pastille colorée sur la ligne */
+.edu__dot {
+  position: absolute;
+  left: -28px;
+  top: 6px;
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--color-bg);
+}
+/* Diplôme en cours : plus gros + anneau coloré */
+.edu__dot--current {
+  width: 18px;
+  height: 18px;
+  left: -29px;
+  border: 3px solid var(--color-bg);
+  box-shadow: 0 0 0 3px var(--google-blue);
+}
+
+/* Card diplôme */
+.edu__card {
+  padding: var(--space-5);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+.edu__date {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 13px;
+  color: var(--color-text-soft);
+  margin-bottom: var(--space-1);
+}
+.edu__title {
+  font-size: 18px;
+  font-weight: var(--fw-medium);
+  color: var(--color-text);
+}
+.edu__subtitle {
+  font-size: 14px;
+  color: var(--color-text-soft);
+  margin-top: 1px;
+}
+.edu__desc {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--color-text);
+  margin-top: var(--space-3);
+}
+
+/* --------------------------------------------------------------------------
+   2. ENCART « pluridisciplinarité »
+   -------------------------------------------------------------------------- */
+.pluri {
+  margin-top: var(--space-5);
+  padding: var(--space-5);
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #e8f0fe, #fce8e6);
+  color: #202124;                 /* texte sombre fixe (lisible en dark) */
+}
+.pluri__title {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-medium);
+  margin-bottom: var(--space-2);
+}
+.pluri__text {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   3. NOTES DU SEMESTRE (knowledge panel)
+   -------------------------------------------------------------------------- */
+.grades {
+  display: flex;
+  flex-direction: column;
+}
+.grade {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  font-size: 14px;
+  border-top: 1px solid var(--color-border-soft);
+}
+.grade:first-child { border-top: none; }
+.grade__name { color: var(--color-text); }
+.grade__note {
+  font-weight: var(--fw-medium);
+  color: var(--google-green);
+  white-space: nowrap;
+}
+/* Badge « semestre validé » */
+.grades__badge {
+  display: inline-block;
+  margin-top: var(--space-3);
+  padding: 4px 12px;
+  border-radius: var(--radius-lg);
+  background-color: #e6f4ea;
+  color: #137333;
+  font-size: 13px;
+  font-weight: var(--fw-medium);
+}
+
+/* --------------------------------------------------------------------------
+   4. LANGUES
+   -------------------------------------------------------------------------- */
+.langs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.lang {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 14px;
+  color: var(--color-text);
+}
+.lang__level {
+  margin-left: auto;
+  font-size: 13px;
+  color: var(--color-text-soft);
+}
+
+/* --------------------------------------------------------------------------
+   5. CTA — bouton fantôme (border blanc) en plus du bouton blanc plein
+   -------------------------------------------------------------------------- */
+.kp-contact__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: center;
+}
+.kp-contact__btn--ghost {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  color: #fff;
+}
+.kp-contact__btn--ghost:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: none;
+}
+
+/* --------------------------------------------------------------------------
+   6. RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .timeline { padding-left: 32px; }
+  .edu__dot { left: -24px; }
+  .edu__dot--current { left: -25px; }
+}

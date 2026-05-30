@@ -1,0 +1,55 @@
+/* ==========================================================================
+   responsive.css — Adaptations mobile (mobile-first)
+   Portfolio Hanine
+   --------------------------------------------------------------------------
+   Fichier de base (Étape 1). Les media queries détaillées seront ajoutées
+   à l'Étape 2. Quelques ajustements essentiels sont déjà présents pour que
+   la page d'accueil reste lisible sur petit écran.
+   ========================================================================== */
+
+/* --- Téléphones (jusqu'à 600px) --- */
+@media (max-width: 600px) {
+  /* Logo « Hanine » réduit sur mobile */
+  .logo {
+    font-size: 3rem;        /* 48px au lieu de 56px */
+    letter-spacing: -1px;
+  }
+
+  /* Sous-titre un peu plus serré */
+  .logo-subtitle {
+    letter-spacing: 2px;
+  }
+
+  /* Barre de recherche : padding réduit */
+  .search-bar {
+    padding: var(--space-2) var(--space-4);
+  }
+
+  /* Top bar : on rapproche les liens */
+  .topbar {
+    gap: var(--space-4);
+    padding: var(--space-3) var(--space-4);
+  }
+
+  /* Footer empilé verticalement */
+  .footer__row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* --- Très petits écrans (jusqu'à 380px) --- */
+@media (max-width: 380px) {
+  .logo {
+    font-size: 2.5rem;      /* 40px */
+  }
+
+  /* Les boutons passent en pleine largeur empilée */
+  .btn-group {
+    flex-direction: column;
+    width: 100%;
+  }
+  .btn {
+    width: 100%;
+  }
+}

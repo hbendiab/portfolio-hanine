@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Compétences techniques de Hanine Bendiab : Python, SQL, OpenAI, Dust, n8n, Tableau, PowerBI, Figma... Data, IA, automatisation et marketing." />
+  <meta name="author" content="Hanine Bendiab" />
+
+  <title>Compétences techniques — Hanine Bendiab</title>
+
+  <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='Arial' font-weight='bold' fill='%234285f4'>H</text></svg>" />
+
+  <!-- Polices -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=block" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/global.css" />
+  <link rel="stylesheet" href="../css/google-ui.css" />
+  <link rel="stylesheet" href="../css/serp.css" />
+  <link rel="stylesheet" href="../css/experiences.css" />
+  <link rel="stylesheet" href="../css/stack.css" />
+  <link rel="stylesheet" href="../css/responsive.css" />
+  <link rel="stylesheet" href="../css/customize.css" />
+
+  <!-- Anti-flash thème + accent -->
+  <script>
+    (function () {
+      try {
+        var theme  = localStorage.getItem('portfolio-theme')  || 'system';
+        var accent = localStorage.getItem('portfolio-accent') || '#1a73e8';
+        var dark = theme === 'dark' ||
+          (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+        document.documentElement.style.setProperty('--accent', accent);
+        document.documentElement.style.setProperty('--accent-strong', accent);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+
+<body>
+
+  <!-- ====================================================================
+       HEADER DE RECHERCHE
+       ==================================================================== -->
+  <header class="serp-header">
+    <a class="serp-logo" href="../index.html" aria-label="Hanine — accueil">
+      <span class="logo__letter--blue">H</span><span class="logo__letter--red">a</span><span class="logo__letter--yellow">n</span><span class="logo__letter--blue">i</span><span class="logo__letter--green">n</span><span class="logo__letter--red">e</span>
+    </a>
+
+    <form class="serp-search" id="search-form" role="search" action="profile.html" method="get">
+      <label for="search-input" class="visually-hidden">Recherchez-moi</label>
+      <div class="search-bar">
+        <svg class="search-bar__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M21 21l-4.35-4.35M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <input type="text" id="search-input" name="q" class="search-bar__input"
+               value="compétences Hanine Bendiab" autocomplete="off" />
+        <svg class="search-bar__mic" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="#4285f4" d="M12 14a3 3 0 0 0 3-3V5a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3z" />
+          <path fill="#34a853" d="M11 18.92V21h2v-2.08A7 7 0 0 0 19 12h-2a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92z" />
+        </svg>
+      </div>
+    </form>
+
+    <div class="serp-header__right">
+      <div class="apps">
+        <button type="button" class="apps__toggle" id="apps-toggle"
+                aria-label="Menu Hanine" aria-haspopup="true" aria-expanded="false" aria-controls="apps-panel">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <circle cx="5"  cy="5"  r="1.6" /><circle cx="12" cy="5"  r="1.6" /><circle cx="19" cy="5"  r="1.6" />
+            <circle cx="5"  cy="12" r="1.6" /><circle cx="12" cy="12" r="1.6" /><circle cx="19" cy="12" r="1.6" />
+            <circle cx="5"  cy="19" r="1.6" /><circle cx="12" cy="19" r="1.6" /><circle cx="19" cy="19" r="1.6" />
+          </svg>
+        </button>
+
+        <div class="apps__panel" id="apps-panel" role="menu" aria-label="Vos favoris" hidden>
+          <div class="apps__card">
+            <div class="apps__header">
+              <p class="apps__title">Vos favoris</p>
+              <button type="button" class="apps__edit" aria-label="Modifier vos favoris">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+                </svg>
+              </button>
+            </div>
+            <div class="apps__grid">
+              <a class="app" href="profile.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-blue);"><span class="material-symbols-outlined">account_circle</span></span><span class="app__label">Profil</span></a>
+              <a class="app" href="projects.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-red);"><span class="material-symbols-outlined">collections</span></span><span class="app__label">Projets</span></a>
+              <a class="app" href="experiences.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-yellow);"><span class="material-symbols-outlined">work</span></span><span class="app__label">Expériences</span></a>
+              <a class="app" href="formation.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-green);"><span class="material-symbols-outlined">school</span></span><span class="app__label">Formation</span></a>
+              <a class="app" href="stack.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-blue);"><span class="material-symbols-outlined">build</span></span><span class="app__label">Stack</span></a>
+              <a class="app" href="maps.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-red);"><span class="material-symbols-outlined">location_on</span></span><span class="app__label">Maps</span></a>
+              <a class="app" href="drive.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-yellow);"><span class="material-symbols-outlined">folder</span></span><span class="app__label">Drive</span></a>
+              <a class="app" href="assistant.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-green);"><span class="material-symbols-outlined">auto_awesome</span></span><span class="app__label">Assistant</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a class="topbar__avatar" href="profile.html" aria-label="Mon profil">H</a>
+    </div>
+  </header>
+
+  <!-- ====================================================================
+       ONGLETS DE FILTRES
+       ==================================================================== -->
+  <nav class="serp-tabs" aria-label="Catégories de recherche">
+    <a class="serp-tab is-active" href="stack.html" aria-current="page"><span class="material-symbols-outlined">search</span> Tous</a>
+    <a class="serp-tab" href="projects.html"><span class="material-symbols-outlined">image</span> Images</a>
+    <a class="serp-tab" href="#" aria-disabled="true"><span class="material-symbols-outlined">videocam</span> Vidéos</a>
+    <a class="serp-tab" href="maps.html"><span class="material-symbols-outlined">place</span> Maps</a>
+    <a class="serp-tab" href="drive.html"><span class="material-symbols-outlined">folder</span> Drive</a>
+    <a class="serp-tab" href="#" aria-disabled="true"><span class="material-symbols-outlined">expand_more</span> Plus</a>
+  </nav>
+
+  <!-- ====================================================================
+       CHIPS DE FILTRES
+       ==================================================================== -->
+  <div class="filter-chips" role="group" aria-label="Filtres par catégorie">
+    <button type="button" class="filter-chip is-active" data-filter="all">Toutes</button>
+    <button type="button" class="filter-chip" data-filter="data">Data &amp; Analyse</button>
+    <button type="button" class="filter-chip" data-filter="ia">IA &amp; Agents</button>
+    <button type="button" class="filter-chip" data-filter="auto">Automatisation</button>
+    <button type="button" class="filter-chip" data-filter="mkt">Marketing &amp; Com</button>
+    <button type="button" class="filter-chip" data-filter="design">Design</button>
+  </div>
+
+  <!-- ====================================================================
+       EN-TÊTE DE PAGE
+       ==================================================================== -->
+  <div class="exp-toolbar">
+    <div>
+      <h1 class="exp-toolbar__title">Mes compétences techniques</h1>
+      <p class="exp-toolbar__subtitle">20+ outils maîtrisés · Double casquette Data/IA × Marketing</p>
+    </div>
+    <div class="exp-actions">
+      <a class="exp-btn exp-btn--primary" href="drive.html">
+        <span class="material-symbols-outlined">download</span> Télécharger CV
+      </a>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       CARTES THÉMATIQUES
+       ==================================================================== -->
+  <div class="stack-wrap">
+
+    <!-- CARTE 1 : Data & Analyse -->
+    <article class="skill-card skill-card--data" data-cat="data">
+      <div class="skill-card__head">
+        <span class="skill-card__icon"><span class="material-symbols-outlined">bar_chart</span></span>
+        <div class="skill-card__heading">
+          <h2 class="skill-card__title">Data &amp; Analyse</h2>
+          <p class="skill-card__subtitle">Mon pilier technique principal</p>
+        </div>
+        <span class="skill-card__stars" aria-label="4 sur 5">★★★★☆</span>
+      </div>
+      <p class="skill-card__desc">Manipulation de données, analyses statistiques, requêtes SQL complexes, visualisations. C'est le cœur de mon Master.</p>
+      <div class="skill-chips">
+        <span class="skill-chip">Python</span><span class="skill-chip">Pandas</span><span class="skill-chip">NumPy</span><span class="skill-chip">Scikit-learn</span><span class="skill-chip">SQL</span><span class="skill-chip">Google Sheets (avancé)</span><span class="skill-chip">Spark</span><span class="skill-chip">ETL</span><span class="skill-chip">Tableau</span><span class="skill-chip">PowerBI</span><span class="skill-chip">Plotly</span>
+      </div>
+      <div class="skill-card__footer"><a href="projects.html">📊 Voir mes projets data</a></div>
+    </article>
+
+    <!-- CARTE 2 : IA & Agents -->
+    <article class="skill-card skill-card--ia" data-cat="ia">
+      <div class="skill-card__head">
+        <span class="skill-card__icon"><span class="material-symbols-outlined">smart_toy</span></span>
+        <div class="skill-card__heading">
+          <h2 class="skill-card__title">IA &amp; Agents</h2>
+          <p class="skill-card__subtitle">Mon terrain de jeu favori</p>
+        </div>
+        <span class="skill-card__stars" aria-label="4 sur 5">★★★★☆</span>
+      </div>
+      <p class="skill-card__desc">Utilisation et orchestration de modèles IA pour automatiser des processus métier complexes. Agents, RAG, scraping intelligent.</p>
+      <div class="skill-chips">
+        <span class="skill-chip">OpenAI API (GPT-4o)</span><span class="skill-chip">Claude API</span><span class="skill-chip">Dust (Agentic IA)</span><span class="skill-chip">ChatGPT</span><span class="skill-chip">Midjourney</span><span class="skill-chip">Sora</span><span class="skill-chip">LangChain (notions)</span><span class="skill-chip">RAG (notions)</span><span class="skill-chip">Prompt engineering</span>
+      </div>
+      <div class="skill-card__footer"><a href="projects.html">🤖 Voir mon projet Mirakl Talent Intelligence</a></div>
+    </article>
+
+    <!-- CARTE 3 : Automatisation -->
+    <article class="skill-card skill-card--auto" data-cat="auto">
+      <div class="skill-card__head">
+        <span class="skill-card__icon"><span class="material-symbols-outlined">settings</span></span>
+        <div class="skill-card__heading">
+          <h2 class="skill-card__title">Automatisation</h2>
+          <p class="skill-card__subtitle">No-code &amp; workflow automation</p>
+        </div>
+        <span class="skill-card__stars" aria-label="5 sur 5">★★★★★</span>
+      </div>
+      <p class="skill-card__desc">Connection d'APIs, orchestration de workflows multi-outils, automatisation de processus métier. Stack puissante pour livrer vite.</p>
+      <div class="skill-chips">
+        <span class="skill-chip">n8n</span><span class="skill-chip">Make</span><span class="skill-chip">Zapier</span><span class="skill-chip">BeautifulSoup</span><span class="skill-chip">Playwright</span><span class="skill-chip">SerpAPI</span><span class="skill-chip">Phantombuster</span><span class="skill-chip">Proxycurl</span><span class="skill-chip">RapidAPI</span>
+      </div>
+      <div class="skill-card__footer"><a href="projects.html">⚡ Voir mes automatisations</a></div>
+    </article>
+
+    <!-- CARTE 4 : Marketing & Communication -->
+    <article class="skill-card skill-card--mkt" data-cat="mkt">
+      <div class="skill-card__head">
+        <span class="skill-card__icon"><span class="material-symbols-outlined">campaign</span></span>
+        <div class="skill-card__heading">
+          <h2 class="skill-card__title">Marketing &amp; Communication</h2>
+          <p class="skill-card__subtitle">Mon ADN historique</p>
+        </div>
+        <span class="skill-card__stars" aria-label="5 sur 5">★★★★★</span>
+      </div>
+      <p class="skill-card__desc">4+ années en communication et marketing en alternance. Vraie expertise en stratégie média, publicité, branding, audience analytics.</p>
+      <div class="skill-chips">
+        <span class="skill-chip">Stratégie média</span><span class="skill-chip">SEO &amp; GEO</span><span class="skill-chip">Branding</span><span class="skill-chip">WordPress</span><span class="skill-chip">WIX</span><span class="skill-chip">Brevo (emailing)</span><span class="skill-chip">Rédaction stratégique</span><span class="skill-chip">Média planning</span><span class="skill-chip">Analyse d'audiences</span><span class="skill-chip">RSE &amp; éco-production</span>
+      </div>
+      <div class="skill-card__footer"><a href="experiences.html">💼 Voir mes expériences pro</a></div>
+    </article>
+
+    <!-- CARTE 5 : Design & Créa (compacte) -->
+    <article class="skill-card skill-card--design" data-cat="design">
+      <div class="skill-card__head">
+        <span class="skill-card__icon"><span class="material-symbols-outlined">palette</span></span>
+        <div class="skill-card__heading">
+          <h2 class="skill-card__title">Design &amp; Créa</h2>
+        </div>
+        <span class="skill-card__stars" aria-label="4 sur 5">★★★★☆</span>
+      </div>
+      <div class="skill-chips">
+        <span class="skill-chip">Figma</span><span class="skill-chip">Suite Adobe (Photoshop, Illustrator, InDesign)</span><span class="skill-chip">Canva</span><span class="skill-chip">CapCut</span>
+      </div>
+    </article>
+
+    <!-- SOFT SKILLS -->
+    <section class="soft" aria-label="Soft skills">
+      <h2 class="soft__title">Soft skills</h2>
+      <div class="soft__grid">
+        <div class="soft-card">
+          <span class="soft-card__icon" style="background-color: var(--google-blue);"><span class="material-symbols-outlined">search</span></span>
+          <p class="soft-card__title">Esprit d'analyse &amp; rigueur</p>
+          <p class="soft-card__text">Rigueur héritée de 2 ans de droit + précision data</p>
+        </div>
+        <div class="soft-card">
+          <span class="soft-card__icon" style="background-color: #f9a825;"><span class="material-symbols-outlined">lightbulb</span></span>
+          <p class="soft-card__title">Créativité &amp; résolution de problèmes</p>
+          <p class="soft-card__text">Approche créative validée par 4 ans en communication</p>
+        </div>
+        <div class="soft-card">
+          <span class="soft-card__icon" style="background-color: var(--google-green);"><span class="material-symbols-outlined">chat_bubble</span></span>
+          <p class="soft-card__title">Communication &amp; vulgarisation</p>
+          <p class="soft-card__text">Capacité à expliquer du tech à des non-tech</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- LANGUES -->
+    <section class="langs-card" aria-label="Langues">
+      <h2 class="langs-card__title">Langues</h2>
+      <div class="langs-grid">
+        <div class="lang-item">
+          <p class="lang-item__name">🇫🇷 Français</p>
+          <p class="lang-item__level">Natif</p>
+          <div class="lang-bar"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div>
+        </div>
+        <div class="lang-item">
+          <p class="lang-item__name">🇬🇧 Anglais</p>
+          <p class="lang-item__level">C1 · TOEIC</p>
+          <div class="lang-bar"><span class="on"></span><span class="on"></span><span class="on"></span><span></span></div>
+        </div>
+        <div class="lang-item">
+          <p class="lang-item__name">🇸🇦 Arabe</p>
+          <p class="lang-item__level">Bilingue</p>
+          <div class="lang-bar"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div>
+        </div>
+        <div class="lang-item">
+          <p class="lang-item__name">🇮🇹 Italien</p>
+          <p class="lang-item__level">Notions</p>
+          <div class="lang-bar"><span class="on"></span><span></span><span></span><span></span></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- OUTILS DE COLLABORATION -->
+  <div class="collab" aria-label="Outils de collaboration">
+    <p class="collab__title">Outils de collaboration</p>
+    <div class="collab__list">
+      <span class="collab__item"><span class="material-symbols-outlined">forum</span> Slack</span>
+      <span class="collab__item"><span class="material-symbols-outlined">description</span> Notion</span>
+      <span class="collab__item"><span class="material-symbols-outlined">grid_view</span> Google Workspace</span>
+      <span class="collab__item"><span class="material-symbols-outlined">view_kanban</span> Trello</span>
+      <span class="collab__item"><span class="material-symbols-outlined">apps</span> Microsoft Office</span>
+      <span class="collab__item"><span class="material-symbols-outlined">code</span> Git / GitHub (apprentissage en cours)</span>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       SECTION « Vous pourriez aussi consulter »
+       ==================================================================== -->
+  <section class="suggest" aria-label="Autres pages">
+    <h2 class="suggest__title">Vous pourriez aussi consulter</h2>
+    <div class="suggest-grid">
+      <a class="suggest-card" href="projects.html">
+        <span class="suggest-card__icon" style="background-color: var(--google-red);"><span class="material-symbols-outlined">collections</span></span>
+        <span class="suggest-card__title">Mes projets phares</span>
+        <span class="suggest-card__arrow material-symbols-outlined">arrow_forward</span>
+      </a>
+      <a class="suggest-card" href="experiences.html">
+        <span class="suggest-card__icon" style="background-color: var(--google-yellow);"><span class="material-symbols-outlined">work</span></span>
+        <span class="suggest-card__title">Mes expériences pro</span>
+        <span class="suggest-card__arrow material-symbols-outlined">arrow_forward</span>
+      </a>
+      <a class="suggest-card" href="formation.html">
+        <span class="suggest-card__icon" style="background-color: var(--google-green);"><span class="material-symbols-outlined">school</span></span>
+        <span class="suggest-card__title">Mon parcours académique</span>
+        <span class="suggest-card__arrow material-symbols-outlined">arrow_forward</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       BOUTON + MODALE DE PERSONNALISATION
+       ==================================================================== -->
+  <button type="button" class="customize-fab" id="customize-fab"
+          aria-label="Personnaliser le portfolio" aria-haspopup="dialog">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+    </svg>
+  </button>
+
+  <div class="customize" id="customize-modal">
+    <div class="customize__overlay" id="customize-overlay"></div>
+    <aside class="customize__panel" role="dialog" aria-modal="true" aria-labelledby="customize-title">
+      <header class="customize__header">
+        <h2 class="customize__title" id="customize-title">Personnaliser le portfolio</h2>
+        <button type="button" class="customize__close" id="customize-close" aria-label="Fermer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+          </svg>
+        </button>
+      </header>
+
+      <section class="customize__section">
+        <h3 class="customize__label">Mode d'affichage</h3>
+        <div class="theme-toggle" role="group" aria-label="Mode d'affichage">
+          <button type="button" class="theme-toggle__btn" data-theme-value="light">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5 2 3h-4l2-3zm0 20-2-3h4l-2 3zM2 12l3-2v4l-3-2zm20 0-3 2v-4l3 2zM5.6 5.6l3.2 1.4-1.4 1.4L5.6 5.6zm12.8 0-1.8 2.8-1.4-1.4 3.2-1.4zM5.6 18.4l1.4-3.2 1.4 1.4-2.8 1.8zm12.8 0-2.8-1.8 1.4-1.4 1.4 3.2z" /></svg>
+            Clair
+          </button>
+          <button type="button" class="theme-toggle__btn" data-theme-value="dark">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36A5.39 5.39 0 0 1 12.6 3.1c-.2-.06-.4-.1-.6-.1z" /></svg>
+            Sombre
+          </button>
+          <button type="button" class="theme-toggle__btn" data-theme-value="system">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 3H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h6v2H8v2h8v-2h-2v-2h6a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 13H4V5h16v11z" /></svg>
+            Système
+          </button>
+        </div>
+      </section>
+
+      <section class="customize__section">
+        <h3 class="customize__label">Couleur du thème</h3>
+        <div class="palette-grid" id="palette-grid"></div>
+        <input type="color" id="custom-color-input" value="#1a73e8"
+               style="position:absolute;width:0;height:0;opacity:0;pointer-events:none;" />
+      </section>
+
+      <section class="customize__section">
+        <h3 class="customize__label">Image de fond</h3>
+        <div class="bg-row">
+          <div class="bg-thumb" aria-hidden="true"></div>
+          <button type="button" class="bg-edit">Modifier</button>
+        </div>
+      </section>
+    </aside>
+  </div>
+
+  <!-- Script local : filtres de chips -->
+  <script>
+    (function () {
+      var chips = Array.prototype.slice.call(document.querySelectorAll('.filter-chip'));
+      var cards = Array.prototype.slice.call(document.querySelectorAll('.skill-card'));
+      chips.forEach(function (chip) {
+        chip.addEventListener('click', function () {
+          chips.forEach(function (c) { c.classList.remove('is-active'); });
+          chip.classList.add('is-active');
+          var f = chip.dataset.filter;
+          cards.forEach(function (card) {
+            card.style.display = (f === 'all' || card.dataset.cat === f) ? '' : 'none';
+          });
+        });
+      });
+    })();
+  </script>
+
+  <!-- Scripts -->
+  <script src="../js/navigation.js" defer></script>
+  <script src="../js/search.js" defer></script>
+  <script src="../js/customize.js" defer></script>
+</body>
+</html>

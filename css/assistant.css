@@ -1,0 +1,265 @@
+/* ==========================================================================
+   assistant.css — Page « Demande à Hanine » (chatbot façon Google Assistant)
+   Portfolio Hanine
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. BANDEAU STATUT
+   -------------------------------------------------------------------------- */
+.status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  background-color: #e6f4ea;
+  color: #137333;
+  font-size: 13px;
+  font-weight: var(--fw-medium);
+}
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background-color: #34a853;
+  animation: status-pulse 1.6s ease-out infinite;
+}
+@keyframes status-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(52, 168, 83, 0.55); }
+  70%  { box-shadow: 0 0 0 7px rgba(52, 168, 83, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(52, 168, 83, 0); }
+}
+
+/* --------------------------------------------------------------------------
+   2. HÉROS
+   -------------------------------------------------------------------------- */
+.assistant-hero {
+  text-align: center;
+  padding: var(--space-6) var(--space-4) var(--space-2);
+}
+.hero-avatar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, #4285f4, #ea4335 45%, #fbbc04 70%, #34a853);
+  color: #fff;
+  font-family: var(--font-google);
+  font-size: 36px;
+  font-weight: var(--fw-medium);
+  animation: hero-float 3s ease-in-out infinite;
+}
+@keyframes hero-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+.hero-avatar__dot {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-pill);
+  background-color: #34a853;
+  border: 2px solid var(--color-bg);
+}
+.assistant-hero__title {
+  font-size: 24px;
+  font-weight: var(--fw-medium);
+  margin-top: var(--space-4);
+}
+.assistant-hero__subtitle {
+  font-size: 14px;
+  color: var(--color-text-soft);
+  margin-top: var(--space-1);
+}
+.assistant-hero__disclaimer {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin-top: var(--space-2);
+}
+
+/* --------------------------------------------------------------------------
+   3. CONTENEUR CHAT
+   -------------------------------------------------------------------------- */
+.chat {
+  display: flex;
+  flex-direction: column;
+  max-width: 760px;
+  margin: var(--space-5) auto var(--space-7);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg);
+  overflow: hidden;
+}
+
+/* Zone des messages (scrollable) */
+.chat__messages {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  overflow-y: auto;
+  padding: var(--space-5);
+  scroll-behavior: smooth;
+}
+
+/* --------------------------------------------------------------------------
+   4. BULLES DE MESSAGE
+   -------------------------------------------------------------------------- */
+.msg {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+  max-width: 100%;
+}
+.msg--user { justify-content: flex-end; }
+
+.msg__avatar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, #4285f4, #34a853);
+  color: #fff;
+  font-size: 13px;
+  font-weight: var(--fw-medium);
+}
+
+.msg__bubble {
+  max-width: 80%;
+  padding: 10px 14px;
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: pre-wrap;        /* respecte les sauts de ligne \n */
+  word-wrap: break-word;
+}
+.msg--bot .msg__bubble {
+  background-color: var(--color-bg-soft);
+  color: var(--color-text);
+  border-radius: 4px 18px 18px 18px;
+}
+.msg--user .msg__bubble {
+  background-color: var(--accent);
+  color: #fff;
+  border-radius: 18px 18px 4px 18px;
+}
+
+/* Indicateur « en train d'écrire » */
+.typing {
+  display: flex;
+  gap: 4px;
+  width: fit-content;
+  padding: 12px 14px;
+  background-color: var(--color-bg-soft);
+  border-radius: 4px 18px 18px 18px;
+}
+.typing span {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-text-soft);
+  animation: typing-bounce 1.2s infinite ease-in-out;
+}
+.typing span:nth-child(2) { animation-delay: 0.2s; }
+.typing span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typing-bounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+  30%           { transform: translateY(-5px); opacity: 1; }
+}
+
+/* --------------------------------------------------------------------------
+   5. SUGGESTIONS (chips)
+   -------------------------------------------------------------------------- */
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: var(--space-1) 0 var(--space-3) 36px; /* aligné sous les bulles bot */
+}
+.suggestion {
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-bg);
+  color: var(--accent);
+  font-size: 13px;
+  transition: background-color var(--transition-fast);
+}
+.suggestion:hover { background-color: var(--color-bg-hover); }
+
+/* --------------------------------------------------------------------------
+   6. ZONE DE SAISIE
+   -------------------------------------------------------------------------- */
+.chat__input {
+  padding: var(--space-3) var(--space-5);
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+}
+.chat__form {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.chat__field {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 8px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+.chat__field:focus-within {
+  border-color: transparent;
+  box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28), 0 0 0 1px var(--accent);
+}
+.chat__input-text {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  color: var(--color-text);
+}
+.chat__mic { color: var(--accent); width: 20px; height: 20px; flex-shrink: 0; }
+.chat__send {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-pill);
+  background-color: var(--accent);
+  color: #fff;
+  flex-shrink: 0;
+  transition: filter var(--transition-fast);
+}
+.chat__send:hover { filter: brightness(0.95); }
+.chat__send svg { width: 20px; height: 20px; }
+
+.chat__disclaimer {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  text-align: center;
+  margin-top: var(--space-2);
+}
+
+/* --------------------------------------------------------------------------
+   7. RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .chat {
+    margin: var(--space-4) var(--space-3) var(--space-6);
+  }
+  .chat__messages { max-height: 60vh; }
+  .suggestions { margin-left: 0; }
+}

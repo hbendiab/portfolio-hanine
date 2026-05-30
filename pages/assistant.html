@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Discute avec l'assistant IA de Hanine Bendiab : parcours, projets, compétences, disponibilité. Chatbot interactif (sans API)." />
+  <meta name="author" content="Hanine Bendiab" />
+
+  <title>Demande à Hanine — Assistant</title>
+
+  <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='Arial' font-weight='bold' fill='%234285f4'>H</text></svg>" />
+
+  <!-- Polices -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=block" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/global.css" />
+  <link rel="stylesheet" href="../css/google-ui.css" />
+  <link rel="stylesheet" href="../css/serp.css" />
+  <link rel="stylesheet" href="../css/assistant.css" />
+  <link rel="stylesheet" href="../css/responsive.css" />
+  <link rel="stylesheet" href="../css/customize.css" />
+
+  <!-- Anti-flash thème + accent -->
+  <script>
+    (function () {
+      try {
+        var theme  = localStorage.getItem('portfolio-theme')  || 'system';
+        var accent = localStorage.getItem('portfolio-accent') || '#1a73e8';
+        var dark = theme === 'dark' ||
+          (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+        document.documentElement.style.setProperty('--accent', accent);
+        document.documentElement.style.setProperty('--accent-strong', accent);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+
+<body>
+
+  <!-- ====================================================================
+       HEADER (sans barre de recherche : le chatbot EST l'interface)
+       ==================================================================== -->
+  <header class="serp-header">
+    <a class="serp-logo" href="../index.html" aria-label="Hanine — accueil">
+      <span class="logo__letter--blue">H</span><span class="logo__letter--red">a</span><span class="logo__letter--yellow">n</span><span class="logo__letter--blue">i</span><span class="logo__letter--green">n</span><span class="logo__letter--red">e</span>
+    </a>
+
+    <div class="serp-header__right">
+      <div class="apps">
+        <button type="button" class="apps__toggle" id="apps-toggle"
+                aria-label="Menu Hanine" aria-haspopup="true" aria-expanded="false" aria-controls="apps-panel">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <circle cx="5"  cy="5"  r="1.6" /><circle cx="12" cy="5"  r="1.6" /><circle cx="19" cy="5"  r="1.6" />
+            <circle cx="5"  cy="12" r="1.6" /><circle cx="12" cy="12" r="1.6" /><circle cx="19" cy="12" r="1.6" />
+            <circle cx="5"  cy="19" r="1.6" /><circle cx="12" cy="19" r="1.6" /><circle cx="19" cy="19" r="1.6" />
+          </svg>
+        </button>
+
+        <div class="apps__panel" id="apps-panel" role="menu" aria-label="Vos favoris" hidden>
+          <div class="apps__card">
+            <div class="apps__header">
+              <p class="apps__title">Vos favoris</p>
+              <button type="button" class="apps__edit" aria-label="Modifier vos favoris">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+                </svg>
+              </button>
+            </div>
+            <div class="apps__grid">
+              <a class="app" href="profile.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-blue);"><span class="material-symbols-outlined">account_circle</span></span><span class="app__label">Profil</span></a>
+              <a class="app" href="projects.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-red);"><span class="material-symbols-outlined">collections</span></span><span class="app__label">Projets</span></a>
+              <a class="app" href="experiences.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-yellow);"><span class="material-symbols-outlined">work</span></span><span class="app__label">Expériences</span></a>
+              <a class="app" href="formation.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-green);"><span class="material-symbols-outlined">school</span></span><span class="app__label">Formation</span></a>
+              <a class="app" href="stack.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-blue);"><span class="material-symbols-outlined">build</span></span><span class="app__label">Stack</span></a>
+              <a class="app" href="maps.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-red);"><span class="material-symbols-outlined">location_on</span></span><span class="app__label">Maps</span></a>
+              <a class="app" href="drive.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-yellow);"><span class="material-symbols-outlined">folder</span></span><span class="app__label">Drive</span></a>
+              <a class="app" href="assistant.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-green);"><span class="material-symbols-outlined">auto_awesome</span></span><span class="app__label">Assistant</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a class="topbar__avatar" href="profile.html" aria-label="Mon profil">H</a>
+    </div>
+  </header>
+
+  <!-- ====================================================================
+       BANDEAU STATUT
+       ==================================================================== -->
+  <div class="status-bar">
+    <span class="status-dot" aria-hidden="true"></span>
+    EN LIGNE — Réponses instantanées
+  </div>
+
+  <!-- ====================================================================
+       HÉROS
+       ==================================================================== -->
+  <section class="assistant-hero">
+    <div class="hero-avatar">
+      H
+      <span class="hero-avatar__dot" aria-hidden="true"></span>
+    </div>
+    <h1 class="assistant-hero__title">Demande à Hanine</h1>
+    <p class="assistant-hero__subtitle">Mon IA répond pour moi en attendant qu'on se rencontre 👋</p>
+    <p class="assistant-hero__disclaimer">Conversation simulée · Pour me parler en vrai : haninebendiab@hotmail.com</p>
+  </section>
+
+  <!-- ====================================================================
+       CHAT
+       ==================================================================== -->
+  <div class="chat">
+    <!-- Messages (remplis par js/assistant.js) -->
+    <div class="chat__messages" id="chat-messages" role="log" aria-live="polite" aria-label="Conversation"></div>
+
+    <!-- Saisie -->
+    <div class="chat__input">
+      <form class="chat__form" id="chat-form">
+        <label for="chat-input" class="visually-hidden">Pose ta question à Hanine</label>
+        <div class="chat__field">
+          <input type="text" id="chat-input" class="chat__input-text"
+                 placeholder="Pose ta question à Hanine..." autocomplete="off" />
+          <svg class="chat__mic" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="#4285f4" d="M12 14a3 3 0 0 0 3-3V5a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3z" />
+            <path fill="#34a853" d="M11 18.92V21h2v-2.08A7 7 0 0 0 19 12h-2a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92z" />
+          </svg>
+        </div>
+        <button type="submit" class="chat__send" aria-label="Envoyer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 21l21-9L2 3v7l15 2-15 2z" /></svg>
+        </button>
+      </form>
+      <p class="chat__disclaimer">Propulsé par un système de scénarios · Pour des questions complexes, contacte Hanine directement</p>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       BOUTON + MODALE DE PERSONNALISATION
+       ==================================================================== -->
+  <button type="button" class="customize-fab" id="customize-fab"
+          aria-label="Personnaliser le portfolio" aria-haspopup="dialog">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+    </svg>
+  </button>
+
+  <div class="customize" id="customize-modal">
+    <div class="customize__overlay" id="customize-overlay"></div>
+    <aside class="customize__panel" role="dialog" aria-modal="true" aria-labelledby="customize-title">
+      <header class="customize__header">
+        <h2 class="customize__title" id="customize-title">Personnaliser le portfolio</h2>
+        <button type="button" class="customize__close" id="customize-close" aria-label="Fermer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+          </svg>
+        </button>
+      </header>
+
+      <section class="customize__section">
+        <h3 class="customize__label">Mode d'affichage</h3>
+        <div class="theme-toggle" role="group" aria-label="Mode d'affichage">
+          <button type="button" class="theme-toggle__btn" data-theme-value="light">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5 2 3h-4l2-3zm0 20-2-3h4l-2 3zM2 12l3-2v4l-3-2zm20 0-3 2v-4l3 2zM5.6 5.6l3.2 1.4-1.4 1.4L5.6 5.6zm12.8 0-1.8 2.8-1.4-1.4 3.2-1.4zM5.6 18.4l1.4-3.2 1.4 1.4-2.8 1.8zm12.8 0-2.8-1.8 1.4-1.4 1.4 3.2z" /></svg>
+            Clair
+          </button>
+          <button type="button" class="theme-toggle__btn" data-theme-value="dark">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36A5.39 5.39 0 0 1 12.6 3.1c-.2-.06-.4-.1-.6-.1z" /></svg>
+            Sombre
+          </button>
+          <button type="button" class="theme-toggle__btn" data-theme-value="system">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 3H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h6v2H8v2h8v-2h-2v-2h6a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 13H4V5h16v11z" /></svg>
+            Système
+          </button>
+        </div>
+      </section>
+
+      <section class="customize__section">
+        <h3 class="customize__label">Couleur du thème</h3>
+        <div class="palette-grid" id="palette-grid"></div>
+        <input type="color" id="custom-color-input" value="#1a73e8"
+               style="position:absolute;width:0;height:0;opacity:0;pointer-events:none;" />
+      </section>
+
+      <section class="customize__section">
+        <h3 class="customize__label">Image de fond</h3>
+        <div class="bg-row">
+          <div class="bg-thumb" aria-hidden="true"></div>
+          <button type="button" class="bg-edit">Modifier</button>
+        </div>
+      </section>
+    </aside>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../js/navigation.js" defer></script>
+  <script src="../js/customize.js" defer></script>
+  <script src="../js/assistant.js" defer></script>
+</body>
+</html>

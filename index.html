@@ -6,11 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Splash à CHAQUE arrivée sur l'accueil.
-       Seule exception : on arrive juste du splash (sinon boucle infinie). -->
+       Exception : on arrive juste du splash (sinon boucle infinie).
+       On se fie d'abord au paramètre ?from=splash (fiable à 100 %),
+       avec le referrer en simple secours. -->
   <script>
-    if (!/splash\.html(\?|#|$)/.test(document.referrer)) {
-      window.location.replace('splash.html');
-    }
+    (function () {
+      var fromSplash = /[?&]from=splash/.test(location.search) ||
+                       /splash\.html(\?|#|$)/.test(document.referrer);
+      if (!fromSplash) {
+        window.location.replace('splash.html');
+      } else if (location.search) {
+        // Nettoie l'URL (retire ?from=splash) sans recharger la page
+        try { history.replaceState(null, '', location.pathname); } catch (e) {}
+      }
+    })();
   </script>
 
   <!-- SEO / description de la page -->

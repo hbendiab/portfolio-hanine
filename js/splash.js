@@ -96,7 +96,9 @@
     document.body.style.transition = 'opacity 0.8s ease';
     document.body.style.opacity = '0';
     setTimeout(() => {
-      window.location.replace('index.html');
+      // Paramètre fiable pour signaler « on vient du splash » (le referrer
+      // peut être vidé selon le navigateur → ce param évite la boucle).
+      window.location.replace('index.html?from=splash');
     }, 800);
   }
 

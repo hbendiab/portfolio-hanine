@@ -67,7 +67,7 @@
       card.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
-    places[id] = { marker, lat, lng, type: card.dataset.type };
+    places[id] = { marker, lat, lng, type: card.dataset.type, card };
     allLatLng.push([lat, lng]);
   });
 
@@ -137,5 +137,16 @@
     satellite = !satellite;
     if (satellite) { map.removeLayer(baseOSM); baseSat.addTo(map); }
     else           { map.removeLayer(baseSat); baseOSM.addTo(map); }
+  });
+
+  /* --- Au changement de langue : on régénère les popups depuis le DOM
+         (les titres/sous-titres ont déjà été retraduits par i18n.js) --- */
+  document.addEventListener('langchange', () => {
+    Object.values(places).forEach((o) => {
+      if (!o.card) return;
+      const title = o.card.querySelector('.place-card__title').textContent.trim();
+      const sub   = o.card.querySelector('.place-card__subtitle').textContent.trim();
+      o.marker.setPopupContent('<strong>' + title + '</strong><br>' + sub);
+    });
   });
 })();

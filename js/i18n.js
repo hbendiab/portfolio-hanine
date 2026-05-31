@@ -49,6 +49,12 @@
       b.textContent = en ? 'FR' : 'EN';
       b.setAttribute('aria-label', en ? 'Passer en français' : 'Switch to English');
     });
+
+    // Notifie les scripts dynamiques (chatbot, modale projets, carte, drive…)
+    // afin qu'ils re-rendent leur contenu généré en JS dans la bonne langue.
+    try {
+      document.dispatchEvent(new CustomEvent('langchange', { detail: { lang: lang } }));
+    } catch (e) {}
   }
 
   // Exposé pour usage externe éventuel

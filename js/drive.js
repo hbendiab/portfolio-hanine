@@ -11,6 +11,9 @@
 (() => {
   'use strict';
 
+  /* Langue courante (fr par défaut) */
+  const LANG = () => (typeof window.getLang === 'function' ? window.getLang() : 'fr');
+
   /* ========================================================================
      1. BASCULE VUE LISTE / GRILLE
      ======================================================================== */
@@ -70,42 +73,42 @@
      ======================================================================== */
   const FOLDERS = {
     'data-ia': {
-      title: 'Projets data & IA',
+      title: 'Projets data & IA', title_en: 'Data & AI projects',
       files: [
-        { name: 'Mirakl Talent Intelligence - Pitch.pptx', size: '8,4 Mo' },
-        { name: 'Compétition PayFit - Deck.pdf', size: '3,1 Mo' },
-        { name: 'Audit SEO Eugenia - Synthèse.pdf', size: '3,2 Mo' }
+        { name: 'Mirakl Talent Intelligence - Pitch.pptx', size: '8,4 Mo', size_en: '8.4 MB' },
+        { name: 'Compétition PayFit - Deck.pdf', name_en: 'PayFit Competition - Deck.pdf', size: '3,1 Mo', size_en: '3.1 MB' },
+        { name: 'Audit SEO Eugenia - Synthèse.pdf', name_en: 'Eugenia SEO Audit - Summary.pdf', size: '3,2 Mo', size_en: '3.2 MB' }
       ]
     },
     'admin': {
-      title: 'Documents administratifs',
+      title: 'Documents administratifs', title_en: 'Administrative documents',
       files: [
-        { name: 'CV - Hanine Bendiab.pdf', size: '1,2 Mo' },
-        { name: 'Lettre de motivation.pdf', size: '0,8 Mo' },
-        { name: "Pièce d'identité.pdf", size: '0,5 Mo' }
+        { name: 'CV - Hanine Bendiab.pdf', size: '1,2 Mo', size_en: '1.2 MB' },
+        { name: 'Lettre de motivation.pdf', name_en: 'Cover letter.pdf', size: '0,8 Mo', size_en: '0.8 MB' },
+        { name: "Pièce d'identité.pdf", name_en: 'ID document.pdf', size: '0,5 Mo', size_en: '0.5 MB' }
       ]
     },
     'certif': {
-      title: 'Certifications',
+      title: 'Certifications', title_en: 'Certifications',
       files: [
-        { name: 'TOEIC - Score C1.pdf', size: '0,3 Mo' },
-        { name: 'Attestation Master MSc AI.pdf', size: '0,4 Mo' },
-        { name: 'Attestation Bachelor Communication.pdf', size: '0,4 Mo' }
+        { name: 'TOEIC - Score C1.pdf', size: '0,3 Mo', size_en: '0.3 MB' },
+        { name: 'Attestation Master MSc AI.pdf', name_en: 'MSc AI Master certificate.pdf', size: '0,4 Mo', size_en: '0.4 MB' },
+        { name: 'Attestation Bachelor Communication.pdf', name_en: 'Communication Bachelor certificate.pdf', size: '0,4 Mo', size_en: '0.4 MB' }
       ]
     },
     'presentations': {
-      title: 'Présentations & pitches',
+      title: 'Présentations & pitches', title_en: 'Presentations & pitches',
       files: [
-        { name: 'Mirakl - Pitch final.pptx', size: '8,4 Mo' },
-        { name: 'PayFit - Présentation.pptx', size: '2,6 Mo' }
+        { name: 'Mirakl - Pitch final.pptx', name_en: 'Mirakl - Final pitch.pptx', size: '8,4 Mo', size_en: '8.4 MB' },
+        { name: 'PayFit - Présentation.pptx', name_en: 'PayFit - Presentation.pptx', size: '2,6 Mo', size_en: '2.6 MB' }
       ]
     },
     'visuels': {
-      title: 'Photos campagnes & événements',
+      title: 'Photos campagnes & événements', title_en: 'Campaign & event photos',
       files: [
-        { name: 'JEP 2025 - Campagne SNCF.jpg', size: '6,2 Mo' },
-        { name: 'Hackathon Mirakl - Équipe.jpg', size: '5,8 Mo' },
-        { name: 'Remise des prix.jpg', size: '4,1 Mo' }
+        { name: 'JEP 2025 - Campagne SNCF.jpg', name_en: 'EHD 2025 - SNCF campaign.jpg', size: '6,2 Mo', size_en: '6.2 MB' },
+        { name: 'Hackathon Mirakl - Équipe.jpg', name_en: 'Mirakl Hackathon - Team.jpg', size: '5,8 Mo', size_en: '5.8 MB' },
+        { name: 'Remise des prix.jpg', name_en: 'Award ceremony.jpg', size: '4,1 Mo', size_en: '4.1 MB' }
       ]
     }
   };
@@ -116,22 +119,33 @@
   const modalClose = document.getElementById('drive-modal-close');
   const modalOverlay = modal ? modal.querySelector('.drive-modal__overlay') : null;
 
+  let currentFolder = null;
+
   function openFolder(id) {
     const folder = FOLDERS[id];
     if (!folder || !modal) return;
-    modalTitle.textContent = folder.title;
-    modalList.innerHTML = folder.files.map((f) =>
-      '<a class="drive-modal__item" href="#">' +
-      '<span class="material-symbols-outlined">draft</span>' +
-      '<span>' + f.name + '</span>' +
-      '<span class="size">' + f.size + '</span></a>'
-    ).join('');
+    currentFolder = id;
+    const en = LANG() === 'en';
+    modalTitle.textContent = (en && folder.title_en) ? folder.title_en : folder.title;
+    modalList.innerHTML = folder.files.map((f) => {
+      const name = en && f.name_en ? f.name_en : f.name;
+      const size = en && f.size_en ? f.size_en : f.size;
+      return '<a class="drive-modal__item" href="#">' +
+        '<span class="material-symbols-outlined">draft</span>' +
+        '<span>' + name + '</span>' +
+        '<span class="size">' + size + '</span></a>';
+    }).join('');
     modal.classList.add('is-open');
   }
   function closeModal() { if (modal) modal.classList.remove('is-open'); }
 
   document.querySelectorAll('.folder-card').forEach((card) => {
     card.addEventListener('click', () => openFolder(card.dataset.folder));
+  });
+
+  // Si un dossier est ouvert au changement de langue, on le re-remplit
+  document.addEventListener('langchange', () => {
+    if (currentFolder && modal && modal.classList.contains('is-open')) openFolder(currentFolder);
   });
   if (modalClose)   modalClose.addEventListener('click', closeModal);
   if (modalOverlay) modalOverlay.addEventListener('click', closeModal);

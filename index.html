@@ -462,34 +462,46 @@
   <!-- Easter egg du logo (confetti) — désactivable dans le fichier -->
   <script src="js/logo-easter-egg.js" defer></script>
 
-  <!-- Bulles d'aide (tooltips) — une seule fois par session -->
+  <!-- Bulles d'aide (mini tour guidé) — une seule fois par session.
+       Chaque bulle apparaît, puis disparaît AU CLIC et déclenche la suivante. -->
   <script>
-    function dismissHint(id) {
+    function dismissHint(id, next) {
       var h = document.getElementById(id);
-      if (!h || h.classList.contains('hint-hide') || h.style.display === 'none') return;
+      if (!h || h.classList.contains('hint-hide') || h.style.display === 'none') {
+        if (next) next();
+        return;
+      }
       h.classList.remove('hint-show');
       h.classList.add('hint-hide');
-      setTimeout(function () { h.style.display = 'none'; }, 300);
-    }
-    function showHint(id, delay) {
-      setTimeout(function () {
-        var h = document.getElementById(id);
-        if (!h) return;
-        h.style.display = 'block';
-        void h.offsetWidth;            // reflow pour déclencher la transition
-        h.classList.add('hint-show');
-        setTimeout(function () { dismissHint(id); }, 4000);
-      }, delay);
+      setTimeout(function () { h.style.display = 'none'; if (next) next(); }, 300);
     }
     (function () {
       try {
         if (sessionStorage.getItem('hintsShown')) return;
         sessionStorage.setItem('hintsShown', 'true');
       } catch (e) { /* sessionStorage indispo : on affiche quand même */ }
-      showHint('hint-logo',   1500);
-      showHint('hint-mic',    2500);
-      showHint('hint-search', 3500);
-      showHint('hint-pencil', 4500);
+
+      var seq = ['hint-logo', 'hint-mic', 'hint-search', 'hint-pencil'];
+
+      function step(i) {
+        if (i >= seq.length) return;
+        var id = seq[i];
+        var h = document.getElementById(id);
+        if (!h) { step(i + 1); return; }
+
+        h.style.display = 'block';
+        void h.offsetWidth;             // reflow pour déclencher la transition
+        h.classList.add('hint-show');
+
+        var done = false;
+        h.addEventListener('click', function () {
+          if (done) return;
+          done = true;
+          dismissHint(id, function () { step(i + 1); }); // ferme + bulle suivante
+        });
+      }
+
+      setTimeout(function () { step(0); }, 1500); // 1re bulle après 1,5 s
     })();
   </script>
 </body>

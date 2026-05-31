@@ -655,6 +655,7 @@ html[data-theme="dark"] .shortcut-label {
   transform: translate(var(--tx), 4px);
   transition: opacity 0.4s ease-out, transform 0.4s ease-out;
   pointer-events: auto;
+  cursor: pointer;               /* toute la bulle est cliquable */
 }
 .hint-bubble.hint-show { opacity: 1; transform: translate(var(--tx), 0); }
 .hint-bubble.hint-hide {

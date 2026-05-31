@@ -125,28 +125,6 @@
       thumbs: ['#fbbc04', '#f9a825', '#ff8a50']
     },
     {
-      hero: 'Blog',
-      gradient: 'linear-gradient(135deg, #5f6368, #9aa0a6)',
-      date: '2024',
-      category: 'Web & SEO · Personnel',
-      title: 'Blog journalistique',
-      desc: [
-        'Création et gestion d\'un blog journalistique sous WordPress : rédaction d\'articles, optimisation SEO et structuration du contenu.',
-        'Projet personnel mêlant écriture, référencement et gestion de site.'
-      ],
-      stack: ['WordPress', 'SEO', 'Rédaction', 'Content'],
-      role: 'Rédaction des articles, paramétrage WordPress et optimisation SEO.',
-      results: [
-        'Blog en ligne alimenté régulièrement',
-        'Articles optimisés pour le référencement',
-        'Structure de contenu pensée pour le SEO'
-      ],
-      links: [
-        { label: 'Lire l\'étude de cas', href: '#', icon: 'description', ghost: true }
-      ],
-      thumbs: ['#5f6368', '#9aa0a6', '#3c4043']
-    },
-    {
       hero: 'Michi',
       heroColor: '#2C2C2C',
       gradient: 'linear-gradient(135deg, #F9F5EB, #E8DCC8)',

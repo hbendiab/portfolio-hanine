@@ -68,6 +68,7 @@
     </form>
 
     <div class="serp-header__right">
+        <button type="button" class="lang-toggle" aria-label="Switch to English">EN</button>
       <div class="apps">
         <button type="button" class="apps__toggle" id="apps-toggle"
                 aria-label="Menu Hanine" aria-haspopup="true" aria-expanded="false" aria-controls="apps-panel">
@@ -81,7 +82,7 @@
         <div class="apps__panel" id="apps-panel" role="menu" aria-label="Vos favoris" hidden>
           <div class="apps__card">
             <div class="apps__header">
-              <p class="apps__title">Vos favoris</p>
+              <p class="apps__title" data-en="Your shortcuts">Vos favoris</p>
               <button type="button" class="apps__edit" aria-label="Modifier vos favoris">
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
@@ -89,10 +90,10 @@
               </button>
             </div>
             <div class="apps__grid">
-              <a class="app" href="profile.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-blue);"><span class="material-symbols-outlined">account_circle</span></span><span class="app__label">Profil</span></a>
-              <a class="app" href="projects.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-red);"><span class="material-symbols-outlined">collections</span></span><span class="app__label">Projets</span></a>
-              <a class="app" href="experiences.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-yellow);"><span class="material-symbols-outlined">work</span></span><span class="app__label">Expériences</span></a>
-              <a class="app" href="formation.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-green);"><span class="material-symbols-outlined">school</span></span><span class="app__label">Formation</span></a>
+              <a class="app" href="profile.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-blue);"><span class="material-symbols-outlined">account_circle</span></span><span class="app__label" data-en="Profile">Profil</span></a>
+              <a class="app" href="projects.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-red);"><span class="material-symbols-outlined">collections</span></span><span class="app__label" data-en="Projects">Projets</span></a>
+              <a class="app" href="experiences.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-yellow);"><span class="material-symbols-outlined">work</span></span><span class="app__label" data-en="Experience">Expériences</span></a>
+              <a class="app" href="formation.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-green);"><span class="material-symbols-outlined">school</span></span><span class="app__label" data-en="Education">Formation</span></a>
               <a class="app" href="stack.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-blue);"><span class="material-symbols-outlined">build</span></span><span class="app__label">Stack</span></a>
               <a class="app" href="maps.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-red);"><span class="material-symbols-outlined">location_on</span></span><span class="app__label">Maps</span></a>
               <a class="app" href="drive.html" role="menuitem"><span class="app__icon" style="background-color: var(--google-yellow);"><span class="material-symbols-outlined">folder</span></span><span class="app__label">Drive</span></a>
@@ -110,7 +111,7 @@
        INDICATEUR DE REDIRECTION
        ==================================================================== -->
   <p class="serp-redirect">
-    Afficher les résultats pour
+    <span data-en="Show results for">Afficher les résultats pour</span>
     <span class="redirect-pill">
       <span class="redirect-pill__photo"><img src="../assets/images/Photo-profil.jpeg" alt="Hanine Bendiab" onerror="this.remove()" />H</span>
       Hanine Bendiab
@@ -121,12 +122,12 @@
        ONGLETS DE FILTRES
        ==================================================================== -->
   <nav class="serp-tabs" aria-label="Catégories de recherche">
-    <a class="serp-tab is-active" href="profile.html" aria-current="page"><i class="ti ti-search"></i> Tous</a>
-    <a class="serp-tab" href="projects.html" style="--tab-color:#ea4335"><i class="ti ti-layout-grid"></i> Projets</a>
-    <a class="serp-tab" href="experiences.html" style="--tab-color:#fbbc04"><i class="ti ti-briefcase"></i> Expériences</a>
-    <a class="serp-tab" href="formation.html" style="--tab-color:#34a853"><i class="ti ti-school"></i> Formation</a>
+    <a class="serp-tab is-active" href="profile.html" aria-current="page"><i class="ti ti-search"></i> <span data-en="All">Tous</span></a>
+    <a class="serp-tab" href="projects.html" style="--tab-color:#ea4335"><i class="ti ti-layout-grid"></i> <span data-en="Projects">Projets</span></a>
+    <a class="serp-tab" href="experiences.html" style="--tab-color:#fbbc04"><i class="ti ti-briefcase"></i> <span data-en="Experience">Expériences</span></a>
+    <a class="serp-tab" href="formation.html" style="--tab-color:#34a853"><i class="ti ti-school"></i> <span data-en="Education">Formation</span></a>
     <a class="serp-tab" href="stack.html" style="--tab-color:#4285f4"><i class="ti ti-tool"></i> Stack</a>
-    <a class="serp-tab" href="#" style="--tab-color:#ea4335" aria-disabled="true"><i class="ti ti-video"></i> Vidéos</a>
+    <a class="serp-tab" href="#" style="--tab-color:#ea4335" aria-disabled="true"><i class="ti ti-video"></i> <span data-en="Videos">Vidéos</span></a>
     <a class="serp-tab" href="maps.html" style="--tab-color:#ea4335"><i class="ti ti-map-pin"></i> Maps</a>
     <a class="serp-tab" href="drive.html" style="--tab-color:#fbbc04"><i class="ti ti-folder"></i> Drive</a>
     <a class="serp-tab" href="assistant.html" style="--tab-color:#9c27b0"><i class="ti ti-sparkles"></i> Assistant</a>
@@ -144,14 +145,14 @@
       <div class="entity-title">
         <div>
           <h1 class="entity-title__name">Hanine Bendiab</h1>
-          <p class="entity-title__sub">Étudiante Master Data Marketing &amp; IA · <span class="js-age">26</span> ans</p>
+          <p class="entity-title__sub"><span data-en="Data Marketing &amp; AI Master's student">Étudiante Master Data Marketing &amp; IA</span> · <span class="js-age">26</span> <span data-en="years old">ans</span></p>
         </div>
         <div class="theme-pills">
-          <a class="theme-pill is-active" href="#">Aperçu</a>
-          <a class="theme-pill" href="projects.html">Projets</a>
-          <a class="theme-pill" href="experiences.html">Expériences</a>
-          <a class="theme-pill" href="formation.html">Formation</a>
-          <a class="theme-pill" href="stack.html">Compétences</a>
+          <a class="theme-pill is-active" href="#" data-en="Overview">Aperçu</a>
+          <a class="theme-pill" href="projects.html" data-en="Projects">Projets</a>
+          <a class="theme-pill" href="experiences.html" data-en="Experience">Expériences</a>
+          <a class="theme-pill" href="formation.html" data-en="Education">Formation</a>
+          <a class="theme-pill" href="stack.html" data-en="Skills">Compétences</a>
         </div>
       </div>
 
@@ -160,7 +161,7 @@
         <!-- Vignette 1 : portrait -->
         <div class="tile tile--portrait" style="background: linear-gradient(160deg, var(--google-blue), var(--google-red));">
           <img class="tile__img tile__img--face" src="../assets/images/Photo-profil.jpeg" alt="Hanine Bendiab" onerror="this.remove()" />
-          <span class="tile__caption">Source : Portfolio personnel</span>
+          <span class="tile__caption" data-en="Source: Personal portfolio">Source : Portfolio personnel</span>
         </div>
         <!-- Vignette 2 : projet Mirakl -->
         <a class="tile" href="projects.html" style="background: linear-gradient(135deg, var(--google-blue), var(--google-green));">
@@ -182,7 +183,7 @@
 
       <!-- ===== Projets phares ===== -->
       <div class="section-head">
-        <h2 class="section-head__title">Projets phares</h2>
+        <h2 class="section-head__title" data-en="Featured projects">Projets phares</h2>
         <a class="section-head__arrow" href="projects.html" aria-label="Voir tous les projets">
           <span class="material-symbols-outlined">arrow_forward</span>
         </a>
@@ -191,28 +192,28 @@
         <a class="proj-card proj-card--featured" href="projects.html">
           <div class="proj-card__thumb" style="background: linear-gradient(135deg, var(--google-blue), var(--google-green));"><img src="../assets/images/Mirakl_IMG_9570.JPG" alt="Hackathon Mirakl" onerror="this.remove()" /></div>
           <p class="proj-card__title">Hackathon Mirakl 2026</p>
-          <p class="proj-card__date">Data &amp; IA · 2026</p>
+          <p class="proj-card__date" data-en="Data &amp; AI · 2026">Data &amp; IA · 2026</p>
         </a>
         <a class="proj-card" href="projects.html">
           <div class="proj-card__thumb" style="background: linear-gradient(135deg, #F9F5EB, #E8DCC8);"><img src="../assets/images/michi.png" alt="Michi" onerror="this.remove()" /></div>
-          <p class="proj-card__title">🏆 Michi — Matching santé mentale</p>
+          <p class="proj-card__title" data-en="🏆 Michi — Mental-health matching">🏆 Michi — Matching santé mentale</p>
           <p class="proj-card__date">Hackathon · 2025</p>
         </a>
         <a class="proj-card" href="projects.html">
           <div class="proj-card__thumb" style="background: linear-gradient(135deg, #5c6bc0, var(--google-blue));">PayFit</div>
-          <p class="proj-card__title">Compétition PayFit</p>
+          <p class="proj-card__title" data-en="PayFit competition">Compétition PayFit</p>
           <p class="proj-card__date">2025</p>
         </a>
         <a class="proj-card" href="projects.html">
           <div class="proj-card__thumb" style="background: linear-gradient(135deg, var(--google-green), #00838f);">SEO</div>
-          <p class="proj-card__title">Audit SEO Eugenia School</p>
+          <p class="proj-card__title" data-en="Eugenia School SEO audit">Audit SEO Eugenia School</p>
           <p class="proj-card__date">2025</p>
         </a>
       </section>
 
       <!-- ===== Expériences ===== -->
       <div class="section-head">
-        <h2 class="section-head__title">Expériences</h2>
+        <h2 class="section-head__title" data-en="Experience">Expériences</h2>
         <a class="section-head__arrow" href="experiences.html" aria-label="Voir toutes les expériences">
           <span class="material-symbols-outlined">arrow_forward</span>
         </a>
@@ -225,9 +226,9 @@
             <span class="exp-card-fallback" style="color:#009639;display:none;">A</span>
           </div>
           <div class="exp-card-info">
-            <div class="exp-card-title">Chargée de marketing relationnel</div>
+            <div class="exp-card-title" data-en="Relationship Marketing Officer">Chargée de marketing relationnel</div>
             <div class="exp-card-company">Arval BNP Paribas</div>
-            <div class="exp-card-date">En cours · Alternance</div>
+            <div class="exp-card-date" data-en="Current · Apprenticeship">En cours · Alternance</div>
           </div>
         </a>
         <a class="exp-card" href="experiences.html">
@@ -237,7 +238,7 @@
             <span class="exp-card-fallback" style="color:#e2231a;display:none;font-size:22px;">SNCF</span>
           </div>
           <div class="exp-card-info">
-            <div class="exp-card-title">Communication marketing</div>
+            <div class="exp-card-title" data-en="Marketing Communications">Communication marketing</div>
             <div class="exp-card-company">Groupe SNCF</div>
             <div class="exp-card-date">2024 – 2025</div>
           </div>
@@ -249,7 +250,7 @@
             <span class="exp-card-fallback" style="color:#5f6368;display:none;">GC</span>
           </div>
           <div class="exp-card-info">
-            <div class="exp-card-title">Communication marketing</div>
+            <div class="exp-card-title" data-en="Marketing Communications">Communication marketing</div>
             <div class="exp-card-company">Groupe Confiance</div>
             <div class="exp-card-date">2022 – 2024</div>
           </div>
@@ -259,41 +260,41 @@
             <span class="exp-card-fallback" style="color:#34a853;display:block;">⚡</span>
           </div>
           <div class="exp-card-info">
-            <div class="exp-card-title">Auto-entrepreneuse</div>
+            <div class="exp-card-title" data-en="Self-employed">Auto-entrepreneuse</div>
             <div class="exp-card-company">Freelance</div>
-            <div class="exp-card-date">Depuis 2021</div>
+            <div class="exp-card-date" data-en="Since 2021">Depuis 2021</div>
           </div>
         </a>
       </section>
 
       <!-- ===== Autres questions ===== -->
       <section class="paa" aria-label="Autres questions">
-        <h2 class="paa__title">Autres questions</h2>
+        <h2 class="paa__title" data-en="People also ask">Autres questions</h2>
         <details class="paa__item">
-          <summary>Hanine est-elle disponible pour une alternance Master 2 ? <span class="material-symbols-outlined">expand_more</span></summary>
-          <p class="paa__answer">Oui — disponible dès septembre 2026 pour une alternance (ou CDI) en data, IA et marketing, sur Paris ou en hybride.</p>
+          <summary data-en="Is Hanine available for a Master 2 apprenticeship? <span class=&quot;material-symbols-outlined&quot;>expand_more</span>">Hanine est-elle disponible pour une alternance Master 2 ? <span class="material-symbols-outlined">expand_more</span></summary>
+          <p class="paa__answer" data-en="Yes — available from September 2026 for an apprenticeship (or permanent role) in data, AI and marketing, in Paris or hybrid.">Oui — disponible dès septembre 2026 pour une alternance (ou CDI) en data, IA et marketing, sur Paris ou en hybride.</p>
         </details>
         <details class="paa__item">
-          <summary>Quel est son projet professionnel ? <span class="material-symbols-outlined">expand_more</span></summary>
-          <p class="paa__answer">Allier data, IA et marketing pour piloter la performance, automatiser les process et créer de la valeur côté business.</p>
+          <summary data-en="What is her career goal? <span class=&quot;material-symbols-outlined&quot;>expand_more</span>">Quel est son projet professionnel ? <span class="material-symbols-outlined">expand_more</span></summary>
+          <p class="paa__answer" data-en="Combining data, AI and marketing to drive performance, automate processes and create business value.">Allier data, IA et marketing pour piloter la performance, automatiser les process et créer de la valeur côté business.</p>
         </details>
         <details class="paa__item">
-          <summary>Comment la contacter ? <span class="material-symbols-outlined">expand_more</span></summary>
-          <p class="paa__answer">Par email à haninebendiab@hotmail.com ou via LinkedIn (profil lié dans le panneau de droite).</p>
+          <summary data-en="How to contact her? <span class=&quot;material-symbols-outlined&quot;>expand_more</span>">Comment la contacter ? <span class="material-symbols-outlined">expand_more</span></summary>
+          <p class="paa__answer" data-en="By email at haninebendiab@hotmail.com or via LinkedIn (linked in the right-hand panel).">Par email à haninebendiab@hotmail.com ou via LinkedIn (profil lié dans le panneau de droite).</p>
         </details>
         <details class="paa__item">
-          <summary>Quelles sont ses compétences techniques ? <span class="material-symbols-outlined">expand_more</span></summary>
-          <p class="paa__answer">Python, SQL, n8n, Dust, OpenAI API, Tableau, PowerBI, Figma et la Suite Adobe — au service de la data, l'IA et le marketing.</p>
+          <summary data-en="What are her technical skills? <span class=&quot;material-symbols-outlined&quot;>expand_more</span>">Quelles sont ses compétences techniques ? <span class="material-symbols-outlined">expand_more</span></summary>
+          <p class="paa__answer" data-en="Python, SQL, n8n, Dust, OpenAI API, Tableau, PowerBI, Figma and the Adobe Suite — for data, AI and marketing.">Python, SQL, n8n, Dust, OpenAI API, Tableau, PowerBI, Figma et la Suite Adobe — au service de la data, l'IA et le marketing.</p>
         </details>
         <details class="paa__item">
-          <summary>Quels sont ses projets phares ? <span class="material-symbols-outlined">expand_more</span></summary>
-          <p class="paa__answer">Hackathon Mirakl, compétition PayFit, audit SEO pour Eugenia School, entre autres.</p>
+          <summary data-en="What are her featured projects? <span class=&quot;material-symbols-outlined&quot;>expand_more</span>">Quels sont ses projets phares ? <span class="material-symbols-outlined">expand_more</span></summary>
+          <p class="paa__answer" data-en="Mirakl Hackathon, PayFit competition, SEO audit for Eugenia School, among others.">Hackathon Mirakl, compétition PayFit, audit SEO pour Eugenia School, entre autres.</p>
         </details>
       </section>
 
       <!-- ===== Sites de référence ===== -->
       <div class="section-head">
-        <h2 class="section-head__title">Sites de référence</h2>
+        <h2 class="section-head__title" data-en="Reference sites">Sites de référence</h2>
       </div>
       <section aria-label="Sites de référence">
         <article class="ref-result">
@@ -301,7 +302,7 @@
           <div>
             <p class="serp-result__url">linkedin.com › in › hanine-b-641494211</p>
             <a class="serp-result__title" href="https://linkedin.com/in/hanine-b-641494211" target="_blank" rel="noopener">Hanine Bendiab — LinkedIn</a>
-            <p class="serp-result__desc">Profil professionnel : expériences en communication marketing, alternance Arval BNP Paribas, Master Data &amp; IA à Eugenia School.</p>
+            <p class="serp-result__desc" data-en="Professional profile: marketing communications experience, Arval BNP Paribas apprenticeship, Data &amp; AI Master's at Eugenia School.">Profil professionnel : expériences en communication marketing, alternance Arval BNP Paribas, Master Data &amp; IA à Eugenia School.</p>
           </div>
         </article>
 
@@ -311,8 +312,8 @@
           </span>
           <div>
             <p class="serp-result__url">github.com › hanine</p>
-            <a class="serp-result__title" href="#">GitHub — Projets data &amp; IA</a>
-            <p class="serp-result__desc">Dépôts de code : analyses Python, automatisations n8n, expérimentations OpenAI API. (Lien à venir.)</p>
+            <a class="serp-result__title" href="#" data-en="GitHub — Data &amp; AI projects">GitHub — Projets data &amp; IA</a>
+            <p class="serp-result__desc" data-en="Code repositories: Python analyses, n8n automations, OpenAI API experiments. (Link coming soon.)">Dépôts de code : analyses Python, automatisations n8n, expérimentations OpenAI API. (Lien à venir.)</p>
           </div>
         </article>
       </section>
@@ -323,26 +324,26 @@
 
       <!-- Card 1 : À propos -->
       <div class="kp-card">
-        <h2 class="kp-card__title">À propos</h2>
+        <h2 class="kp-card__title" data-en="About">À propos</h2>
         <p class="kp-bio">
-          Hanine Bendiab, née en 1999, est une étudiante en Master MSc AI Applied to Business à Eugenia School. Après un parcours pluridisciplinaire en droit, gestion d'entreprise et communication des marques, elle se spécialise dans la data, l'IA et le marketing digital. Actuellement en alternance chez Arval BNP Paribas comme chargée de marketing relationnel.
-          <a class="kp-more" href="formation.html">Plus</a>
+          <span data-en="Hanine Bendiab, born in 1999, is a Master's student in MSc AI Applied to Business at Eugenia School. After a multidisciplinary path in law, business management and brand communication, she specialises in data, AI and digital marketing. She is currently an apprentice at Arval BNP Paribas as a relationship marketing officer.">Hanine Bendiab, née en 1999, est une étudiante en Master MSc AI Applied to Business à Eugenia School. Après un parcours pluridisciplinaire en droit, gestion d'entreprise et communication des marques, elle se spécialise dans la data, l'IA et le marketing digital. Actuellement en alternance chez Arval BNP Paribas comme chargée de marketing relationnel.</span>
+          <a class="kp-more" href="formation.html" data-en="More">Plus</a>
         </p>
       </div>
 
       <!-- Card 2 : Informations clés -->
       <div class="kp-info">
-        <p class="kp-info__row"><strong>Née :</strong> en 1999</p>
-        <p class="kp-info__row"><strong>École :</strong> Eugenia School</p>
-        <p class="kp-info__row"><strong>Master :</strong> AI Applied to Business (2025-2027)</p>
-        <p class="kp-info__row"><strong>Entreprise :</strong> Arval BNP Paribas (alternance)</p>
-        <p class="kp-info__row"><strong>Précédent :</strong> Groupe SNCF · Groupe Confiance</p>
-        <p class="kp-info__row"><strong>Langues :</strong> FR · EN (C1) · AR · IT</p>
+        <p class="kp-info__row" data-en="<strong>Born:</strong> in 1999"><strong>Née :</strong> en 1999</p>
+        <p class="kp-info__row" data-en="<strong>School:</strong> Eugenia School"><strong>École :</strong> Eugenia School</p>
+        <p class="kp-info__row" data-en="<strong>Master's:</strong> AI Applied to Business (2025-2027)"><strong>Master :</strong> AI Applied to Business (2025-2027)</p>
+        <p class="kp-info__row" data-en="<strong>Company:</strong> Arval BNP Paribas (apprenticeship)"><strong>Entreprise :</strong> Arval BNP Paribas (alternance)</p>
+        <p class="kp-info__row" data-en="<strong>Previously:</strong> Groupe SNCF · Groupe Confiance"><strong>Précédent :</strong> Groupe SNCF · Groupe Confiance</p>
+        <p class="kp-info__row" data-en="<strong>Languages:</strong> FR · EN (C1) · AR · IT"><strong>Langues :</strong> FR · EN (C1) · AR · IT</p>
       </div>
 
       <!-- Card 3 : Profils -->
       <div class="kp-card">
-        <h2 class="kp-card__title">Profils</h2>
+        <h2 class="kp-card__title" data-en="Profiles">Profils</h2>
         <div class="kp-profiles">
           <a class="kp-profile" href="https://linkedin.com/in/hanine-b-641494211" target="_blank" rel="noopener">
             <span class="kp-profile__icon" style="color:#0a66c2;">
@@ -370,8 +371,8 @@
         <h2 class="kp-card__title">Documents</h2>
         <div class="kp-docs">
           <a class="kp-doc" href="drive.html"><span class="material-symbols-outlined">picture_as_pdf</span> CV.pdf</a>
-          <a class="kp-doc" href="drive.html"><span class="material-symbols-outlined">description</span> Lettre de motivation</a>
-          <a class="kp-doc" href="drive.html"><span class="material-symbols-outlined">workspace_premium</span> Recommandation Alice Perron</a>
+          <a class="kp-doc" href="drive.html"><span class="material-symbols-outlined">description</span> <span data-en="Cover letter">Lettre de motivation</span></a>
+          <a class="kp-doc" href="drive.html"><span class="material-symbols-outlined">workspace_premium</span> <span data-en="Recommendation — Alice Perron">Recommandation Alice Perron</span></a>
         </div>
       </div>
     </aside>
@@ -406,7 +407,7 @@
     <div class="customize__overlay" id="customize-overlay"></div>
     <aside class="customize__panel" role="dialog" aria-modal="true" aria-labelledby="customize-title">
       <header class="customize__header">
-        <h2 class="customize__title" id="customize-title">Personnaliser le portfolio</h2>
+        <h2 class="customize__title" id="customize-title" data-en="Customize portfolio">Personnaliser le portfolio</h2>
         <button type="button" class="customize__close" id="customize-close" aria-label="Fermer">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
@@ -415,35 +416,35 @@
       </header>
 
       <section class="customize__section">
-        <h3 class="customize__label">Mode d'affichage</h3>
+        <h3 class="customize__label" data-en="Display mode">Mode d'affichage</h3>
         <div class="theme-toggle" role="group" aria-label="Mode d'affichage">
           <button type="button" class="theme-toggle__btn" data-theme-value="light">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5 2 3h-4l2-3zm0 20-2-3h4l-2 3zM2 12l3-2v4l-3-2zm20 0-3 2v-4l3 2zM5.6 5.6l3.2 1.4-1.4 1.4L5.6 5.6zm12.8 0-1.8 2.8-1.4-1.4 3.2-1.4zM5.6 18.4l1.4-3.2 1.4 1.4-2.8 1.8zm12.8 0-2.8-1.8 1.4-1.4 1.4 3.2z" /></svg>
-            Clair
+            <span data-en="Light">Clair</span>
           </button>
           <button type="button" class="theme-toggle__btn" data-theme-value="dark">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36A5.39 5.39 0 0 1 12.6 3.1c-.2-.06-.4-.1-.6-.1z" /></svg>
-            Sombre
+            <span data-en="Dark">Sombre</span>
           </button>
           <button type="button" class="theme-toggle__btn" data-theme-value="system">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 3H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h6v2H8v2h8v-2h-2v-2h6a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 13H4V5h16v11z" /></svg>
-            Système
+            <span data-en="System">Système</span>
           </button>
         </div>
       </section>
 
       <section class="customize__section">
-        <h3 class="customize__label">Couleur du thème</h3>
+        <h3 class="customize__label" data-en="Theme color">Couleur du thème</h3>
         <div class="palette-grid" id="palette-grid"></div>
         <input type="color" id="custom-color-input" value="#1a73e8"
                style="position:absolute;width:0;height:0;opacity:0;pointer-events:none;" />
       </section>
 
       <section class="customize__section">
-        <h3 class="customize__label">Image de fond</h3>
+        <h3 class="customize__label" data-en="Background image">Image de fond</h3>
         <div class="bg-row">
           <div class="bg-thumb" aria-hidden="true"></div>
-          <button type="button" class="bg-edit">Modifier</button>
+          <button type="button" class="bg-edit" data-en="Edit">Modifier</button>
         </div>
       </section>
     </aside>
@@ -476,6 +477,7 @@
 
   <!-- Scripts -->
   <script src="../js/age.js" defer></script>
+  <script src="../js/i18n.js" defer></script>
   <script src="../js/navigation.js" defer></script>
   <script src="../js/search.js" defer></script>
   <script src="../js/customize.js" defer></script>

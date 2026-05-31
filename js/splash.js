@@ -38,6 +38,12 @@
     } catch (e) { return null; }   // Web Audio non supporté
   }
 
+  /* Politique « autoplay » : le Web Audio reste bloqué tant qu'il n'y a pas
+     eu d'interaction. On (re)débloque le contexte à la 1ère interaction. */
+  function unlockAudio() { getCtx(); }
+  ['pointerdown', 'keydown', 'touchstart', 'click', 'mousemove'].forEach((ev) =>
+    document.addEventListener(ev, unlockAudio, { passive: true }));
+
   /* Frappe clavier : bruit blanc bref filtré (passe-haut) */
   function playKeyClick() {
     if (muted) return;

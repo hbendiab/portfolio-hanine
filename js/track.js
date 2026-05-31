@@ -13,7 +13,7 @@
 (function () {
   'use strict';
 
-  var ENDPOINT = 'PASTE_YOUR_WEBAPP_URL_HERE';
+  var ENDPOINT = 'https://script.google.com/macros/s/AKfycbyI_bsp4FGEZLK7hy1NsclOD6LQoVVDB_oeOdjMrXBHWYFL1D__tjDNMsK2lxb0dsJO/exec';
 
   // Tant que l'URL n'est pas configurée, on ne fait rien.
   if (!ENDPOINT || ENDPOINT.indexOf('PASTE_YOUR') === 0) return;

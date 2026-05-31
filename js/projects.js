@@ -126,6 +126,7 @@
     },
     {
       hero: 'Michi',
+      heroImg: '../assets/images/michi.png',
       heroColor: '#2C2C2C',
       gradient: 'linear-gradient(135deg, #F9F5EB, #E8DCC8)',
       date: '2025',
@@ -152,7 +153,7 @@
         { label: 'Voir le site Michi', href: 'https://michimichi.framer.website', icon: 'open_in_new' },
         { label: 'Voir le code GitHub', href: 'https://github.com/Phouangvictor/Michi.git', icon: 'code', ghost: true }
       ],
-      thumbs: ['#F9F5EB', '#E8DCC8', '#d8c4a0']
+      thumbs: ['../assets/images/michi.png', '#E8DCC8', '#d8c4a0']
     }
   ];
 

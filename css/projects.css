@@ -121,37 +121,22 @@ html[data-theme="dark"] .filter-chip.is-active {
 .project-card__subtitle,
 .project-card__tags { position: relative; z-index: 1; }
 
-/* --- Carte Michi (gradient clair crème → texte foncé) --- */
-.project-card--michi .project-card__title { color: #2C2C2C; }
-.project-card--michi .project-card__subtitle { color: #5f5f5f; }
-.project-card--michi .project-tag {
-  background-color: rgba(44, 44, 44, 0.08);
-  color: #2C2C2C;
-}
-.michi-logo {
-  position: relative;
-  z-index: 1;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-style: italic;
-  font-size: 26px;
-  line-height: 1;
-  color: #2C2C2C;
-  margin-bottom: var(--space-1);
-}
+/* --- Liens en bas de carte (ex. Michi : Voir le site / GitHub) --- */
 .project-card__links {
   position: relative;
   z-index: 1;
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-3);
+  gap: var(--space-4);
   margin-top: var(--space-3);
 }
 .project-card__links a {
   font-size: 12px;
   font-weight: var(--fw-medium);
-  color: #1a73e8;
+  color: #fff;                 /* lisible sur le voile sombre de la photo */
+  text-decoration: underline;
 }
-.project-card__links a:hover { text-decoration: underline; }
+.project-card__links a:hover { opacity: 0.85; }
 
 /* --- Section « Mes contributions » dans la modale --- */
 .pmodal__contrib-grid {

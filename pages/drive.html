@@ -132,21 +132,21 @@
     <!-- ================= SIDEBAR ================= -->
     <aside class="drive-nav" aria-label="Navigation Drive">
       <button type="button" class="drive-new" aria-disabled="true" title="Démo">
-        <span class="material-symbols-outlined">add</span> Nouveau
+        <span class="material-symbols-outlined">add</span> <span data-en="New">Nouveau</span>
       </button>
 
       <nav class="drive-nav__list" aria-label="Sections">
-        <a class="drive-nav__item is-active" href="#"><span class="material-symbols-outlined">folder</span> Mon Drive</a>
-        <a class="drive-nav__item" href="#"><span class="material-symbols-outlined">group</span> Partagés avec moi</a>
-        <a class="drive-nav__item" href="#"><span class="material-symbols-outlined">schedule</span> Récents</a>
-        <a class="drive-nav__item" href="#"><span class="material-symbols-outlined">star</span> Suivi</a>
-        <a class="drive-nav__item" href="#"><span class="material-symbols-outlined">delete</span> Corbeille</a>
+        <a class="drive-nav__item is-active" href="#"><span class="material-symbols-outlined">folder</span> <span data-en="My Drive">Mon Drive</span></a>
+        <a class="drive-nav__item" href="#"><span class="material-symbols-outlined">group</span> <span data-en="Shared with me">Partagés avec moi</span></a>
+        <a class="drive-nav__item" href="#"><span class="material-symbols-outlined">schedule</span> <span data-en="Recent">Récents</span></a>
+        <a class="drive-nav__item" href="#"><span class="material-symbols-outlined">star</span> <span data-en="Starred">Suivi</span></a>
+        <a class="drive-nav__item" href="#"><span class="material-symbols-outlined">delete</span> <span data-en="Trash">Corbeille</span></a>
       </nav>
 
       <div class="drive-storage">
         <div class="drive-storage__bar"><div class="drive-storage__fill"></div></div>
-        <p class="drive-storage__text">1,2 Go utilisés sur 15 Go</p>
-        <a class="drive-storage__link" href="#">Acheter de l'espace de stockage 😉</a>
+        <p class="drive-storage__text" data-en="1.2 GB used of 15 GB">1,2 Go utilisés sur 15 Go</p>
+        <a class="drive-storage__link" href="#" data-en="Buy more storage 😉">Acheter de l'espace de stockage 😉</a>
       </div>
     </aside>
 
@@ -160,8 +160,8 @@
             <span class="material-symbols-outlined">menu</span>
           </button>
           <div>
-            <h1 class="drive-toolbar__title">Mes documents</h1>
-            <p class="drive-toolbar__subtitle">CV, lettres et certificats · Tout ce dont vous avez besoin pour me connaître</p>
+            <h1 class="drive-toolbar__title" data-en="My documents">Mes documents</h1>
+            <p class="drive-toolbar__subtitle" data-en="CV, letters and certificates · Everything you need to get to know me">CV, lettres et certificats · Tout ce dont vous avez besoin pour me connaître</p>
           </div>
         </div>
         <div class="drive-toolbar__actions">
@@ -170,81 +170,81 @@
             <button type="button" class="view-toggle__btn" id="view-grid" aria-label="Vue grille"><span class="material-symbols-outlined">grid_view</span></button>
           </div>
           <a class="exp-btn exp-btn--primary" href="#" download>
-            <span class="material-symbols-outlined">download</span> Tout télécharger en .zip
+            <span class="material-symbols-outlined">download</span> <span data-en="Download all as .zip">Tout télécharger en .zip</span>
           </a>
         </div>
       </div>
 
       <!-- ===== Accès rapide ===== -->
-      <p class="drive-section-title">Accès rapide</p>
+      <p class="drive-section-title" data-en="Quick access">Accès rapide</p>
       <section class="quick-grid" aria-label="Accès rapide">
         <a class="quick-card" href="../assets/documents/CV-Hanine-Bendiab.pdf" download>
           <span class="quick-card__icon material-symbols-outlined" style="color: var(--google-blue);">description</span>
           <p class="quick-card__title">CV - Hanine Bendiab.pdf</p>
-          <p class="quick-card__sub">Modifié il y a 2 jours</p>
+          <p class="quick-card__sub" data-en="Edited 2 days ago">Modifié il y a 2 jours</p>
         </a>
         <a class="quick-card" href="../assets/documents/Lettre-de-motivation.pdf" download>
           <span class="quick-card__icon material-symbols-outlined" style="color: var(--google-red);">drafts</span>
-          <p class="quick-card__title">Lettre de motivation.pdf</p>
-          <p class="quick-card__sub">Modifié il y a 2 jours</p>
+          <p class="quick-card__title" data-en="Cover letter.pdf">Lettre de motivation.pdf</p>
+          <p class="quick-card__sub" data-en="Edited 2 days ago">Modifié il y a 2 jours</p>
         </a>
         <a class="quick-card" href="../assets/documents/Reco-Alice-Perron.pdf" download>
           <span class="quick-card__icon material-symbols-outlined" style="color: #f9a825;">workspace_premium</span>
-          <p class="quick-card__title">Reco Alice Perron - SNCF.pdf</p>
-          <p class="quick-card__sub">Tutrice · Mars 2025</p>
+          <p class="quick-card__title" data-en="Recommendation Alice Perron - SNCF.pdf">Reco Alice Perron - SNCF.pdf</p>
+          <p class="quick-card__sub" data-en="Mentor · March 2025">Tutrice · Mars 2025</p>
         </a>
         <a class="quick-card" href="../assets/documents/Notes-Master-S1.pdf" download>
           <span class="quick-card__icon material-symbols-outlined" style="color: var(--google-green);">grading</span>
-          <p class="quick-card__title">Notes Master S1.pdf</p>
-          <p class="quick-card__sub">Eugenia · Janvier 2026</p>
+          <p class="quick-card__title" data-en="Master S1 grades.pdf">Notes Master S1.pdf</p>
+          <p class="quick-card__sub" data-en="Eugenia · January 2026">Eugenia · Janvier 2026</p>
         </a>
       </section>
 
       <!-- ===== Dossiers ===== -->
-      <p class="drive-section-title">Dossiers (5)</p>
+      <p class="drive-section-title" data-en="Folders (5)">Dossiers (5)</p>
       <section class="folder-grid" aria-label="Dossiers">
         <button type="button" class="folder-card" data-folder="data-ia">
           <span class="folder-card__icon material-symbols-outlined" style="color: var(--google-yellow);">folder</span>
           <span class="folder-card__body">
-            <span class="folder-card__title">Projets data &amp; IA</span>
-            <span class="folder-card__meta">8 fichiers · 24 Mo</span>
+            <span class="folder-card__title" data-en="Data &amp; AI projects">Projets data &amp; IA</span>
+            <span class="folder-card__meta" data-en="8 files · 24 MB">8 fichiers · 24 Mo</span>
           </span>
         </button>
         <button type="button" class="folder-card" data-folder="admin">
           <span class="folder-card__icon material-symbols-outlined" style="color: var(--google-blue);">folder</span>
           <span class="folder-card__body">
-            <span class="folder-card__title">Documents administratifs</span>
-            <span class="folder-card__meta">3 fichiers · 4 Mo</span>
+            <span class="folder-card__title" data-en="Administrative documents">Documents administratifs</span>
+            <span class="folder-card__meta" data-en="3 files · 4 MB">3 fichiers · 4 Mo</span>
           </span>
         </button>
         <button type="button" class="folder-card" data-folder="certif">
           <span class="folder-card__icon material-symbols-outlined" style="color: var(--google-green);">folder</span>
           <span class="folder-card__body">
             <span class="folder-card__title">Certifications</span>
-            <span class="folder-card__meta">TOEIC, attestations · 5 Mo</span>
+            <span class="folder-card__meta" data-en="TOEIC, certificates · 5 MB">TOEIC, attestations · 5 Mo</span>
           </span>
         </button>
         <button type="button" class="folder-card" data-folder="presentations">
           <span class="folder-card__icon material-symbols-outlined" style="color: var(--google-red);">folder</span>
           <span class="folder-card__body">
-            <span class="folder-card__title">Présentations &amp; pitches</span>
-            <span class="folder-card__meta">Mirakl, PayFit, SEO · 12 Mo</span>
+            <span class="folder-card__title" data-en="Presentations &amp; pitches">Présentations &amp; pitches</span>
+            <span class="folder-card__meta" data-en="Mirakl, PayFit, SEO · 12 MB">Mirakl, PayFit, SEO · 12 Mo</span>
           </span>
         </button>
         <button type="button" class="folder-card" data-folder="visuels">
           <span class="folder-card__icon material-symbols-outlined" style="color: #9334e6;">folder</span>
           <span class="folder-card__body">
-            <span class="folder-card__title">Photos campagnes &amp; événements</span>
-            <span class="folder-card__meta">JEP 2025, Hackathon · 18 Mo</span>
+            <span class="folder-card__title" data-en="Campaign &amp; event photos">Photos campagnes &amp; événements</span>
+            <span class="folder-card__meta" data-en="EHD 2025, Hackathon · 18 MB">JEP 2025, Hackathon · 18 Mo</span>
           </span>
         </button>
       </section>
 
       <!-- ===== Documents récents ===== -->
-      <p class="drive-section-title">Documents récents</p>
+      <p class="drive-section-title" data-en="Recent documents">Documents récents</p>
       <section class="recent" aria-label="Documents récents">
         <div class="recent__head">
-          <span>Nom</span><span>Propriétaire</span><span>Dernière modification</span><span>Taille</span><span></span>
+          <span data-en="Name">Nom</span><span data-en="Owner">Propriétaire</span><span data-en="Last modified">Dernière modification</span><span data-en="Size">Taille</span><span></span>
         </div>
 
         <div class="doc-list">
@@ -254,15 +254,15 @@
               <span class="doc-ico doc-ico--pdf material-symbols-outlined">picture_as_pdf</span>
               <span class="doc-name__text">CV - Hanine Bendiab.pdf</span>
             </a>
-            <span class="doc-meta doc-meta--owner">Moi</span>
-            <span class="doc-meta doc-meta--date">il y a 2 jours</span>
+            <span class="doc-meta doc-meta--owner" data-en="Me">Moi</span>
+            <span class="doc-meta doc-meta--date" data-en="2 days ago">il y a 2 jours</span>
             <span class="doc-meta">1,2 Mo</span>
             <span class="doc-actions">
               <button type="button" class="doc-actions__btn" aria-label="Actions"><span class="material-symbols-outlined">more_vert</span></button>
               <div class="doc-menu" hidden>
-                <button type="button" data-action="download"><span class="material-symbols-outlined">download</span> Télécharger</button>
-                <button type="button" data-action="share"><span class="material-symbols-outlined">share</span> Partager</button>
-                <button type="button" data-action="detail"><span class="material-symbols-outlined">info</span> Voir le détail</button>
+                <button type="button" data-action="download"><span class="material-symbols-outlined">download</span> <span data-en="Download">Télécharger</span></button>
+                <button type="button" data-action="share"><span class="material-symbols-outlined">share</span> <span data-en="Share">Partager</span></button>
+                <button type="button" data-action="detail"><span class="material-symbols-outlined">info</span> <span data-en="See details">Voir le détail</span></button>
               </div>
             </span>
           </div>
@@ -271,17 +271,17 @@
           <div class="doc-row">
             <a class="doc-name" href="../assets/documents/Lettre-de-motivation.pdf" download>
               <span class="doc-ico doc-ico--pdf material-symbols-outlined">picture_as_pdf</span>
-              <span class="doc-name__text">Lettre de motivation Master 2.pdf</span>
+              <span class="doc-name__text" data-en="Cover letter Master 2.pdf">Lettre de motivation Master 2.pdf</span>
             </a>
-            <span class="doc-meta doc-meta--owner">Moi</span>
-            <span class="doc-meta doc-meta--date">il y a 5 jours</span>
+            <span class="doc-meta doc-meta--owner" data-en="Me">Moi</span>
+            <span class="doc-meta doc-meta--date" data-en="5 days ago">il y a 5 jours</span>
             <span class="doc-meta">0,8 Mo</span>
             <span class="doc-actions">
               <button type="button" class="doc-actions__btn" aria-label="Actions"><span class="material-symbols-outlined">more_vert</span></button>
               <div class="doc-menu" hidden>
-                <button type="button" data-action="download"><span class="material-symbols-outlined">download</span> Télécharger</button>
-                <button type="button" data-action="share"><span class="material-symbols-outlined">share</span> Partager</button>
-                <button type="button" data-action="detail"><span class="material-symbols-outlined">info</span> Voir le détail</button>
+                <button type="button" data-action="download"><span class="material-symbols-outlined">download</span> <span data-en="Download">Télécharger</span></button>
+                <button type="button" data-action="share"><span class="material-symbols-outlined">share</span> <span data-en="Share">Partager</span></button>
+                <button type="button" data-action="detail"><span class="material-symbols-outlined">info</span> <span data-en="See details">Voir le détail</span></button>
               </div>
             </span>
           </div>
@@ -293,14 +293,14 @@
               <span class="doc-name__text">Reco Alice Perron - SNCF.pdf</span>
             </a>
             <span class="doc-meta doc-meta--owner">Alice Perron</span>
-            <span class="doc-meta doc-meta--date">28 mars 2025</span>
+            <span class="doc-meta doc-meta--date" data-en="28 March 2025">28 mars 2025</span>
             <span class="doc-meta">0,6 Mo</span>
             <span class="doc-actions">
               <button type="button" class="doc-actions__btn" aria-label="Actions"><span class="material-symbols-outlined">more_vert</span></button>
               <div class="doc-menu" hidden>
-                <button type="button" data-action="download"><span class="material-symbols-outlined">download</span> Télécharger</button>
-                <button type="button" data-action="share"><span class="material-symbols-outlined">share</span> Partager</button>
-                <button type="button" data-action="detail"><span class="material-symbols-outlined">info</span> Voir le détail</button>
+                <button type="button" data-action="download"><span class="material-symbols-outlined">download</span> <span data-en="Download">Télécharger</span></button>
+                <button type="button" data-action="share"><span class="material-symbols-outlined">share</span> <span data-en="Share">Partager</span></button>
+                <button type="button" data-action="detail"><span class="material-symbols-outlined">info</span> <span data-en="See details">Voir le détail</span></button>
               </div>
             </span>
           </div>
@@ -311,15 +311,15 @@
               <span class="doc-ico doc-ico--ppt material-symbols-outlined">slideshow</span>
               <span class="doc-name__text">Mirakl Talent Intelligence - Pitch.pptx</span>
             </a>
-            <span class="doc-meta doc-meta--owner">Moi</span>
-            <span class="doc-meta doc-meta--date">il y a 1 semaine</span>
+            <span class="doc-meta doc-meta--owner" data-en="Me">Moi</span>
+            <span class="doc-meta doc-meta--date" data-en="1 week ago">il y a 1 semaine</span>
             <span class="doc-meta">8,4 Mo</span>
             <span class="doc-actions">
               <button type="button" class="doc-actions__btn" aria-label="Actions"><span class="material-symbols-outlined">more_vert</span></button>
               <div class="doc-menu" hidden>
-                <button type="button" data-action="download"><span class="material-symbols-outlined">download</span> Télécharger</button>
-                <button type="button" data-action="share"><span class="material-symbols-outlined">share</span> Partager</button>
-                <button type="button" data-action="detail"><span class="material-symbols-outlined">info</span> Voir le détail</button>
+                <button type="button" data-action="download"><span class="material-symbols-outlined">download</span> <span data-en="Download">Télécharger</span></button>
+                <button type="button" data-action="share"><span class="material-symbols-outlined">share</span> <span data-en="Share">Partager</span></button>
+                <button type="button" data-action="detail"><span class="material-symbols-outlined">info</span> <span data-en="See details">Voir le détail</span></button>
               </div>
             </span>
           </div>
@@ -328,17 +328,17 @@
           <div class="doc-row">
             <a class="doc-name" href="../assets/documents/Audit-SEO-Eugenia.pdf" download>
               <span class="doc-ico doc-ico--pdf material-symbols-outlined">picture_as_pdf</span>
-              <span class="doc-name__text">Audit SEO Eugenia School - Synthèse.pdf</span>
+              <span class="doc-name__text" data-en="Eugenia School SEO Audit - Summary.pdf">Audit SEO Eugenia School - Synthèse.pdf</span>
             </a>
-            <span class="doc-meta doc-meta--owner">Moi</span>
-            <span class="doc-meta doc-meta--date">il y a 2 semaines</span>
+            <span class="doc-meta doc-meta--owner" data-en="Me">Moi</span>
+            <span class="doc-meta doc-meta--date" data-en="2 weeks ago">il y a 2 semaines</span>
             <span class="doc-meta">3,2 Mo</span>
             <span class="doc-actions">
               <button type="button" class="doc-actions__btn" aria-label="Actions"><span class="material-symbols-outlined">more_vert</span></button>
               <div class="doc-menu" hidden>
-                <button type="button" data-action="download"><span class="material-symbols-outlined">download</span> Télécharger</button>
-                <button type="button" data-action="share"><span class="material-symbols-outlined">share</span> Partager</button>
-                <button type="button" data-action="detail"><span class="material-symbols-outlined">info</span> Voir le détail</button>
+                <button type="button" data-action="download"><span class="material-symbols-outlined">download</span> <span data-en="Download">Télécharger</span></button>
+                <button type="button" data-action="share"><span class="material-symbols-outlined">share</span> <span data-en="Share">Partager</span></button>
+                <button type="button" data-action="detail"><span class="material-symbols-outlined">info</span> <span data-en="See details">Voir le détail</span></button>
               </div>
             </span>
           </div>
@@ -347,17 +347,17 @@
           <div class="doc-row">
             <a class="doc-name" href="../assets/documents/Notes-Master-S1.pdf" download>
               <span class="doc-ico doc-ico--pdf material-symbols-outlined">picture_as_pdf</span>
-              <span class="doc-name__text">Notes Master S1 - Eugenia.pdf</span>
+              <span class="doc-name__text" data-en="Master S1 grades - Eugenia.pdf">Notes Master S1 - Eugenia.pdf</span>
             </a>
-            <span class="doc-meta doc-meta--owner">Moi (Eugenia School)</span>
-            <span class="doc-meta doc-meta--date">Janvier 2026</span>
+            <span class="doc-meta doc-meta--owner" data-en="Me (Eugenia School)">Moi (Eugenia School)</span>
+            <span class="doc-meta doc-meta--date" data-en="January 2026">Janvier 2026</span>
             <span class="doc-meta">0,4 Mo</span>
             <span class="doc-actions">
               <button type="button" class="doc-actions__btn" aria-label="Actions"><span class="material-symbols-outlined">more_vert</span></button>
               <div class="doc-menu" hidden>
-                <button type="button" data-action="download"><span class="material-symbols-outlined">download</span> Télécharger</button>
-                <button type="button" data-action="share"><span class="material-symbols-outlined">share</span> Partager</button>
-                <button type="button" data-action="detail"><span class="material-symbols-outlined">info</span> Voir le détail</button>
+                <button type="button" data-action="download"><span class="material-symbols-outlined">download</span> <span data-en="Download">Télécharger</span></button>
+                <button type="button" data-action="share"><span class="material-symbols-outlined">share</span> <span data-en="Share">Partager</span></button>
+                <button type="button" data-action="detail"><span class="material-symbols-outlined">info</span> <span data-en="See details">Voir le détail</span></button>
               </div>
             </span>
           </div>
@@ -368,15 +368,15 @@
               <span class="doc-ico doc-ico--pdf material-symbols-outlined">picture_as_pdf</span>
               <span class="doc-name__text">TOEIC - Score C1.pdf</span>
             </a>
-            <span class="doc-meta doc-meta--owner">Moi</span>
+            <span class="doc-meta doc-meta--owner" data-en="Me">Moi</span>
             <span class="doc-meta doc-meta--date">2024</span>
             <span class="doc-meta">0,3 Mo</span>
             <span class="doc-actions">
               <button type="button" class="doc-actions__btn" aria-label="Actions"><span class="material-symbols-outlined">more_vert</span></button>
               <div class="doc-menu" hidden>
-                <button type="button" data-action="download"><span class="material-symbols-outlined">download</span> Télécharger</button>
-                <button type="button" data-action="share"><span class="material-symbols-outlined">share</span> Partager</button>
-                <button type="button" data-action="detail"><span class="material-symbols-outlined">info</span> Voir le détail</button>
+                <button type="button" data-action="download"><span class="material-symbols-outlined">download</span> <span data-en="Download">Télécharger</span></button>
+                <button type="button" data-action="share"><span class="material-symbols-outlined">share</span> <span data-en="Share">Partager</span></button>
+                <button type="button" data-action="detail"><span class="material-symbols-outlined">info</span> <span data-en="See details">Voir le détail</span></button>
               </div>
             </span>
           </div>
@@ -389,21 +389,21 @@
        SECTION « Vous pourriez aussi consulter »
        ==================================================================== -->
   <section class="suggest" aria-label="Autres pages">
-    <h2 class="suggest__title">Vous pourriez aussi consulter</h2>
+    <h2 class="suggest__title" data-en="You might also check">Vous pourriez aussi consulter</h2>
     <div class="suggest-grid">
       <a class="suggest-card" href="experiences.html">
         <span class="suggest-card__icon" style="background-color: var(--google-yellow);"><span class="material-symbols-outlined">work</span></span>
-        <span class="suggest-card__title">Mes expériences pro</span>
+        <span class="suggest-card__title" data-en="My work experience">Mes expériences pro</span>
         <span class="suggest-card__arrow material-symbols-outlined">arrow_forward</span>
       </a>
       <a class="suggest-card" href="formation.html">
         <span class="suggest-card__icon" style="background-color: var(--google-green);"><span class="material-symbols-outlined">school</span></span>
-        <span class="suggest-card__title">Mon parcours académique</span>
+        <span class="suggest-card__title" data-en="My academic background">Mon parcours académique</span>
         <span class="suggest-card__arrow material-symbols-outlined">arrow_forward</span>
       </a>
       <a class="suggest-card" href="stack.html">
         <span class="suggest-card__icon" style="background-color: var(--google-blue);"><span class="material-symbols-outlined">build</span></span>
-        <span class="suggest-card__title">Mes compétences</span>
+        <span class="suggest-card__title" data-en="My skills">Mes compétences</span>
         <span class="suggest-card__arrow material-symbols-outlined">arrow_forward</span>
       </a>
     </div>
@@ -416,7 +416,7 @@
     <div class="drive-modal__overlay"></div>
     <div class="drive-modal__dialog">
       <div class="drive-modal__head">
-        <h2 class="drive-modal__title" id="drive-modal-title">Dossier</h2>
+        <h2 class="drive-modal__title" id="drive-modal-title" data-en="Folder">Dossier</h2>
         <button type="button" class="drive-modal__close" id="drive-modal-close" aria-label="Fermer">
           <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true">
             <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />

@@ -37,6 +37,29 @@ body {
 }
 
 /* --------------------------------------------------------------------------
+   Icône son (SVG Material) — clignote, clic = muet
+   -------------------------------------------------------------------------- */
+.sound-icon {
+  display: block;
+  margin: 0 auto 24px;
+  padding: 0;
+  line-height: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #5f6368;                       /* gris Google sobre */
+  animation: soundPulse 1.8s ease-in-out infinite;
+}
+.sound-icon svg { width: 24px; height: 24px; display: block; }
+/* Son coupé : animation stoppée, opacité fixe */
+.sound-icon--muted { animation: none; opacity: 0.4; }
+
+@keyframes soundPulse {
+  0%, 100% { opacity: 1;    color: #5f6368; }
+  50%      { opacity: 0.25; color: #5f6368; }
+}
+
+/* --------------------------------------------------------------------------
    Élément 1 : la phrase
    -------------------------------------------------------------------------- */
 .splash-phrase {

@@ -20,6 +20,23 @@ body {
 }
 
 /* --------------------------------------------------------------------------
+   Emoji (style Google / Noto) au-dessus de la phrase
+   -------------------------------------------------------------------------- */
+.splash-emoji {
+  display: block;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 28px;
+  opacity: 0;
+  animation: fadeUp 0.9s ease-out 0.2s forwards,
+             emojiFloat 3s ease-in-out 1.1s infinite;
+}
+@keyframes emojiFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+/* --------------------------------------------------------------------------
    Élément 1 : la phrase
    -------------------------------------------------------------------------- */
 .splash-phrase {
@@ -154,6 +171,7 @@ body {
    -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
   body { padding: 32px; }
+  .splash-emoji { width: 56px; height: 56px; margin-bottom: 20px; }
   .splash-phrase { font-size: 22px; }
   .splash-bar div { width: 36px; }
   .splash-digits { gap: 16px; }

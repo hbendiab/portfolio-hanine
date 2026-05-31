@@ -105,6 +105,9 @@ html[data-theme="dark"] .filter-chip.is-active {
   height: 100%;
   object-fit: cover;
   z-index: 0;
+  /* léger flou pour garder le titre lisible (scale pour masquer les bords) */
+  filter: blur(2px);
+  transform: scale(1.06);
 }
 /* Voile sombre pour garder le texte blanc lisible sur la photo */
 .project-card:has(.project-card__img)::after {

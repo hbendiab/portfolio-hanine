@@ -89,12 +89,22 @@
   margin-top: var(--space-4);
 }
 .skill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   padding: 5px 12px;
   border-radius: var(--radius-pill);
   background-color: #fff;
   color: var(--c-dark);
   font-size: 13px;
   transition: background-color var(--transition-fast);
+}
+/* Logo de l'outil (injecté par JS) */
+.skill-chip__logo {
+  width: 15px;
+  height: 15px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 /* Hover : le blanc passe au pastel de la carte */
 .skill-chip:hover {

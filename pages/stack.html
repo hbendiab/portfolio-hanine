@@ -399,6 +399,50 @@
     })();
   </script>
 
+  <!-- Injection des logos d'outils (Simple Icons + Devicon, fallback texte) -->
+  <script>
+    (function () {
+      var SI = 'https://cdn.simpleicons.org/';
+      var DEV = 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/';
+      // [ mot-clé à détecter dans le chip , URL du logo ] — ordre = priorité
+      var MAP = [
+        ['scikit',        SI + 'scikitlearn'],
+        ['google sheets', SI + 'googlesheets'],
+        ['python',        SI + 'python'],
+        ['pandas',        SI + 'pandas'],
+        ['numpy',         SI + 'numpy'],
+        ['spark',         SI + 'apachespark'],
+        ['plotly',        SI + 'plotly'],
+        ['claude',        SI + 'anthropic'],
+        ['langchain',     SI + 'langchain'],
+        ['n8n',           SI + 'n8n'],
+        ['zapier',        SI + 'zapier'],
+        ['make',          SI + 'make'],
+        ['playwright',    DEV + 'playwright/playwright-original.svg'],
+        ['wordpress',     SI + 'wordpress'],
+        ['wix',           SI + 'wix'],
+        ['brevo',         SI + 'brevo'],
+        ['figma',         SI + 'figma']
+      ];
+      var chips = document.querySelectorAll('.skill-chip');
+      Array.prototype.forEach.call(chips, function (chip) {
+        var t = chip.textContent.toLowerCase();
+        for (var i = 0; i < MAP.length; i++) {
+          if (t.indexOf(MAP[i][0]) !== -1) {
+            var img = document.createElement('img');
+            img.className = 'skill-chip__logo';
+            img.src = MAP[i][1];
+            img.alt = '';
+            img.loading = 'lazy';
+            img.onerror = function () { this.remove(); }; // fallback : texte seul
+            chip.insertBefore(img, chip.firstChild);
+            break;
+          }
+        }
+      });
+    })();
+  </script>
+
   <!-- Scripts -->
   <script src="../js/navigation.js" defer></script>
   <script src="../js/search.js" defer></script>

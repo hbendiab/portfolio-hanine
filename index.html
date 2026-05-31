@@ -5,9 +5,10 @@
   <!-- Responsive : indispensable pour le mobile-first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Splash screen : si pas encore vu dans la session, on y redirige -->
+  <!-- Splash à CHAQUE arrivée sur l'accueil.
+       Seule exception : on arrive juste du splash (sinon boucle infinie). -->
   <script>
-    if (!sessionStorage.getItem('splashSeen')) {
+    if (!/splash\.html(\?|#|$)/.test(document.referrer)) {
       window.location.replace('splash.html');
     }
   </script>

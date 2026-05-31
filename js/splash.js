@@ -6,16 +6,6 @@
 (() => {
   'use strict';
 
-  // Accès sécurisé à sessionStorage (peut être bloqué en navigation privée stricte)
-  const safeGet = (k) => { try { return sessionStorage.getItem(k); } catch (e) { return null; } };
-  const safeSet = (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) {} };
-
-  // Si le splash a déjà été vu dans la session -> on file direct à l'accueil
-  if (safeGet('splashSeen')) {
-    window.location.replace('index.html');
-    return;
-  }
-
   const segColors = ['#4285f4', '#ea4335', '#fbbc04', '#34a853'];
   const cdColors  = ['#4285f4', '#ea4335', '#fbbc04', '#34a853'];
   const cdBg      = ['#e8f0fe', '#fce8e6', '#fef7e0', '#e6f4ea'];
@@ -102,7 +92,6 @@
   function triggerTransition() {
     if (done) return;
     done = true;
-    safeSet('splashSeen', 'true');
     // Fondu blanc puis redirection
     document.body.style.transition = 'opacity 0.8s ease';
     document.body.style.opacity = '0';

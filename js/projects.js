@@ -12,6 +12,7 @@
   const PROJECTS = [
     {
       hero: 'Mirakl',
+      heroImg: '../assets/images/Mirakl_IMG_1163.JPG',
       gradient: 'linear-gradient(135deg, #1a73e8, #34a853)',
       date: '2026',
       category: 'Data & IA',
@@ -33,16 +34,27 @@
         { label: 'Voir la démo', href: '#', icon: 'play_circle' },
         { label: 'Lire l\'étude de cas', href: '#', icon: 'description', ghost: true }
       ],
-      thumbs: ['#1a73e8', '#34a853', '#0a8043', '#185abc'],
+      thumbs: [
+        '../assets/images/Mirakl_IMG_3355.jpeg',
+        '../assets/images/Mirakl_IMG_7519.JPG',
+        '../assets/images/Mirakl_IMG_9207.JPG',
+        '../assets/images/Mirakl_IMG_9240.JPG'
+      ],
       photos: [
-        { label: 'Équipe Hackathon', bg: 'linear-gradient(135deg,#1a73e8,#4285f4)' },
-        { label: 'Pitch final', bg: 'linear-gradient(135deg,#34a853,#0a8043)' },
-        { label: 'Démo live', bg: 'linear-gradient(135deg,#185abc,#1a73e8)' },
-        { label: 'Remise des prix', bg: 'linear-gradient(135deg,#0a8043,#34a853)' }
+        { img: '../assets/images/Mirakl_IMG_3355.jpeg' },
+        { img: '../assets/images/Mirakl_IMG_7519.JPG' },
+        { img: '../assets/images/Mirakl_IMG_9207.JPG' },
+        { img: '../assets/images/Mirakl_IMG_9240.JPG' },
+        { img: '../assets/images/Mirakl_IMG_9555.JPG' },
+        { img: '../assets/images/Mirakl_IMG_9570.JPG' },
+        { img: '../assets/images/Mirakl_IMG_9578.JPG' },
+        { img: '../assets/images/Mirakl_IMG_9583.JPG' },
+        { img: '../assets/images/Mirakl_IMG_9593.JPG' }
       ]
     },
     {
       hero: 'PayFit',
+      heroImg: '../assets/images/Payfit_IMG_7852.JPG',
       gradient: 'linear-gradient(135deg, #1a73e8, #4285f4)',
       date: '2026',
       category: 'Data & IA',
@@ -62,7 +74,11 @@
         { label: 'Voir la démo', href: '#', icon: 'play_circle' },
         { label: 'Lire l\'étude de cas', href: '#', icon: 'description', ghost: true }
       ],
-      thumbs: ['#1a73e8', '#4285f4', '#185abc']
+      thumbs: ['../assets/images/Payfit_IMG_7852.JPG', '../assets/images/Payfit_IMG_7883.JPG'],
+      photos: [
+        { img: '../assets/images/Payfit_IMG_7852.JPG' },
+        { img: '../assets/images/Payfit_IMG_7883.JPG' }
+      ]
     },
     {
       hero: 'SEO / GEO',
@@ -240,16 +256,29 @@
     if (!p) return;
     current = index;
 
+    // Visuel principal : image si dispo (gradient en fallback), sinon lettre
     el.hero.style.background = p.gradient;
-    el.hero.textContent = p.hero;
+    if (p.heroImg) {
+      el.hero.innerHTML = '<img src="' + p.heroImg + '" alt="" onerror="this.remove()">';
+    } else {
+      el.hero.textContent = p.hero;
+    }
 
-    el.thumbs.innerHTML = (p.thumbs || [])
-      .map((c) => `<div class="pmodal__thumb" style="background:${c}"></div>`).join('');
+    // Miniatures : image (chemin) ou couleur
+    el.thumbs.innerHTML = (p.thumbs || []).map((t) =>
+      t.indexOf('/') !== -1
+        ? '<div class="pmodal__thumb" style="background-image:url(' + t + ')"></div>'
+        : '<div class="pmodal__thumb" style="background:' + t + '"></div>'
+    ).join('');
 
+    // Photos : image ou gradient + libellé
     if (p.photos && p.photos.length) {
       el.photosW.style.display = '';
-      el.photos.innerHTML = p.photos
-        .map((ph) => `<div class="pmodal__photo" style="background:${ph.bg}">${escape(ph.label)}</div>`).join('');
+      el.photos.innerHTML = p.photos.map((ph) =>
+        ph.img
+          ? '<div class="pmodal__photo"><img src="' + ph.img + '" alt="" onerror="this.remove()"></div>'
+          : '<div class="pmodal__photo" style="background:' + ph.bg + '">' + escape(ph.label || '') + '</div>'
+      ).join('');
     } else {
       el.photosW.style.display = 'none';
     }

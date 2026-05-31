@@ -2,3 +2,6 @@
 *.log
 .vscode/
 node_modules/
+
+# Vidéos lourdes (dépassent la limite GitHub 100 Mo)
+*.mov

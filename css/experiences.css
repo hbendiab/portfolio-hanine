@@ -139,6 +139,17 @@ html[data-theme="dark"] .filter-chip.is-active {
   font-size: 14px;
   text-align: center;
 }
+/* Logo en image (entreprise) : fond blanc + contain */
+.xp-logo--img {
+  background-color: #fff;
+  padding: 4px;
+}
+.xp-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .xp-card__heading { flex: 1; min-width: 0; }
 .xp-card__title {
   font-size: 16px;

@@ -57,6 +57,16 @@
   0%, 100% { transform: translateY(0); }
   50%      { transform: translateY(-4px); }
 }
+/* Photo de profil dans l'avatar (clippée en rond) */
+.hero-avatar__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-pill);
+  object-fit: cover;
+  object-position: center top;
+}
 .hero-avatar__dot {
   position: absolute;
   bottom: 4px;

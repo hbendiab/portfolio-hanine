@@ -41,6 +41,13 @@
         followup: ["Parle-moi du projet Mirakl", "Ta stack technique ?"]
       }
     },
+    michi: {
+      keywords: ['michi', 'matching', 'santé mentale', 'sante mentale', 'praticien', 'hackathon gagné', 'hackathon gagne', 'premier prix', '1er prix'],
+      response: {
+        text: "Michi c'est mon projet dont je suis la plus fière ! 🏆\n\nUne plateforme de matching santé mentale créée en 1 semaine lors d'un hackathon avec 5 coéquipiers.\n\nLe concept : connecter les patients avec le BON praticien via des agents IA, pas juste un annuaire.\n\nMon rôle : prompt engineering des agents de matching + direction artistique + stratégie de positionnement.\n\nRésultat : 🥇 1er prix du hackathon ! Le site est toujours live : michimichi.framer.website",
+        followup: ["Voir le site Michi", "Tes autres projets ?", "Comment tu as fait le matching IA ?"]
+      }
+    },
     mirakl: {
       keywords: ['mirakl', 'hackathon', 'talent intelligence'],
       response: {

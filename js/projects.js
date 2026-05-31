@@ -145,6 +145,36 @@
         { label: 'Lire l\'étude de cas', href: '#', icon: 'description', ghost: true }
       ],
       thumbs: ['#5f6368', '#9aa0a6', '#3c4043']
+    },
+    {
+      hero: 'Michi',
+      heroColor: '#2C2C2C',
+      gradient: 'linear-gradient(135deg, #F9F5EB, #E8DCC8)',
+      date: '2025',
+      category: 'Hackathon · 1er Prix 🏆',
+      title: 'Michi — Plateforme de matching santé mentale',
+      desc: [
+        'Michi est une startup de matching santé mentale née lors d\'un hackathon d\'une semaine. Le concept : ne pas être un simple annuaire de praticiens, mais un véritable agent de connexion expert qui analyse la personnalité et les besoins uniques de chaque patient pour trouver le bon praticien.',
+        'L\'équipe de 6 personnes a livré en une semaine une landing page complète sur Framer et une application web de matching sur Lovable. Le projet a remporté le 1er prix du hackathon.'
+      ],
+      contributions: [
+        { icon: '🧠', bg: '#e8f0fe', title: 'Agents IA', desc: 'Conception et optimisation des prompts des agents IA responsables du matching patient-praticien.' },
+        { icon: '🎨', bg: '#fef7e0', title: 'Direction Artistique', desc: 'Identité visuelle de Michi, design de la landing page Framer, charte graphique et univers de marque.' },
+        { icon: '📣', bg: '#e6f4ea', title: 'Positionnement', desc: 'Définition du positionnement stratégique : « pas un annuaire, un agent de connexion expert ».' }
+      ],
+      stack: ['Framer', 'Lovable', 'Prompt Engineering', 'IA générative', 'Figma', 'Stratégie de marque'],
+      role: 'Prompt engineering des agents de matching, direction artistique et stratégie de positionnement.',
+      results: [
+        '🏆 1er prix du hackathon',
+        '✅ Site live accessible',
+        '✅ App de matching fonctionnelle',
+        '✅ Équipe de 6 personnes coordonnée en 1 semaine'
+      ],
+      links: [
+        { label: 'Voir le site Michi', href: 'https://michimichi.framer.website', icon: 'open_in_new' },
+        { label: 'Voir le code GitHub', href: 'https://github.com/Phouangvictor/Michi.git', icon: 'code', ghost: true }
+      ],
+      thumbs: ['#F9F5EB', '#E8DCC8', '#d8c4a0']
     }
   ];
 
@@ -172,7 +202,8 @@
     stack:   document.getElementById('pmodal-stack'),
     role:    document.getElementById('pmodal-role'),
     results: document.getElementById('pmodal-results'),
-    links:   document.getElementById('pmodal-links')
+    links:   document.getElementById('pmodal-links'),
+    contributions: document.getElementById('pmodal-contributions')
   };
 
   let current = 0;
@@ -192,6 +223,7 @@
 
     // Visuel principal : image si dispo (gradient en fallback), sinon lettre
     el.hero.style.background = p.gradient;
+    el.hero.style.color = p.heroColor || '#fff';   // texte foncé sur gradient clair (Michi)
     if (p.heroImg) {
       el.hero.innerHTML = '<img src="' + p.heroImg + '" alt="" onerror="this.remove()">';
     } else {
@@ -220,12 +252,28 @@
     el.meta.textContent  = `${p.date} · ${p.category}`;
     el.title.textContent = p.title;
     el.desc.innerHTML    = p.desc.map((t) => `<p>${escape(t)}</p>`).join('');
+
+    // Section « Mes contributions » (seulement si le projet en a)
+    if (el.contributions) {
+      el.contributions.innerHTML = (p.contributions && p.contributions.length)
+        ? '<p class="pmodal__section-title">Mes contributions</p><div class="pmodal__contrib-grid">' +
+          p.contributions.map((c) =>
+            `<div class="pmodal__contrib" style="background:${c.bg}">` +
+            `<span class="pmodal__contrib-ico">${c.icon}</span>` +
+            `<span class="pmodal__contrib-title">${escape(c.title)}</span>` +
+            `<span class="pmodal__contrib-desc">${escape(c.desc)}</span></div>`).join('') +
+          '</div>'
+        : '';
+    }
+
     el.stack.innerHTML   = p.stack.map((t) => `<span class="tag-tech">${escape(t)}</span>`).join('');
     el.role.textContent  = p.role;
     el.results.innerHTML = p.results.map((r) => `<li>${escape(r)}</li>`).join('');
-    el.links.innerHTML   = p.links.map((l) =>
-      `<a class="pmodal__link ${l.ghost ? 'pmodal__link--ghost' : ''}" href="${l.href}">` +
-      `<span class="material-symbols-outlined">${l.icon}</span>${escape(l.label)}</a>`).join('');
+    el.links.innerHTML   = p.links.map((l) => {
+      const ext = /^https?:/.test(l.href) ? ' target="_blank" rel="noopener"' : '';
+      return `<a class="pmodal__link ${l.ghost ? 'pmodal__link--ghost' : ''}" href="${l.href}"${ext}>` +
+        `<span class="material-symbols-outlined">${l.icon}</span>${escape(l.label)}</a>`;
+    }).join('');
 
     // Remonte le scroll des colonnes
     modal.querySelectorAll('.pmodal__left, .pmodal__right').forEach((c) => (c.scrollTop = 0));

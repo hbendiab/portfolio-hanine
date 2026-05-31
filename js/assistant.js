@@ -86,7 +86,7 @@
     experience: {
       keywords: ['expérience', 'experience', 'sncf', 'arval', 'confiance', 'bnp', 'entreprise', 'travail', 'job', 'mission'],
       response: {
-        text: "Mes expériences pro 💼\n\n🏦 Arval BNP Paribas (en cours, depuis septembre 2025)\nChargée de marketing relationnel · Master 1\n\n🚂 Groupe SNCF (2024-2025)\nAssistante cheffe de publicité corporate · Bachelor\nCampagne JEP 2025, stratégie RSE publicité, analyse audiences\n\n🏗️ Groupe Confiance (2022-2024)\nChargée de communication · BTS\n\n⚡ Freelance auto-entrepreneuse (depuis 2021)",
+        text: "Mes expériences pro 💼\n\n🏦 Arval BNP Paribas (en cours, depuis septembre 2025)\nChargée de marketing relationnel · Master 1\n\n🚂 Groupe SNCF (2024-2025)\nAssistante cheffe de publicité corporate · Bachelor\nCampagne JEP 2025, stratégie RSE publicité, analyse audiences\n\n🏗️ Groupe Confiance (2022-2024)\nAlternante technique · BTS\n\n⚡ Freelance auto-entrepreneuse (depuis 2021)",
         followup: ["Tes projets phares ?", "Pourquoi te recruter ?"]
       }
     },

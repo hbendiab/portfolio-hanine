@@ -106,10 +106,12 @@
   font-size: var(--fs-md);
   font-weight: var(--fw-medium);
   margin-bottom: var(--space-2);
+  color: #202124;               /* force le texte foncé (sinon h2{}/p{} l'écrase) */
 }
 .pluri__text {
   font-size: 14px;
   line-height: 1.6;
+  color: #202124;
 }
 
 /* --------------------------------------------------------------------------

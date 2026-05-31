@@ -308,6 +308,7 @@ html[data-theme="dark"] {
 }
 .kp-contact__subtitle {
   font-size: 14px;
+  color: #fff;                  /* sinon la règle p{} l'écrase */
   opacity: 0.95;
   margin-bottom: var(--space-4);
 }
@@ -546,8 +547,11 @@ html[data-theme="dark"] {
   padding: var(--space-1) 0;
   font-size: 14px;
   line-height: 1.5;
+  color: #202124;               /* force le texte foncé (sinon la règle p{} l'écrase) */
 }
-.kp-info__row strong { font-weight: var(--fw-medium); }
+.kp-info__row strong { font-weight: var(--fw-medium); color: #202124; }
+/* Si la carte contient un eyebrow (page Expériences), le rendre lisible aussi */
+.kp-info .kp-eyebrow { color: #5f6368; }
 
 /* Carte « Profils » (logos sociaux ronds) */
 .kp-profiles {

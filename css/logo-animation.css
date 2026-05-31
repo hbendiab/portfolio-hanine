@@ -4,13 +4,32 @@
    Portfolio Hanine
    ========================================================================== */
 
+/* font-size:0 sur le logo → supprime les espaces entre les lettres
+   (les sauts de ligne du HTML entre <span> n'ajoutent plus de gap). */
+.logo {
+  font-size: 0;
+}
+
 /* Chaque lettre est un conteneur relatif (lettre + viz superposées) */
 .logo-letter {
   position: relative;
   display: inline-block;
+  font-size: var(--fs-2xl);     /* on restaure la taille (annulée par .logo) */
   line-height: 1;
+  text-align: center;
+  vertical-align: baseline;
   cursor: pointer;
   outline: none;
+  /* la lettre pourra s'élargir au survol pour accueillir sa viz */
+  transition: min-width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Au survol/focus/tap : la lettre réserve la largeur de sa viz
+   → plus aucun débordement sur les lettres voisines */
+.logo-letter:hover,
+.logo-letter:focus,
+.logo-letter.is-active {
+  min-width: 0.9em;
 }
 
 /* Le caractère au repos (lisible) */

@@ -373,6 +373,8 @@ html[data-theme="dark"] .serp-tabs { border-bottom-color: var(--color-border-sof
   color: var(--color-text);
 }
 .redirect-pill__photo {
+  position: relative;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -383,6 +385,15 @@ html[data-theme="dark"] .serp-tabs { border-bottom-color: var(--color-border-sof
   color: #fff;
   font-size: 12px;
   font-weight: var(--fw-medium);
+}
+/* Photo de profil par-dessus le dégradé (dégradé = fallback) */
+.redirect-pill__photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
 }
 
 /* --------------------------------------------------------------------------

@@ -491,6 +491,8 @@ html[data-theme="dark"] .serp-tabs { border-bottom-color: var(--color-border-sof
   object-fit: cover;
 }
 .tile__img--face { object-position: center top; } /* cadre sur le visage */
+/* Logo affiché en entier (sans rognage) sur fond blanc */
+.tile__img--contain { object-fit: contain; padding: 24px; }
 
 /* Image dans une card « Projets phares » */
 .proj-card__thumb { position: relative; overflow: hidden; }

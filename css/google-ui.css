@@ -285,6 +285,7 @@ body.home {
    3. BARRE DE RECHERCHE
    -------------------------------------------------------------------------- */
 .search-bar {
+  position: relative;            /* ancre des bulles d'aide */
   display: flex;
   align-items: center;
   gap: var(--space-3);
@@ -628,4 +629,69 @@ html[data-theme="dark"] .shortcut-label {
 }
 .footer__links a {
   color: var(--color-text-soft);
+}
+
+/* ==========================================================================
+   BULLES D'AIDE (tooltips animés, une fois par session)
+   ========================================================================== */
+.hint-anchor { position: relative; display: inline-block; }
+
+.hint-bubble {
+  position: absolute;
+  --tx: 0px;                     /* décalage horizontal de centrage */
+  z-index: 950;
+  max-width: 200px;
+  padding: 8px 28px 8px 12px;
+  background-color: #202124;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate(var(--tx), 4px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+  pointer-events: auto;
+}
+.hint-bubble.hint-show { opacity: 1; transform: translate(var(--tx), 0); }
+.hint-bubble.hint-hide {
+  opacity: 0;
+  transform: translate(var(--tx), -4px);
+  transition: opacity 0.3s ease-in, transform 0.3s ease-in;
+}
+
+/* Flèches */
+.hint-bottom::after { content: ''; position: absolute; top: 100%;    left: 50%;  transform: translateX(-50%); border: 6px solid transparent; border-top-color: #202124; }
+.hint-top::after    { content: ''; position: absolute; bottom: 100%; left: 50%;  transform: translateX(-50%); border: 6px solid transparent; border-bottom-color: #202124; }
+.hint-left::after   { content: ''; position: absolute; top: 50%;     left: 100%; transform: translateY(-50%); border: 6px solid transparent; border-left-color: #202124; }
+
+/* Bouton fermer */
+.hint-close {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+.hint-close:hover { color: #fff; }
+
+/* Positions par bulle */
+#hint-logo.hint-bottom { left: 50%; --tx: -50%; bottom: calc(100% + 12px); }   /* au-dessus du logo */
+.hint-search-pos       { left: 50%; --tx: -50%; top: calc(100% + 14px); }        /* sous la barre, centré */
+.hint-mic-pos          { right: -6px; --tx: 0px; top: calc(100% + 14px); }       /* sous le micro */
+.hint-pencil-pos       { position: fixed; right: 84px; bottom: 30px; --tx: 0px; }/* à gauche du crayon */
+
+/* Responsive : bulles plus petites, logo en dessous */
+@media (max-width: 768px) {
+  .hint-bubble { max-width: 160px; font-size: 11px; white-space: normal; }
+  #hint-logo.hint-bottom { top: calc(100% + 12px); bottom: auto; }
+  #hint-logo.hint-bottom::after { top: auto; bottom: 100%; border-top-color: transparent; border-bottom-color: #202124; }
 }

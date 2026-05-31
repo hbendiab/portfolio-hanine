@@ -181,6 +181,7 @@
 
     <!-- Logo « Hanine » : chaque lettre se transforme au survol en mini data-viz -->
     <!-- H bleu (barres) · a rouge (courbe) · n jaune (donut) · i bleu (points) · n vert (aire) · e rouge (réseau) -->
+    <div class="hint-anchor">
     <h1 class="logo" aria-label="Hanine">
       <!-- H — diagramme en barres -->
       <span class="logo-letter logo__letter--blue" tabindex="0">
@@ -242,6 +243,12 @@
         </svg>
       </span>
     </h1>
+      <!-- Bulle 1 : logo -->
+      <div id="hint-logo" class="hint-bubble hint-bottom" style="display:none;">
+        <button class="hint-close" onclick="dismissHint('hint-logo')" aria-label="Fermer">&times;</button>
+        ✨ Survole chaque lettre<br>pour une surprise data
+      </div>
+    </div>
 
     <!-- Sous-titre -->
     <p class="logo-subtitle">Data &times; IA &times; Marketing</p>
@@ -273,6 +280,17 @@
           <path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3z" />
           <path d="M11 18.92V21h2v-2.08A7 7 0 0 0 19 12h-2a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92z" />
         </svg>
+
+        <!-- Bulle 2 : micro -->
+        <div id="hint-mic" class="hint-bubble hint-top hint-mic-pos" style="display:none;">
+          <button class="hint-close" onclick="dismissHint('hint-mic')" aria-label="Fermer">&times;</button>
+          🎤 Recherche vocale active<br>Dis "projets" ou "snake" !
+        </div>
+        <!-- Bulle 3 : barre de recherche -->
+        <div id="hint-search" class="hint-bubble hint-top hint-search-pos" style="display:none;">
+          <button class="hint-close" onclick="dismissHint('hint-search')" aria-label="Fermer">&times;</button>
+          🥚 Tape "barrel roll",<br>"snake" ou "debug"...
+        </div>
       </div>
 
       <!-- Boutons d'action -->
@@ -329,6 +347,12 @@
       </nav>
     </div>
   </footer>
+
+  <!-- Bulle 4 : crayon (positionnée en fixe à gauche du bouton) -->
+  <div id="hint-pencil" class="hint-bubble hint-left hint-pencil-pos" style="display:none;">
+    <button class="hint-close" onclick="dismissHint('hint-pencil')" aria-label="Fermer">&times;</button>
+    🎨 Personnalise<br>ton expérience ici
+  </div>
 
   <!-- ====================================================================
        BOUTON FLOTTANT « Personnaliser » (bas-droite, façon Chrome)
@@ -437,5 +461,36 @@
   <script src="js/customize.js" defer></script>
   <!-- Easter egg du logo (confetti) — désactivable dans le fichier -->
   <script src="js/logo-easter-egg.js" defer></script>
+
+  <!-- Bulles d'aide (tooltips) — une seule fois par session -->
+  <script>
+    function dismissHint(id) {
+      var h = document.getElementById(id);
+      if (!h || h.classList.contains('hint-hide') || h.style.display === 'none') return;
+      h.classList.remove('hint-show');
+      h.classList.add('hint-hide');
+      setTimeout(function () { h.style.display = 'none'; }, 300);
+    }
+    function showHint(id, delay) {
+      setTimeout(function () {
+        var h = document.getElementById(id);
+        if (!h) return;
+        h.style.display = 'block';
+        void h.offsetWidth;            // reflow pour déclencher la transition
+        h.classList.add('hint-show');
+        setTimeout(function () { dismissHint(id); }, 4000);
+      }, delay);
+    }
+    (function () {
+      try {
+        if (sessionStorage.getItem('hintsShown')) return;
+        sessionStorage.setItem('hintsShown', 'true');
+      } catch (e) { /* sessionStorage indispo : on affiche quand même */ }
+      showHint('hint-logo',   1500);
+      showHint('hint-mic',    2500);
+      showHint('hint-search', 3500);
+      showHint('hint-pencil', 4500);
+    })();
+  </script>
 </body>
 </html>

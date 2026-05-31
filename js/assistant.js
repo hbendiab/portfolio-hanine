@@ -6,6 +6,16 @@
 (() => {
   'use strict';
 
+  /* Âge calculé automatiquement (date de naissance : 20/07/1999) */
+  const AGE = (typeof window.hanineAge === 'function')
+    ? window.hanineAge()
+    : (function () {
+        const n = new Date();
+        let a = n.getFullYear() - 1999;
+        if (n.getMonth() < 6 || (n.getMonth() === 6 && n.getDate() < 20)) a--;
+        return a;
+      })();
+
   /* ========================================================================
      BANQUE DE QUESTIONS / RÉPONSES
      ======================================================================== */
@@ -13,7 +23,7 @@
     presentation: {
       keywords: ['qui', 'présente', 'présentation', 'toi', 'es-tu', 'connaitre', 'connaître'],
       response: {
-        text: "Je suis Hanine Bendiab, 26 ans, étudiante en Master MSc AI Applied to Business à Eugenia School. Actuellement en alternance chez Arval BNP Paribas comme chargée de marketing relationnel. Mon truc : la double casquette Data/IA × Marketing.",
+        text: "Je suis Hanine Bendiab, " + AGE + " ans, étudiante en Master MSc AI Applied to Business à Eugenia School. Actuellement en alternance chez Arval BNP Paribas comme chargée de marketing relationnel. Mon truc : la double casquette Data/IA × Marketing.",
         followup: ["Quel est ton parcours ?", "Tes projets phares ?", "Pourquoi te recruter ?"]
       }
     },

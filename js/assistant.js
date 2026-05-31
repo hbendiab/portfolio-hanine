@@ -13,7 +13,7 @@
     presentation: {
       keywords: ['qui', 'présente', 'présentation', 'toi', 'es-tu', 'connaitre', 'connaître'],
       response: {
-        text: "Je suis Hanine Bendiab, 25 ans, étudiante en Master MSc AI Applied to Business à Eugenia School. Actuellement en alternance chez Arval BNP Paribas comme chargée de marketing relationnel. Mon truc : la double casquette Data/IA × Marketing.",
+        text: "Je suis Hanine Bendiab, 26 ans, étudiante en Master MSc AI Applied to Business à Eugenia School. Actuellement en alternance chez Arval BNP Paribas comme chargée de marketing relationnel. Mon truc : la double casquette Data/IA × Marketing.",
         followup: ["Quel est ton parcours ?", "Tes projets phares ?", "Pourquoi te recruter ?"]
       }
     },

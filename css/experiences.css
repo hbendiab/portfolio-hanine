@@ -131,8 +131,8 @@ html[data-theme="dark"] .filter-chip.is-active {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
+  width: 72px;
+  height: 72px;
   border-radius: var(--radius-md);
   color: #fff;
   font-weight: var(--fw-medium);

@@ -76,8 +76,104 @@
     };
   }
 
+  /* ========================================================================
+     SONS SYNTHÉTIQUES (Web Audio API) — frappe clavier, bips, whoosh
+     Un seul AudioContext partagé (évite la limite de contextes concurrents).
+     Tous les sons respectent l'état `muted` (même bouton que la voix).
+     ======================================================================== */
+  let audioCtx = null;
+  function getCtx() {
+    try {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') audioCtx.resume().catch(() => {});
+      return audioCtx;
+    } catch (e) { return null; }   // Web Audio non supporté
+  }
+
+  /* Frappe clavier : bruit blanc bref filtré (passe-haut) */
+  function playKeyClick() {
+    if (muted) return;
+    const ctx = getCtx();
+    if (!ctx) return;
+    try {
+      const bufferSize = Math.floor(ctx.sampleRate * 0.04); // 40 ms
+      const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / bufferSize, 8);
+      }
+      const source = ctx.createBufferSource();
+      source.buffer = buffer;
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'highpass';
+      filter.frequency.value = 800 + Math.random() * 400;
+      const gain = ctx.createGain();
+      gain.gain.value = 0.08 + Math.random() * 0.04; // discret
+      source.connect(filter); filter.connect(gain); gain.connect(ctx.destination);
+      source.start();
+      source.stop(ctx.currentTime + 0.04);
+    } catch (e) {}
+  }
+
+  /* Séquence de frappe synchronisée avec la phrase (~95 caractères) */
+  function startTypingSound(duration) {
+    const charCount = 95;
+    const interval = duration / charCount;
+    let count = 0;
+    (function scheduleClick() {
+      if (count >= charCount || muted || done) return;
+      const jitter = interval * 0.3 * (Math.random() - 0.5); // variation humaine
+      const delay = Math.max(20, interval + jitter);
+      setTimeout(() => { playKeyClick(); count++; scheduleClick(); }, delay);
+    })();
+  }
+
+  /* Bip du compte à rebours (hauteur décroissante : 4 aigu → 1 grave) */
+  function playCountdownBeep(stepIndex) {
+    if (muted) return;
+    const ctx = getCtx();
+    if (!ctx) return;
+    try {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      const freqs = [800, 650, 500, 380];
+      osc.frequency.value = freqs[stepIndex];
+      osc.type = 'sine';
+      gain.gain.setValueAtTime(0.15, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc.start(ctx.currentTime);
+      osc.stop(ctx.currentTime + 0.3);
+    } catch (e) {}
+  }
+
+  /* Whoosh doux pour la transition vers l'accueil */
+  function playWhoosh() {
+    if (muted) return;
+    const ctx = getCtx();
+    if (!ctx) return;
+    try {
+      const bufferSize = Math.floor(ctx.sampleRate * 0.5);
+      const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / bufferSize, 2) * 0.15;
+      }
+      const source = ctx.createBufferSource();
+      source.buffer = buffer;
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(400, ctx.currentTime);
+      filter.frequency.linearRampToValueAtTime(100, ctx.currentTime + 0.5);
+      source.connect(filter); filter.connect(ctx.destination);
+      source.start();
+    } catch (e) {}
+  }
+
   /* Active l'étape i (segment + cercle décroissant + libellé) */
   function activateStep(i) {
+    playCountdownBeep(i);   // bip synchronisé avec le chiffre
+
     // Allume le segment i+1
     document.getElementById('seg' + (i + 1)).style.background = segColors[i];
 
@@ -113,6 +209,7 @@
   function triggerTransition() {
     if (done) return;
     done = true;
+    playWhoosh();                                                 // son de transition
     if (supportsSpeech) { try { synth.cancel(); } catch (e) {} } // coupe la voix
     safeSet('splashSeen', 'true');
     // Fondu blanc puis redirection
@@ -145,8 +242,9 @@
     });
   }
 
-  // La voix démarre EN MÊME TEMPS que la phrase apparaît (après 0.4s)
+  // La voix + le son de frappe démarrent quand la phrase apparaît (après 0.4s)
   setTimeout(speakPhrase, 400);
+  setTimeout(() => startTypingSound(2500), 400);   // 2.5 s de frappe clavier
 
   // Lancement du compte à rebours (après l'apparition de la phrase)
   setTimeout(nextStep, 1800);

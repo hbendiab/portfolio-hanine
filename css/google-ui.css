@@ -697,3 +697,24 @@ html[data-theme="dark"] .shortcut-label {
   #hint-logo.hint-bottom { top: calc(100% + 12px); bottom: auto; }
   #hint-logo.hint-bottom::after { top: auto; bottom: 100%; border-top-color: transparent; border-bottom-color: #202124; }
 }
+
+/* ==========================================================================
+   BOUTON DE LANGUE (FR / EN)
+   ========================================================================== */
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 32px;
+  padding: 0 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-text-soft);
+  font-size: 13px;
+  font-weight: var(--fw-medium);
+  cursor: pointer;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+.lang-toggle:hover { background-color: var(--color-bg-hover); color: var(--color-text); }

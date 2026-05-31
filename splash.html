@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Si le splash a déjà été vu dans la session, on saute directement à l'accueil
+       (évite tout clignotement du splash pour un visiteur qui revient). -->
+  <script>
+    if (sessionStorage.getItem('splashSeen')) {
+      window.location.replace('index.html');
+    }
+  </script>
+
+  <title>Hanine — Portfolio</title>
+
+  <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='Arial' font-weight='bold' fill='%234285f4'>H</text></svg>" />
+
+  <!-- Police Roboto (300 et 500) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/splash.css" />
+</head>
+
+<body>
+
+  <!-- Élément 1 : la phrase -->
+  <p class="splash-phrase">
+    Selon une étude, la durée d'attention de l'humain moyen est de 8 secondes,<br />
+    il me reste alors <span class="highlight">4 secondes</span> pour retenir votre attention.
+  </p>
+
+  <!-- Élément 2 : barre + compte à rebours -->
+  <div class="splash-counter">
+    <!-- Barre (4 segments) -->
+    <div class="splash-bar">
+      <div id="seg1"></div>
+      <div id="seg2"></div>
+      <div id="seg3"></div>
+      <div id="seg4"></div>
+    </div>
+
+    <!-- Chiffres (4 cercles : 4, 3, 2, 1) -->
+    <div class="splash-digits">
+      <div class="splash-digit" id="cd4">4</div>
+      <div class="splash-digit" id="cd3">3</div>
+      <div class="splash-digit" id="cd2">2</div>
+      <div class="splash-digit" id="cd1">1</div>
+    </div>
+
+    <!-- Texte sous les chiffres -->
+    <p class="splash-cdtxt" id="cdtxt"></p>
+  </div>
+
+  <!-- Élément 3 : bouton « Passer → » -->
+  <button class="splash-skip" id="skip-btn">Passer &rarr;</button>
+
+  <script src="js/splash.js"></script>
+</body>
+</html>

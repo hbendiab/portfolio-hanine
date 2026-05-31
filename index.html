@@ -5,6 +5,13 @@
   <!-- Responsive : indispensable pour le mobile-first -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Splash screen : si pas encore vu dans la session, on y redirige -->
+  <script>
+    if (!sessionStorage.getItem('splashSeen')) {
+      window.location.replace('splash.html');
+    }
+  </script>
+
   <!-- SEO / description de la page -->
   <meta name="description" content="Portfolio de Hanine — Data × IA × Marketing. Master Data Marketing & IA à Eugenia School. Recherchez mes projets, expériences et compétences." />
   <meta name="author" content="Hanine" />

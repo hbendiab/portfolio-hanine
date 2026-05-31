@@ -332,6 +332,123 @@ body.home {
   width: 22px;
   height: 22px;
   cursor: pointer;
+  color: var(--color-text-soft);   /* gris au repos */
+  border-radius: 50%;
+  transition: color var(--transition-fast);
+}
+.search-bar__mic:hover { color: var(--color-text); }
+
+/* --- Micro actif (écoute en cours) --- */
+.mic-active {
+  color: #ea4335 !important;       /* rouge Google */
+  animation: micPulse 1s infinite;
+}
+@keyframes micPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(234, 67, 53, 0.4);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 8px rgba(234, 67, 53, 0);
+  }
+}
+
+/* --- Toast vocal (sous la barre) --- */
+.voice-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 80px;
+  transform: translateX(-50%);
+  z-index: 1600;
+  padding: 8px 16px;
+  background-color: var(--color-bg-soft);
+  color: var(--color-text-soft);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  box-shadow: var(--shadow-sm);
+  animation: voice-toast-in 0.25s ease;
+}
+@keyframes voice-toast-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(8px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* --- Modale « Google Voice Search » --- */
+.voice-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+}
+.voice-modal[hidden] { display: none; }
+.voice-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.voice-modal__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(360px, 100%);
+  padding: var(--space-7) var(--space-6) var(--space-6);
+  background-color: var(--color-bg);
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  animation: egg-pop 0.25s ease;
+}
+.voice-modal__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-pill);
+  color: var(--color-text-soft);
+}
+.voice-modal__close:hover { background-color: var(--color-bg-hover); }
+.voice-modal__title {
+  font-size: 18px;
+  color: var(--color-text-soft);
+  margin-bottom: var(--space-5);
+}
+.voice-modal__transcript {
+  margin-top: var(--space-5);
+  min-height: 26px;
+  font-size: 18px;
+  color: var(--color-text);
+}
+
+/* Barres audio animées */
+.voice-bars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 48px;
+}
+.voice-bars span {
+  width: 8px;
+  height: 12px;
+  border-radius: 4px;
+  animation: voiceBar 1s ease-in-out infinite;
+}
+.voice-bars span:nth-child(1) { background-color: #4285f4; animation-delay: 0s;    }
+.voice-bars span:nth-child(2) { background-color: #ea4335; animation-delay: 0.15s; }
+.voice-bars span:nth-child(3) { background-color: #fbbc04; animation-delay: 0.30s; }
+.voice-bars span:nth-child(4) { background-color: #34a853; animation-delay: 0.45s; }
+.voice-bars span:nth-child(5) { background-color: #4285f4; animation-delay: 0.60s; }
+@keyframes voiceBar {
+  0%, 100% { height: 12px; }
+  50%      { height: 40px; }
 }
 
 /* --------------------------------------------------------------------------

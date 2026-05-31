@@ -260,10 +260,11 @@
           autofocus
         />
 
-        <!-- Icône micro multicolore (décorative, façon Google) -->
-        <svg class="search-bar__mic" viewBox="0 0 24 24" aria-hidden="true">
-          <path fill="#4285f4" d="M12 14a3 3 0 0 0 3-3V5a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3z" />
-          <path fill="#34a853" d="M11 18.92V21h2v-2.08A7 7 0 0 0 19 12h-2a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92z" />
+        <!-- Icône micro : recherche vocale (Web Speech API) -->
+        <svg class="search-bar__mic" id="mic-btn" viewBox="0 0 24 24" fill="currentColor"
+             role="button" tabindex="0" aria-label="Recherche vocale">
+          <path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3z" />
+          <path d="M11 18.92V21h2v-2.08A7 7 0 0 0 19 12h-2a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92z" />
         </svg>
       </div>
 
@@ -400,6 +401,25 @@
         </div>
       </section>
     </aside>
+  </div>
+
+  <!-- ====================================================================
+       MODALE DE RECHERCHE VOCALE (style Google Voice Search)
+       ==================================================================== -->
+  <div class="voice-modal" id="voice-modal" hidden>
+    <div class="voice-modal__overlay" id="voice-overlay"></div>
+    <div class="voice-modal__dialog" role="dialog" aria-modal="true" aria-label="Recherche vocale">
+      <button type="button" class="voice-modal__close" id="voice-close" aria-label="Annuler">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+          <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+        </svg>
+      </button>
+      <p class="voice-modal__title">Parlez maintenant</p>
+      <div class="voice-bars" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <p class="voice-modal__transcript" id="voice-transcript"></p>
+    </div>
   </div>
 
   <!-- Scripts -->

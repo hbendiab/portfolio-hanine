@@ -9,9 +9,6 @@
 (() => {
   'use strict';
 
-  /* ====== Anniversaire (easter egg « recherches du jour ») ====== */
-  const BIRTHDAY = { m: 3, d: 15 }; // 15 mars — à personnaliser
-
   const form  = document.getElementById('search-form');
   const input = document.getElementById('search-input');
   const lucky = document.getElementById('lucky-btn');
@@ -110,54 +107,7 @@
   }
 
   /* ========================================================================
-     EASTER EGG 3 — Recherches du jour
-     ======================================================================== */
-  function getDailySuggestions() {
-    const d = new Date();
-    const day = d.getDay(), month = d.getMonth() + 1, date = d.getDate();
-    const S = {
-      default:   ['qui est Hanine ?', 'ses projets data', 'son CV', 'où elle travaille', 'lui parler'],
-      lundi:     ['comment commencer la semaine ?', 'café Hanine ?', 'lundi motivation'],
-      vendredi:  ['weekend en vue ?', 'TGIF Hanine', 'vendredi vibes'],
-      samedi:    ["c'est le weekend !", 'Hanine en mode chill'],
-      dimanche:  ['dimanche cocoon', 'préparer la semaine ?'],
-      birthday:  ['joyeux anniversaire Hanine 🎂', "qu'est-ce qu'elle veut comme cadeau ?"],
-      noel:      ['joyeux Noël 🎄', 'cadeaux Hanine'],
-      halloween: ['trick or treat 🎃', 'Hanine déguisée en quoi ?'],
-      nouvelan:  ['bonne année ! 🎆', 'résolutions de Hanine']
-    };
-    if (month === 12 && date === 25) return S.noel;
-    if (month === 10 && date === 31) return S.halloween;
-    if (month === 1  && date === 1)  return S.nouvelan;
-    if (month === BIRTHDAY.m && date === BIRTHDAY.d) return S.birthday;
-    if (day === 1) return S.lundi;
-    if (day === 5) return S.vendredi;
-    if (day === 6) return S.samedi;
-    if (day === 0) return S.dimanche;
-    return S.default;
-  }
-
-  function initSearchOfTheDay() {
-    const chips = document.querySelector('.chips');
-    if (!chips || !form) return;
-    const list = getDailySuggestions();
-    chips.innerHTML = '<p class="chips__label">Recherches du jour :</p>';
-    list.forEach((q) => {
-      const chip = document.createElement('button');
-      chip.type = 'button';
-      chip.className = 'chip';
-      chip.textContent = q;
-      chip.addEventListener('click', () => {
-        input.value = q;
-        if (form.requestSubmit) form.requestSubmit();
-        else form.dispatchEvent(new Event('submit', { cancelable: true }));
-      });
-      chips.appendChild(chip);
-    });
-  }
-
-  /* ========================================================================
-     EASTER EGG 4 — Bug Hunt
+     EASTER EGG 3 — Bug Hunt
      ======================================================================== */
   function triggerBugHunt() {
     const html =
@@ -226,7 +176,7 @@
   }
 
   /* ========================================================================
-     EASTER EGG 5 — Snake
+     EASTER EGG 4 — Snake
      ======================================================================== */
   function triggerSnakeGame() {
     const SIZE = 300, CELL = 15, N = SIZE / CELL; // grille 20x20
@@ -359,7 +309,7 @@
       '  Tu as ouvert la console ? Tu es bien curieux 👀\n' +
       "  PS : Si tu lis ça, t'es probablement un.e dev.\n\n" +
       '  Recrute-moi : haninebendiab@hotmail.com\n\n' +
-      '  🔓 Easter eggs cachés à débloquer : 5\n' +
+      '  🔓 Easter eggs cachés à débloquer : 4\n' +
       '  Indice : tape des mots dans la barre de recherche…\n',
       'color: #4285f4; font-family: monospace;'
     );
@@ -389,7 +339,6 @@
     consoleBanner();
     initSearchKeywords();    // eggs barrel roll, bug hunt, snake (barre de recherche)
     initLuckyButton();       // egg 1 (J'ai de la chance)
-    initSearchOfTheDay();    // egg 3 (recherches du jour)
   }
 
   init();

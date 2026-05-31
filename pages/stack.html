@@ -404,15 +404,22 @@
     (function () {
       var SI = 'https://cdn.simpleicons.org/';
       var DEV = 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/';
+      var LOCAL = '../assets/images/';
       // [ mot-clé à détecter dans le chip , URL du logo ] — ordre = priorité
       var MAP = [
         ['scikit',        SI + 'scikitlearn'],
         ['google sheets', SI + 'googlesheets'],
+        ['powerbi',       LOCAL + 'powerbi.jpeg'],
+        ['tableau',       LOCAL + 'Tableau.png'],
+        ['openai',        LOCAL + 'openai.png'],
+        ['chatgpt',       LOCAL + 'openai.png'],
+        ['midjourney',    LOCAL + 'midjourney.jpeg'],
         ['python',        SI + 'python'],
         ['pandas',        SI + 'pandas'],
         ['numpy',         SI + 'numpy'],
         ['spark',         SI + 'apachespark'],
         ['plotly',        SI + 'plotly'],
+        ['sql',           LOCAL + 'sql.png'],
         ['claude',        SI + 'anthropic'],
         ['langchain',     SI + 'langchain'],
         ['n8n',           SI + 'n8n'],
@@ -422,7 +429,10 @@
         ['wordpress',     SI + 'wordpress'],
         ['wix',           SI + 'wix'],
         ['brevo',         SI + 'brevo'],
-        ['figma',         SI + 'figma']
+        ['figma',         SI + 'figma'],
+        ['adobe',         LOCAL + 'adobe.png'],
+        ['canva',         LOCAL + 'canva.jpeg'],
+        ['capcut',        LOCAL + 'capcut.png']
       ];
       var chips = document.querySelectorAll('.skill-chip');
       Array.prototype.forEach.call(chips, function (chip) {

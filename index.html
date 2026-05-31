@@ -31,6 +31,8 @@
   <link rel="stylesheet" href="css/responsive.css" />
   <!-- Styles de la modale de personnalisation -->
   <link rel="stylesheet" href="css/customize.css" />
+  <!-- Styles des easter eggs -->
+  <link rel="stylesheet" href="css/easter-eggs.css" />
 
   <!-- Anti-flash : applique le thème et l'accent AVANT le rendu de la page,
        pour éviter un clignotement clair -> sombre au chargement. -->
@@ -331,6 +333,8 @@
 
   <!-- Scripts -->
   <script src="js/navigation.js" defer></script>
+  <!-- easter-eggs.js AVANT search.js : il intercepte les mots-clés en priorité -->
+  <script src="js/easter-eggs.js" defer></script>
   <script src="js/search.js" defer></script>
   <script src="js/customize.js" defer></script>
 </body>

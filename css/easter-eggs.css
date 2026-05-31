@@ -1,0 +1,258 @@
+/* ==========================================================================
+   easter-eggs.css — Styles des 6 easter eggs + animations
+   Portfolio Hanine
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. BARREL ROLL
+   -------------------------------------------------------------------------- */
+.barrel-roll { animation: barrelRoll 4s ease-in-out 1; }
+@keyframes barrelRoll {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* --------------------------------------------------------------------------
+   2. TOAST « Easter egg unlocked »
+   -------------------------------------------------------------------------- */
+.egg-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  z-index: 2000;
+  padding: 10px 18px;
+  background-color: #202124;
+  color: #fff;
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  box-shadow: var(--shadow-lg);
+  animation: egg-toast-in 0.3s ease;
+}
+@keyframes egg-toast-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(12px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* --------------------------------------------------------------------------
+   3. FLASH « J'ai de la chance »
+   -------------------------------------------------------------------------- */
+.lucky-flash {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 14px;
+  background-color: var(--accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: var(--fw-medium);
+  box-shadow: var(--shadow-md);
+  animation: egg-toast-in 0.25s ease;
+}
+.lucky-spinner {
+  width: 18px;
+  height: 18px;
+  border: 3px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: var(--radius-pill);
+  animation: lucky-spin 0.7s linear infinite;
+}
+@keyframes lucky-spin { to { transform: rotate(360deg); } }
+
+/* --------------------------------------------------------------------------
+   4. MODALE GÉNÉRIQUE D'EASTER EGG
+   -------------------------------------------------------------------------- */
+.egg-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+}
+.egg-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  animation: egg-fade 0.2s ease;
+}
+@keyframes egg-fade { from { opacity: 0; } to { opacity: 1; } }
+.egg-modal__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(560px, 100%);
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+  padding: var(--space-5);
+  background-color: var(--color-bg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  animation: egg-pop 0.25s ease;
+}
+@keyframes egg-pop {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.egg-modal__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-pill);
+  color: var(--color-text-soft);
+  z-index: 2;
+}
+.egg-modal__close:hover { background-color: var(--color-bg-hover); }
+.egg-modal__title {
+  font-size: 18px;
+  font-weight: var(--fw-medium);
+  margin-bottom: var(--space-4);
+  padding-right: 36px;
+}
+.egg-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  justify-content: center;
+  margin-top: var(--space-4);
+}
+.egg-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-5);
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  font-weight: var(--fw-medium);
+  background-color: var(--accent);
+  color: #fff;
+  border: 1px solid var(--accent);
+}
+.egg-btn:hover { filter: brightness(0.95); }
+.egg-btn--ghost {
+  background-color: transparent;
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+/* --------------------------------------------------------------------------
+   5. BUG HUNT (console développeur)
+   -------------------------------------------------------------------------- */
+.egg-modal__dialog--console {
+  background-color: #202124;
+  color: #00ff00;
+  font-family: "Courier New", monospace;
+}
+.bughunt__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+  font-size: 14px;
+}
+.bughunt__title { font-size: 15px; padding-right: 36px; }
+.bughunt__grid {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: #0d0d0d;
+  border: 1px solid rgba(0, 255, 0, 0.25);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background-image:
+    linear-gradient(rgba(0, 255, 0, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 0, 0.08) 1px, transparent 1px);
+  background-size: 10% 10%;
+}
+.bughunt__bug {
+  position: absolute;
+  font-size: 24px;
+  line-height: 1;
+  background: none;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  transition: top 0.5s linear, left 0.5s linear;
+}
+.bughunt__result { text-align: center; padding: var(--space-5) 0; }
+.bughunt__score-final { font-size: 28px; margin: var(--space-3) 0; }
+.blink::after {
+  content: "_";
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* --------------------------------------------------------------------------
+   6. AI IMAGE GENERATOR
+   -------------------------------------------------------------------------- */
+.imggen__prompt {
+  width: 100%;
+  min-height: 64px;
+  padding: 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-size: 13px;
+  resize: vertical;
+}
+.imggen__steps {
+  margin-top: var(--space-3);
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  color: var(--color-text-soft);
+  min-height: 20px;
+}
+.imggen__art {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-top: var(--space-3);
+}
+.imggen__art svg { width: 100%; height: 100%; display: block; }
+.imggen__caption { font-size: 12px; color: var(--color-text-soft); text-align: center; margin-top: var(--space-2); }
+.imggen__note { font-size: 12px; color: var(--color-text-muted); font-style: italic; text-align: center; margin-top: var(--space-2); }
+
+/* --------------------------------------------------------------------------
+   7. SNAKE
+   -------------------------------------------------------------------------- */
+.snake__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+  font-size: 14px;
+  font-weight: var(--fw-medium);
+}
+.snake__canvas {
+  display: block;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  touch-action: none;
+}
+.snake__hint {
+  text-align: center;
+  font-size: 12px;
+  color: var(--color-text-soft);
+  margin-top: var(--space-3);
+}
+.snake__food-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+  font-size: 12px;
+  color: var(--color-text-soft);
+}

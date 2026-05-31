@@ -67,12 +67,18 @@ html[data-theme="dark"] {
    -------------------------------------------------------------------------- */
 .serp-tabs {
   display: flex;
-  gap: var(--space-1);
+  gap: var(--space-5);         /* 24px entre onglets */
   padding: 0 var(--space-5);
-  border-bottom: 1px solid var(--color-border-soft);
+  background-color: var(--color-bg);
+  border-bottom: 1px solid #e8eaed;
   overflow-x: auto;            /* scroll horizontal sur mobile */
   scrollbar-width: none;       /* masque la scrollbar (Firefox) */
+  /* Sticky sous le header */
+  position: sticky;
+  top: 0;
+  z-index: 90;
 }
+html[data-theme="dark"] .serp-tabs { border-bottom-color: var(--color-border-soft); }
 .serp-tabs::-webkit-scrollbar {
   display: none;               /* masque la scrollbar (Chrome/Safari) */
 }
@@ -81,9 +87,9 @@ html[data-theme="dark"] {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  padding: var(--space-3) var(--space-3);
+  padding: var(--space-3) 0;   /* le « gap » gère l'espacement entre onglets */
   font-size: 14px;
-  color: var(--color-text-soft);
+  color: var(--color-text-soft); /* gris #5f6368 en clair */
   white-space: nowrap;
   border-bottom: 3px solid transparent;
   margin-bottom: -1px;         /* recouvre la bordure du conteneur */
@@ -93,13 +99,14 @@ html[data-theme="dark"] {
   color: var(--color-text);
   text-decoration: none;
 }
-.serp-tab .material-symbols-outlined {
+.serp-tab .material-symbols-outlined,
+.serp-tab .ti {
   font-size: 18px;
 }
-/* Onglet actif : texte + soulignement en couleur d'accent */
+/* Onglet actif : couleur propre à la rubrique (bleu #1a73e8 par défaut) */
 .serp-tab.is-active {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
+  color: var(--tab-color, #1a73e8);
+  border-bottom-color: var(--tab-color, #1a73e8);
 }
 
 /* --------------------------------------------------------------------------

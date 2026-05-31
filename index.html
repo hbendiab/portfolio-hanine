@@ -326,10 +326,17 @@
           <span class="shortcut-circle"><span class="material-symbols-outlined" style="color:#4285f4;">build</span></span>
           <span class="shortcut-label">Stack</span>
         </a>
-        <a class="shortcut" href="pages/assistant.html">
-          <span class="shortcut-circle"><span class="material-symbols-outlined" style="color:#9c27b0;">auto_awesome</span></span>
-          <span class="shortcut-label">Assistant</span>
-        </a>
+        <span class="hint-anchor">
+          <a class="shortcut" href="pages/assistant.html">
+            <span class="shortcut-circle"><span class="material-symbols-outlined" style="color:#9c27b0;">auto_awesome</span></span>
+            <span class="shortcut-label">Assistant</span>
+          </a>
+          <!-- Bulle 5 : assistant -->
+          <div id="hint-assistant" class="hint-bubble hint-bottom" style="display:none;">
+            <button class="hint-close" onclick="dismissHint('hint-assistant')" aria-label="Fermer">&times;</button>
+            🤖 Pose tes questions à<br>mon assistant IA !
+          </div>
+        </span>
       </div>
     </section>
   </main>
@@ -482,7 +489,7 @@
         sessionStorage.setItem('hintsShown', 'true');
       } catch (e) { /* sessionStorage indispo : on affiche quand même */ }
 
-      var seq = ['hint-logo', 'hint-mic', 'hint-search', 'hint-pencil'];
+      var seq = ['hint-logo', 'hint-mic', 'hint-search', 'hint-assistant', 'hint-pencil'];
 
       function step(i) {
         if (i >= seq.length) return;

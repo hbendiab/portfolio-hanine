@@ -686,6 +686,7 @@ html[data-theme="dark"] .shortcut-label {
 
 /* Positions par bulle */
 #hint-logo.hint-bottom { left: 50%; --tx: -50%; bottom: calc(100% + 12px); }   /* au-dessus du logo */
+#hint-assistant.hint-bottom { left: 50%; --tx: -50%; bottom: calc(100% + 12px); } /* au-dessus du raccourci Assistant */
 .hint-search-pos       { left: 50%; --tx: -50%; top: calc(100% + 14px); }        /* sous la barre, centré */
 .hint-mic-pos          { right: -6px; --tx: 0px; top: calc(100% + 14px); }       /* sous le micro */
 .hint-pencil-pos       { position: fixed; right: 84px; bottom: 30px; --tx: 0px; }/* à gauche du crayon */

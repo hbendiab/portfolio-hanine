@@ -25,11 +25,11 @@ body {
 .splash-phrase {
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
-  font-size: 26px;
-  line-height: 1.75;
+  font-size: 34px;
+  line-height: 1.6;
   color: #202124;
   letter-spacing: -0.2px;
-  max-width: 520px;
+  max-width: 640px;
   text-align: center;
   margin-bottom: 52px;
   opacity: 0;
@@ -131,7 +131,7 @@ body {
    -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
   body { padding: 32px; }
-  .splash-phrase { font-size: 18px; }
+  .splash-phrase { font-size: 22px; }
   .splash-bar div { width: 36px; }
   .splash-digits { gap: 16px; }
   .splash-digit { width: 44px; height: 44px; font-size: 18px; }

@@ -37,7 +37,7 @@
     projets: {
       keywords: ['projet', 'projets', 'réalisation', 'realisation', 'travaux', 'portfolio'],
       response: {
-        text: "Mes 3 projets phares récents :\n\n🚀 Hackathon Mirakl Talent Intelligence (note A, 85%)\nPipeline complet de scraping + scoring IA pour le recrutement tech.\n\n📊 Audit SEO/GEO Albert School\nAudit + analyse référencement dans les IA génératives (ChatGPT, Perplexity).\n\n🤖 Compétition PayFit\nCas entreprise avec Lovable + Dust + n8n.\n\nTu peux voir tous mes projets en détail dans la section Projets du portfolio.",
+        text: "Mes 3 projets phares récents :\n\n🚀 Hackathon Mirakl Talent Intelligence (note A, 85%)\nPipeline complet de scraping + scoring IA pour le recrutement tech.\n\n🤖 Compétition PayFit\nCas entreprise avec Lovable + Dust + n8n.\n\n📊 Audit SEO Eugenia School\nRecommandations techniques et éditoriales pour le référencement.\n\nTu peux voir tous mes projets en détail dans la section Projets du portfolio.",
         followup: ["Parle-moi du projet Mirakl", "Ta stack technique ?"]
       }
     },

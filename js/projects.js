@@ -81,28 +81,6 @@
       ]
     },
     {
-      hero: 'SEO / GEO',
-      gradient: 'linear-gradient(135deg, #ff8a50, #fbbc04)',
-      date: '2026',
-      category: 'Web & SEO',
-      title: 'Audit SEO/GEO — Albert School',
-      desc: [
-        'Audit de référencement classique (SEO) et de référencement génératif (GEO) pour Albert School : comment l\'établissement apparaît dans Google et dans les moteurs IA.',
-        'Analyse de la visibilité sur ChatGPT et Perplexity, puis recommandations concrètes d\'optimisation.'
-      ],
-      stack: ['SEO', 'GEO', 'ChatGPT', 'Perplexity', 'Analyse SERP'],
-      role: 'Réalisation de l\'audit, benchmark concurrentiel, rédaction des recommandations SEO et GEO.',
-      results: [
-        'Cartographie de la visibilité SEO et IA',
-        'Liste priorisée de recommandations',
-        'Pistes d\'optimisation pour les moteurs génératifs'
-      ],
-      links: [
-        { label: 'Lire l\'étude de cas', href: '#', icon: 'description', ghost: true }
-      ],
-      thumbs: ['#ff8a50', '#fbbc04', '#f9a825']
-    },
-    {
       hero: 'SEO',
       gradient: 'linear-gradient(135deg, #34a853, #0a8043)',
       date: '2026',
@@ -123,50 +101,6 @@
         { label: 'Lire l\'étude de cas', href: '#', icon: 'description', ghost: true }
       ],
       thumbs: ['#34a853', '#0a8043', '#1a73e8']
-    },
-    {
-      hero: 'WhatsApp',
-      gradient: 'linear-gradient(135deg, #673ab7, #4285f4)',
-      date: '2026',
-      category: 'Data & IA · Personnel',
-      title: 'Analyse WhatsApp — Python',
-      desc: [
-        'Analyse exploratoire d\'une conversation WhatsApp en Python : statistiques, analyse de sentiment et « vibes » de la discussion.',
-        'Projet personnel pour pratiquer la data science et la visualisation sur des données réelles.'
-      ],
-      stack: ['Python', 'Pandas', 'NLP', 'Data viz', 'Matplotlib'],
-      role: 'Nettoyage des données, analyse statistique, sentiment analysis et data visualisation.',
-      results: [
-        'Statistiques détaillées de la conversation',
-        'Analyse de sentiment dans le temps',
-        'Visualisations claires des tendances'
-      ],
-      links: [
-        { label: 'Voir sur GitHub', href: '#', icon: 'code' }
-      ],
-      thumbs: ['#673ab7', '#4285f4', '#9575cd']
-    },
-    {
-      hero: 'Airbnb',
-      gradient: 'linear-gradient(135deg, #ff8a50, #ea4335)',
-      date: '2024',
-      category: 'Marketing & Com · Personnel',
-      title: 'Projet Airbnb Lyon',
-      desc: [
-        'Projet entrepreneurial primé (Top 3 d\'un concours) : conception d\'un business plan et d\'une identité de marque pour un concept de location à Lyon.',
-        'Étude de marché, positionnement et stratégie de communication.'
-      ],
-      stack: ['Business plan', 'Branding', 'Étude marché', 'Stratégie'],
-      role: 'Étude de marché, construction du business plan et direction du branding.',
-      results: [
-        'Classement Top 3 du concours',
-        'Business plan complet',
-        'Identité de marque et supports de communication'
-      ],
-      links: [
-        { label: 'Lire l\'étude de cas', href: '#', icon: 'description', ghost: true }
-      ],
-      thumbs: ['#ff8a50', '#ea4335', '#fbbc04']
     },
     {
       hero: 'JEP 2025',

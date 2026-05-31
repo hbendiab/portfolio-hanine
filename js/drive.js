@@ -74,10 +74,7 @@
       files: [
         { name: 'Mirakl Talent Intelligence - Pitch.pptx', size: '8,4 Mo' },
         { name: 'Compétition PayFit - Deck.pdf', size: '3,1 Mo' },
-        { name: 'Audit SEO-GEO Albert School.pdf', size: '2,8 Mo' },
-        { name: 'Audit SEO Eugenia - Synthèse.pdf', size: '3,2 Mo' },
-        { name: 'Analyse WhatsApp - Notebook.pdf', size: '1,5 Mo' },
-        { name: 'Projet Airbnb Lyon - Business plan.pdf', size: '2,2 Mo' }
+        { name: 'Audit SEO Eugenia - Synthèse.pdf', size: '3,2 Mo' }
       ]
     },
     'admin': {
@@ -100,8 +97,7 @@
       title: 'Présentations & pitches',
       files: [
         { name: 'Mirakl - Pitch final.pptx', size: '8,4 Mo' },
-        { name: 'PayFit - Présentation.pptx', size: '2,6 Mo' },
-        { name: 'SEO Albert School - Slides.pdf', size: '1,1 Mo' }
+        { name: 'PayFit - Présentation.pptx', size: '2,6 Mo' }
       ]
     },
     'visuels': {

@@ -9,9 +9,9 @@
 
 /* --- Téléphones (jusqu'à 600px) --- */
 @media (max-width: 600px) {
-  /* Logo « Hanine » réduit sur mobile */
+  /* Logo « Hanine » : la TAILLE est gérée par clamp() dans global.css
+     (fluide à toutes les largeurs). On garde juste l'espacement. */
   .logo {
-    font-size: 3rem;        /* 48px au lieu de 56px */
     letter-spacing: -1px;
   }
 
@@ -40,10 +40,6 @@
 
 /* --- Très petits écrans (jusqu'à 380px) --- */
 @media (max-width: 380px) {
-  .logo {
-    font-size: 2.5rem;      /* 40px */
-  }
-
   /* Les boutons passent en pleine largeur empilée */
   .btn-group {
     flex-direction: column;

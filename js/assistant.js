@@ -95,8 +95,8 @@
       keywords: ['disponible', 'disponibilité', 'alternance', 'recrute', 'embauche', 'septembre', 'libre', 'stage', 'available', 'availability', 'apprenticeship', 'hire', 'september', 'internship', 'work-study'],
       response: {
         text: {
-          fr: "Oui ! 🙌 Je cherche une alternance pour mon Master 2 à partir de septembre 2026.\n\n📅 Rythme : 1 semaine école / 3 semaines entreprise\n📍 Lieu : Île-de-France principalement\n💼 Domaine : data marketing, IA appliquée au business, automation, growth\n\nSi ton entreprise cherche un profil hybride Data × Marketing, on devrait se parler !",
-          en: "Yes! 🙌 I'm looking for an apprenticeship for my Master 2 starting September 2026.\n\n📅 Rhythm: 1 week school / 3 weeks company\n📍 Location: mainly Île-de-France (Paris area)\n💼 Field: data marketing, AI applied to business, automation, growth\n\nIf your company is looking for a hybrid Data × Marketing profile, we should talk!"
+          fr: "Oui ! 🙌 Je cherche une alternance pour mon Master 2 à partir de septembre 2026.\n\n📅 Rythme : 1 jour école / 4 jours entreprise\n📍 Lieu : Île-de-France principalement\n💼 Domaine : data marketing, IA appliquée au business, automation, growth\n\nSi ton entreprise cherche un profil hybride Data × Marketing, on devrait se parler !",
+          en: "Yes! 🙌 I'm looking for an apprenticeship for my Master 2 starting September 2026.\n\n📅 Rhythm: 1 day school / 4 days company\n📍 Location: mainly Île-de-France (Paris area)\n💼 Field: data marketing, AI applied to business, automation, growth\n\nIf your company is looking for a hybrid Data × Marketing profile, we should talk!"
         },
         followup: {
           fr: ["Comment te contacter ?", "Pourquoi te recruter ?"],

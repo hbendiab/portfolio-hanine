@@ -33,7 +33,7 @@
         'Project built for the Mirakl 2026 Hackathon (grade A, 85%). Design and development of a complete talent intelligence system for Mirakl.',
         'Multi-source scraping (LinkedIn, GitHub), automatic API enrichment, automated scoring with AI recalibration based on recruiter feedback, and strategic briefings generated every Friday by AI agents.'
       ],
-      stack: ['Python (pandas, requests)', 'OpenAI API (GPT-4o-mini)', 'Proxycurl + RapidAPI', 'Phantombuster', 'n8n', 'Google Sheets', 'Slack', 'Dust'],
+      stack: ['Python (pandas, requests)', 'OpenAI API (GPT-4o-mini)', 'Phantombuster', 'n8n', 'Google Sheets', 'Slack', 'Dust'],
       role: 'Conception du pipeline data, intégration des APIs IA, développement des workflows n8n, génération automatique de briefings stratégiques.',
       role_en: 'Data pipeline design, AI API integration, n8n workflow development, automatic generation of strategic briefings.',
       results: [
